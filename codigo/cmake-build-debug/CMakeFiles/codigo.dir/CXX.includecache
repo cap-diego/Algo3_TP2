@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/diego/Documents/Facultad/AED 3/Labor/TP2/codigo/kruskal.cpp
+kruskal.h
+C:/Users/diego/Documents/Facultad/AED 3/Labor/TP2/codigo/kruskal.h
+
+C:/Users/diego/Documents/Facultad/AED 3/Labor/TP2/codigo/kruskal.h
+iostream
+-
+vector
+-
+climits
+-
+cstring
+-
+algorithm
+-
+cmath
+-
+utility
+-
+cstdio
+-
+
