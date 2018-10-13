@@ -1,3 +1,0 @@
-C:/Users/diego/Documents/Facultad/AED 3/Labor/TP2/codigo/cmake-build-debug/CMakeFiles/codigo.dir
-C:/Users/diego/Documents/Facultad/AED 3/Labor/TP2/codigo/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/diego/Documents/Facultad/AED 3/Labor/TP2/codigo/cmake-build-debug/CMakeFiles/rebuild_cache.dir

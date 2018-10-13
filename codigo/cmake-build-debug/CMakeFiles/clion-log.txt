@@ -1,4 +1,0 @@
-"C:\Program Files\JetBrains\CLion 2017.3.4\bin\cmake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" "C:\Users\diego\Documents\Facultad\AED 3\Labor\TP2\codigo"
--- Configuring done
--- Generating done
--- Build files have been written to: C:/Users/diego/Documents/Facultad/AED 3/Labor/TP2/codigo/cmake-build-debug
