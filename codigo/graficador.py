@@ -37,7 +37,7 @@ def graficarGrafo(nombre):
         width=1, edge_cmap=plt.cm.Blues, with_labels=True)
 
     #nx.draw_networkx_edges(G,pos,edges=ejes,width=1, alpha=0.0)# edge_color='g', style='dashed')
-    nx.draw_networkx_edge_labels(G,pos,font_size=3,edge_labels=edge_weights)
+    nx.draw_networkx_edge_labels(G,pos,font_size=10,edge_labels=edge_weights)
 
     #nx.draw(G, pos = pos, with_labels=True)
     #nx.draw_networkx_edge_labels(G, pos)

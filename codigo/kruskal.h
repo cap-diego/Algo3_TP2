@@ -21,6 +21,11 @@ struct Nodo {
     float x,y;
     int indice;
     Nodo() : indice(-1){}
+    Nodo(float x, float y, int indice) {
+        this->y=y;
+        this->x=x;
+        this->indice=indice;
+    }
     bool operator==(Nodo &n) {
         return(this->x == n.x && this->y == n.y);
     }
@@ -79,11 +84,13 @@ private:
     //vector< vector<Nodo> > rep;
     //vector< vector<std::pair<Nodo, Peso>> > rep;
     vector< list< pair<Nodo,Peso> > > rep;
+    vector<Nodo> nodos;
 public:
     ListaAdyacencias() {}
     ListaAdyacencias(const ListaAdyacencias& c) : rep(c.rep) {}
     ListaAdyacencias(int cantidad_de_nodos) {
         rep.resize(cantidad_de_nodos);
+        nodos.resize(cantidad_de_nodos);
     }
 
     void sacarArista(Arista ar) { //O(grado(ar.desde)
@@ -93,51 +100,81 @@ public:
         }
         rep[ar.desde.indice].erase(it);
     }
-    int size() { return (int)rep.size(); }
-    list<pair<Nodo, Peso> >& operator[](Nodo x) { return rep[x.indice]; }
+    int size() {
+        return (int)rep.size();
+    }
+
+    list<pair<Nodo, Peso> >& operator[](Nodo x) {
+        return rep[x.indice];
+    }
+
     void operator=(ListaAdyacencias& m) { rep = m.rep; }
-    void agregarArista(Arista ar) {
+    void agregarArista(Arista& ar) {
+        nodos[ar.desde.indice] = ar.desde;
+        nodos[ar.hasta.indice] = ar.hasta;
         pair<Nodo,Peso> p = make_pair(ar.hasta,ar.peso);
+        pair<Nodo, Peso> p2 = make_pair(ar.desde, ar.peso);
+        rep[ar.hasta.indice].push_back(p2);
         rep[ar.desde.indice].push_back(p);
     }
-    //devuelvo el vector con los pesos de los ejes de los vecinos de k pasos de nodo y la cantidad de vecinos de k pasos
-    pair<vector<Peso>, int> pesosVecinosDeKPasosDesdeNodo(Nodo &nodo, int k){
 
-        vector<Peso> pesos;
-        int cantVecinos=0;
+    Nodo& getNodo(int i){
+        return nodos[i];
+    }
+
+    //devuelvo el vector con los pesos de los ejes de los vecinos de k pasos de noda
+    vector<Peso> pesosVecinosDeKPasosDesdeNodo(Nodo &nodo, Nodo &b, int k){
+        vector<Peso> pesos, aux;
         queue<Nodo> colaDeNodos;
         Nodo nodoactual;
         //pongo en cola todos los nodos que se llegan en k pasos desde nodo
         colaDeNodos.push(nodo);
         while(k > 0){
+            cout <<"K: "<<k<<endl;
             nodoactual = colaDeNodos.front();
-            for(auto l : rep[nodoactual.indice]){
-                colaDeNodos.push(l.first);
+            cout <<"nodo actual: "<<nodoactual.indice<<" nodo b: "<<b.indice<<endl;
+            for(auto l : rep[nodoactual.indice]){ //lista de pares nodo,peso
+                cout <<"VECINOS DE ARISTA: "<<rep[nodoactual.indice].size()<<endl;
+                if( l.first!=b) {
+                    cout <<"meto en la cola el: "<<l.first.indice<<endl;
+                    colaDeNodos.push(l.first);
+                }
             }
             //tengo que remover el primero en haber ingresado
             //pero antes tengo que ver sus vecinos
-            for(auto p: pesosDeVecinosDesdeNodo(nodoactual).first) {
+            aux = pesosDeVecinosDesdeNodo(nodoactual, b);
+            for(auto p: aux) {
                 pesos.push_back(p);
+                cout << "meto pesos de nodo: "<<nodoactual.indice<<endl;
             }
-            cantVecinos+= pesosDeVecinosDesdeNodo(nodoactual).second;
             //elimino el primero de la cola
             colaDeNodos.pop();
             k--;
         }
-        while(colaDeNodos.size() >= 0) {
+
+        cout <<"TERMINO D VACIAR COLA"<<endl;
+        //vacio la cola
+        while(colaDeNodos.size() > 0) {
+
             nodoactual = colaDeNodos.front();
-            for(auto p: pesosDeVecinosDesdeNodo(nodoactual).first) {
+            cout <<"nodoactual: "<<nodoactual.indice<<endl;
+            aux = pesosDeVecinosDesdeNodo(nodoactual,b);
+            nodoactual = colaDeNodos.front();
+            for(auto p: aux) {
                 pesos.push_back(p);
             }
-            cantVecinos+= pesosDeVecinosDesdeNodo(nodoactual).second;
+            colaDeNodos.pop();
         }
-        return make_pair(pesos,cantVecinos);
+        return pesos;
     }
-    pair<vector<Peso>, int> pesosDeVecinosDesdeNodo(Nodo& nodo) {
-        pair<vector<Peso>, int> p = make_pair(vector<Peso>(),0);
+
+    vector<Peso> pesosDeVecinosDesdeNodo(Nodo& nodo, Nodo& b) {
+        vector<Peso> p;
         for(auto l : rep[nodo.indice]){
-            p.first.push_back(l.second);
-            p.second++;
+            if (not(l.first==b)) {
+                p.push_back(l.second);
+                cout <<"METO EN PESOS"<<endl;
+            }
         }
         return p;
     }
@@ -166,16 +203,8 @@ public:
         this->aristasActuales = 0;
         this->aristasTotales = cantidad_de_aristas;
     }
-    MatrizAdyacencias& convetirAMatriz(int cNodos){ //O(m)
-        MatrizAdyacencias m(cNodos);
+    void convertirALista(ListaAdyacencias& la) {//O(m * m)
         for (int i = 0; i < rep.size(); ++i) {
-            m.agregarArista(rep[i]);//O(1)
-        }
-
-    }
-    ListaAdyacencias& convertirALista(int cNodos) {
-        ListaAdyacencias la(cNodos);
-        for (int i = 0; i < rep.size(); ++i) {//O(m * m)
             la.agregarArista(rep[i]);//O(grado de rep[i].desde)
         }
     }

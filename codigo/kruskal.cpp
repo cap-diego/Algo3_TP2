@@ -3,6 +3,10 @@
 #include <string>
 #include <math.h>
 
+
+template<typename T>
+float calcularMedia(vector<T>&, int);
+
 int main() {
 
     int cantidadDeNodos;
@@ -21,7 +25,7 @@ int main() {
     l1.mostrar();
 
     //Generamos el AGM
-    ListaIncidencia l2(AGM_Kruskal(l1, cantidadDeNodos));
+    ListaIncidencia l2 =(AGM_Kruskal(l1, cantidadDeNodos));
     cout <<"Se genera el agm"<<endl;
     l2.mostrar();
     exportarGrafo(l2, "agm");
@@ -43,12 +47,59 @@ int main() {
 
     //Ahora quiero sacar ejes
 
-    ListaAdyacencias la = l2.convertirALista(cantidadDeNodos);
+    ListaAdyacencias la(cantidadDeNodos);
+    l2.convertirALista(la);
     media = 0, std_desv = 0;
-    
+    vector<Peso> pesosDeVecinos;
+    int cantVecinos;
+    int k = 1;
+    for (int j = 0; j < l2.cantidad_aristas(); ++j) {
+        //recorro los nodos y veo si alguno es inconsistenteç
+        cout <<"ARISTA: "<<j<<" peso: "<<l2.getArista(j).peso<<endl;
+
+        //COMPARO CON PRIMER EXTREMO DE ARISTA ACTUAL
+        pesosDeVecinos = la.pesosVecinosDeKPasosDesdeNodo(l2.getArista(j).desde, l2.getArista(j).hasta,k);
+        cantVecinos = pesosDeVecinos.size();
+        cout <<"cant de vecinos: "<<cantVecinos<<endl;
+        cout <<"vecinos de arista: "<<j << " = "<< cantVecinos<<endl;
+
+        media = calcularMedia(pesosDeVecinos,cantVecinos);
+        cout <<"media: "<<media<<endl;
+        std_desv = variance(pesosDeVecinos,media,cantVecinos);
+        cout <<"std_desv: "<<std_desv<<endl;
+        if(l2.getArista(j).peso > 2*std_desv) { //si es eje inconsistente
+            l2.sacarArista(l2.getArista(j));
+            la.sacarArista(l2.getArista(j));
+            cout <<"ENCONTRE EJE INCONSISTENTE"<<endl;
+        }
+/*
+        //COMPARO CON EL OTRO EXTREMO DE LA ARISTA ACTUAL
+        pesosDeVecinos = la.pesosVecinosDeKPasosDesdeNodo(l2.getArista(j).desde, l2.getArista(j).hasta,k);
+        cantVecinos = pesosDeVecinos.size();
+        media = calcularMedia(pesosDeVecinos,cantVecinos);
+        std_desv = variance(pesosDeVecinos,media,cantVecinos);
+        cout <<"std_desv : "<<std_desv<<endl;
+        if(l2.getArista(j).peso > 2*std_desv) { //si es eje inconsistente
+            l2.sacarArista(l2.getArista(j));
+            la.sacarArista(l2.getArista(j));
+            cout <<"ENCONTRE EJE INCONSISTENTE"<<endl;
+        }
+        //COMO ESTO LO HAGO CON UN AGM, NO ME PREOCUPO POR HACER ESTO CON UN MISMO NODO PORQUE ESO ES IMPOSIBLE EN ESTE CASO
+*/
+    }
 
 
     return 0;
+}
+
+
+template<typename T>
+float calcularMedia(vector<T>& vec, int n) {
+    T sum= 0;
+    for(auto v : vec) {
+        sum+=v;
+    }
+    return sum/n;
 }
 
 float distancia(Nodo& n1, Nodo& n2){
@@ -81,6 +132,7 @@ void retirarEjesInconsistentes(ListaIncidencia& l, float media, float varianza, 
     //2) nocion es: calcular la proporcion entre el peso de un eje y las medias en los vecindarios de sus nodos
     //param importantes: media, desv_standar, vecindario de un nodo,
 }
+
 
 void convertirNodosAAristas(ListaIncidencia& l, vector<Nodo>& v, float& u,float& var,int k_vecinos) {
     Arista ar;
