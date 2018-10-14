@@ -10,10 +10,12 @@
 #include <cmath>
 #include <utility>
 #include <cstdio>
+#include <queue>
 #include <list>
 using namespace std;
 
 typedef float Peso;
+
 
 struct Nodo {
     float x,y;
@@ -21,6 +23,9 @@ struct Nodo {
     Nodo() : indice(-1){}
     bool operator==(Nodo &n) {
         return(this->x == n.x && this->y == n.y);
+    }
+    bool operator!=(Nodo& n) {
+        return(this->x != n.x || this->y != n.y);
     }
 };
 
@@ -34,7 +39,7 @@ struct Arista {
     Arista(Nodo d, Nodo h, Peso p, int i) : desde(d), hasta(h), peso(p),indice(i) {}
     Arista(pair<Nodo, Nodo> a, Peso p) : desde(a.first), hasta(a.second), peso(p), indice(-1) {}
     bool operator==(Arista &ar) {
-        return(ar.hasta == (*this).hasta && ar.desde == (*this).desde);
+        return((ar.hasta == (*this).hasta && ar.desde == (*this).desde) || (ar.desde == (*this).hasta && ar.hasta == (*this).desde));
         //return (ar.hasta == (*this).hasta && ar.desde == (*this).desde && (*this).indice == ar.indice);
     }
     bool operator<(Arista &ar){
@@ -95,6 +100,47 @@ public:
         pair<Nodo,Peso> p = make_pair(ar.hasta,ar.peso);
         rep[ar.desde.indice].push_back(p);
     }
+    //devuelvo el vector con los pesos de los ejes de los vecinos de k pasos de nodo y la cantidad de vecinos de k pasos
+    pair<vector<Peso>, int> pesosVecinosDeKPasosDesdeNodo(Nodo &nodo, int k){
+
+        vector<Peso> pesos;
+        int cantVecinos=0;
+        queue<Nodo> colaDeNodos;
+        Nodo nodoactual;
+        //pongo en cola todos los nodos que se llegan en k pasos desde nodo
+        colaDeNodos.push(nodo);
+        while(k > 0){
+            nodoactual = colaDeNodos.front();
+            for(auto l : rep[nodoactual.indice]){
+                colaDeNodos.push(l.first);
+            }
+            //tengo que remover el primero en haber ingresado
+            //pero antes tengo que ver sus vecinos
+            for(auto p: pesosDeVecinosDesdeNodo(nodoactual).first) {
+                pesos.push_back(p);
+            }
+            cantVecinos+= pesosDeVecinosDesdeNodo(nodoactual).second;
+            //elimino el primero de la cola
+            colaDeNodos.pop();
+            k--;
+        }
+        while(colaDeNodos.size() >= 0) {
+            nodoactual = colaDeNodos.front();
+            for(auto p: pesosDeVecinosDesdeNodo(nodoactual).first) {
+                pesos.push_back(p);
+            }
+            cantVecinos+= pesosDeVecinosDesdeNodo(nodoactual).second;
+        }
+        return make_pair(pesos,cantVecinos);
+    }
+    pair<vector<Peso>, int> pesosDeVecinosDesdeNodo(Nodo& nodo) {
+        pair<vector<Peso>, int> p = make_pair(vector<Peso>(),0);
+        for(auto l : rep[nodo.indice]){
+            p.first.push_back(l.second);
+            p.second++;
+        }
+        return p;
+    }
 };
 
 
@@ -109,7 +155,10 @@ public:
         aristasTotales = 0;
         aristasActuales = 0;
     }
-    ListaIncidencia(const ListaIncidencia &c) : rep(c.rep){};
+    ListaIncidencia(const ListaIncidencia &c) : rep(c.rep){
+        this->aristasActuales = c.aristasActuales;
+        this->aristasTotales = c.aristasTotales;
+    };
     ListaIncidencia(int cantidad_de_aristas) {
         for (int i = 0; i < cantidad_de_aristas; ++i) {
             rep.push_back(Arista());
@@ -132,9 +181,15 @@ public:
     }
     void agregarArista(Arista& a) { //pre: al iniciar la lista de incidencia, ya sabemos la cantidad de aristas.
         if(aristasTotales > aristasActuales) {
+            //if(aristasActuales%1000==0) cout <<"ag arista: "<<aristasActuales<<endl;
             a.indice=aristasActuales;
             rep[aristasActuales] = a;
             aristasActuales++;
+        }else{
+            a.indice = aristasActuales;
+            rep.push_back(a);
+            aristasActuales++;
+            aristasTotales++;
         }
     }
     void actualizarArista(int pos, Arista nueva){ //pre: pos esta en rango
@@ -174,7 +229,7 @@ public:
         aristasActuales--; //reducimos la cantidad de aristas
     }
     int cantidad_aristas() {
-        return rep.size();
+        return aristasActuales;
     }
 
     void operator=(ListaIncidencia& m) { rep = m.rep; }
@@ -196,7 +251,30 @@ public:
     }
 
 };
+//funciones DSU, para kruskal
+void init(vector<int>& padre, int cantNodos , vector<int>&);
+int find(int indiceNodo, vector<int>&, vector<int>& altura, int subidos);
+void unir_componentes(int indiceNodo1, int indiceNodo2, vector<int>&, int cantNodos,vector<int>& altura);
 
+
+//algoritmos
+ListaIncidencia AGM_Kruskal(ListaIncidencia& grafo, int cantNodos);
+void retirarEjesInconsistentes(ListaIncidencia& l, float media, float varianza, float std_desv);
+
+
+//funciones aux
+float variance ( vector<float>& v , float mean, int );
+
+//funciones de input
+void cargarInfo(vector<Nodo>&, int&, float&, float&, string);
+
+//funcion de conversion a grafo
+void convertirNodosAAristas(ListaIncidencia&, vector<Nodo>&, float&,float&,int k_vecinos); //el parametro k_vecinos es para generar un grafo con la metodologia k_vecinos. si es -1 significa que la metodologia va a ser usando la varianza y media
+
+
+//funciones para el output
+void exportarGrafo(ListaIncidencia&, string nombre);
+void exportarNodos(vector<Nodo>& vec, string nombre);
 
 
 #endif //CODIGO_BASICS_H

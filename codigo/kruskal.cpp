@@ -3,51 +3,30 @@
 #include <string>
 #include <math.h>
 
-void init(vector<int>& padre, int cantNodos , vector<int>&);
-int find(int indiceNodo, vector<int>&, vector<int>& altura, int subidos);
-void unir_componentes(int indiceNodo1, int indiceNodo2, vector<int>&, int cantNodos,vector<int>& altura);
-
-ListaIncidencia AGM_Kruskal(ListaIncidencia& grafo, int cantNodos);
-float variance ( vector<Nodo>& v , float mean );
-void cargarInfo(vector<Nodo>&, int&, float&, float&);
-void convertirNodosAAristas(ListaIncidencia&, vector<Nodo>&, float,float,int k_vecinos); //el parametro k_vecinos es para generar un grafo con la metodologia k_vecinos. si es -1 significa que la metodologia va a ser usando la varianza y media
-
-void exportarGrafo(ListaIncidencia&, string nombre);
-void exportarNodos(vector<Nodo>& vec, string nombre);
 int main() {
 
     int cantidadDeNodos;
     vector<Nodo> input;
-    float media, varianza;
-    cargarInfo(input,cantidadDeNodos,media,varianza);
+    float media=0, varianza=0, std_desv;
+    cargarInfo(input,cantidadDeNodos,media,varianza, "grafo1");
 
-    ListaIncidencia l1((cantidadDeNodos*(cantidadDeNodos-1))/2);
-    convertirNodosAAristas(l1, input, media,varianza, input.size());
+    ListaIncidencia l1((cantidadDeNodos*(cantidadDeNodos-1))/2); //l1 grafo completo
 
+    cout <<"prepara para generar grafo con el que despues voy a trabajar"<<endl;
+    convertirNodosAAristas(l1, input, media,varianza, input.size()-1);
 
+    std_desv= sqrt(varianza);
+    cout <<"Se ha generado el grafo completo"<<endl;
     exportarGrafo(l1, "grafo");
-    ListaIncidencia l2 = AGM_Kruskal(l1, cantidadDeNodos);
-    cout <<"agm"<<endl;
+    l1.mostrar();
+
+    //Generamos el AGM
+    ListaIncidencia l2(AGM_Kruskal(l1, cantidadDeNodos));
+    cout <<"Se genera el agm"<<endl;
     l2.mostrar();
     exportarGrafo(l2, "agm");
-/*
-    int k = 4;
-    ListaIncidencia l3(k*cantidadDeNodos);
-    convertirNodosAAristas(l3,input,media,varianza,k);
-    ListaIncidencia l4 = AGM_Kruskal(l3, cantidadDeNodos);
-    exportarGrafo(l3,"4vecinos");
-    exportarGrafo(l4, "4vecinosAGM");
-*/
 
-    /*for (int i = 0; i < l2.cantidad_aristas(); ++i) {
-        ListaIncidencia lAux = l2;
-        if(l2.getArista(i).indice!=-1) {
-            lAux.sacarArista(l2.getArista(i));
-            char carac = char(i);
-            exportarGrafo(lAux,string("arista" + carac));
-        }
-    }*/
-    ListaAdyacencias la= l2.convertirALista(cantidadDeNodos);
+    //para graficar los nodos en el plano
     vector<Nodo> vec(cantidadDeNodos,Nodo());
     for (int i = 0; i < l2.cantidad_aristas(); ++i) {
         Nodo a = l2.getPrimerNodo(l2.getArista(i));
@@ -60,6 +39,15 @@ int main() {
         }
     }
     exportarNodos(vec,"nodos");
+
+
+    //Ahora quiero sacar ejes
+
+    ListaAdyacencias la = l2.convertirALista(cantidadDeNodos);
+    media = 0, std_desv = 0;
+    
+
+
     return 0;
 }
 
@@ -71,7 +59,7 @@ void exportarNodos(vector<Nodo>& vec, string nombre) {
     ofstream myfile;
     myfile.open ("../grafos/" + nombre + ".csv");
     for (int i = 0; i < vec.size(); ++i) {
-        myfile<<vec[i].indice<<","<<vec[i].x<<","<<vec[i].y<<endl;
+        if(vec[i].indice!=-1) myfile<<vec[i].indice<<","<<vec[i].x<<","<<vec[i].y<<endl;
     }
     cout <<"GENERADO lista de nodos: "<<nombre<<endl;
     myfile.close();
@@ -81,34 +69,50 @@ void exportarGrafo(ListaIncidencia& l, string nombre) {
     ofstream myfile;
     myfile.open ("../grafos/" + nombre + ".csv");
     for (int i = 0; i < l.cantidad_aristas(); ++i) {
-        if(l.getArista(i).indice!=-1) myfile<<l.getArista(i).desde.indice<<","<<l.getArista(i).hasta.indice<<","<< l.getArista(i).peso<<endl;
+        if(l.getArista(i).indice!=-1) myfile<<l.getArista(i).desde.indice<<","<<l.getArista(i).hasta.indice<<","<<-1<<","<< l.getArista(i).peso<<endl;
     }
     cout <<"GENERADO GRAFO: "<<nombre<<endl;
     myfile.close();
 }
 
-void convertirNodosAAristas(ListaIncidencia& l, vector<Nodo>& v, float u,float var,int k_vecinos) {
+void retirarEjesInconsistentes(ListaIncidencia& l, float media, float varianza, float std_desv){
+    //necesito recorrer los ejes y verificar cuales cumplen la nocion de eje inconsistente
+    //1) nocion es : cuantas desviaciones estandar hay entre el peso de un eje y la media en el vecindario de sus nodos
+    //2) nocion es: calcular la proporcion entre el peso de un eje y las medias en los vecindarios de sus nodos
+    //param importantes: media, desv_standar, vecindario de un nodo,
+}
+
+void convertirNodosAAristas(ListaIncidencia& l, vector<Nodo>& v, float& u,float& var,int k_vecinos) {
     Arista ar;
+    float sumaDeDistanciasNodoAct=0, varAux=0;
     if(k_vecinos != -1) {
         vector<float> distancias(v.size(),0);
         int cantAg = 0;
+        float mediaNodoAct = 0;
         for (int i = 0; i < v.size(); ++i) { //para cada nodo
-        distancias[i] = 0;
+            distancias[i] = 0;
+            sumaDeDistanciasNodoAct=0;
             for (int j = 0; j < v.size(); ++j) {//para cada nodo dif del anterior
-                if(v[i].x != v[j].x && v[i].y != v[j].y )  { //si no son el mismo nodo
-                    if(k_vecinos == v.size()) {
+                if(v[i] != v[j])  { //si no son el mismo nodo
+                    if(k_vecinos == v.size()-1) {
                         ar.indice = cantAg;
                         ar.desde = v[i];
                         ar.hasta = v[j];
                         ar.peso = distancia(v[i],v[j]);
                         l.agregarArista(ar);
                         cantAg++;
+                        distancias[j] = distancia(v[i],v[j]);
                     }else{
-                         distancias[j] = distancia(v[i],v[j]);
+                        distancias[j] = distancia(v[i],v[j]);
                     }
                 }
+                sumaDeDistanciasNodoAct +=distancia(v[i],v[j]);
             }
-            if(k_vecinos != v.size()) {
+            mediaNodoAct = sumaDeDistanciasNodoAct / (v.size()-1);
+            varAux = variance(distancias,mediaNodoAct, v.size()-1);
+            u += mediaNodoAct;
+            var+=varAux;
+            if(k_vecinos != v.size()-1) {
                 sort(distancias.begin(), distancias.end()); //ordeno de menor a mayor
                 for (int k = 0; k < k_vecinos; ++k) {
                     ar.indice = k;
@@ -119,14 +123,19 @@ void convertirNodosAAristas(ListaIncidencia& l, vector<Nodo>& v, float u,float v
                     //muevo uno (k+1) porque distancias esta ordenado de menor a mayor y la distancia del v[i] es 0 y va a ser la primera
                 }
             }
+
         }
     }
+    u = u/v.size(); //promedio de las distancias medias para vecinos entre c/a nodo
+    cout <<"var antes de div: "<<var<<endl;
+    var = var/v.size();//promedio de las variancias de cada nodo
+    cout <<"La media de las distancias es: "<< u<<" la varianza promedio es: "<< var<<endl;
 }
 
 
 ListaIncidencia AGM_Kruskal(ListaIncidencia& grafo, int cantNodos){
     //Como es agm, m = n-1
-    ListaIncidencia agm(cantNodos-1);//O(n)
+    ListaIncidencia agm;//O(n)
     vector<int> padre(cantNodos);//O(n)
     vector<int> altura(cantNodos); //O(n)
     init(padre,cantNodos,altura); //O(n)
@@ -142,46 +151,46 @@ ListaIncidencia AGM_Kruskal(ListaIncidencia& grafo, int cantNodos){
     return agm;
 }
 
-void cargarInfo(vector<Nodo>& v, int& cn,float& u, float& var){
+void cargarInfo(vector<Nodo>& v, int& cn,float& u, float& var, string nombre){
     ifstream inFile;
-    inFile.open("../s1.txt");
+    inFile.open("../"+ nombre+".txt");
     if (!inFile) {
         cerr << "Unable to open file datafile.txt";
         exit(1);   // call system to stop
     }
     inFile >> cn;
-    float x,y, acumValores;
+    float x,y;
     Nodo nodo;
     int cantidadIng = 0;
     v.resize(cn);
     //ahora leo todos los nodos
     while (inFile >> x >> y) {
         nodo.indice = cantidadIng;
-        nodo.x = x/1000;
-        nodo.y = y/1000;
-        cout <<x<<" "<< y<<endl;
-        //acumValores += valNodo;
+        nodo.x = x;
+        nodo.y = y;
+        cout <<nodo.x<<" "<< nodo.y<<endl;
         v[cantidadIng] = nodo;
         cantidadIng++;
     }
     //u = acumValores / cn;
     //var = variance(v, u);
+
     inFile.close();
 }
-float variance ( vector<Nodo>& v , float mean ) {
+float variance ( vector<float>& v , float mean , int c) {
     float sum = 0.0;
     float temp =0.0;
 
     for ( int j =0; j < v.size(); j++)
     {
-        temp = float(pow((mean),  2));
+        //cout <<v[j]<<"-"<<mean<<endl;
+
+        temp = float(pow((v[j]-mean),  2));
         sum += temp;
     }
 
-    return (sum/v.size());
+    return (sum/c);
 }
-
-
 
 
 void init(vector<int>& padre, int cantNodos, vector<int>& altura){
