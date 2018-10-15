@@ -17,6 +17,7 @@ bool todosVisitados(vector<bool>& v){
     return true;
 }
 
+/*/
 Nodo menorNoVisitado(vector<int>& distancia, vector<bool>& visitados){
     Nodo min = -1;
     int minDist = -1;
@@ -38,6 +39,7 @@ Nodo menorNoVisitado(vector<int>& distancia, vector<bool>& visitados){
 
     return min;
 }
+//*/
 
 /*/
 //Realiza el algoritmo de prim
@@ -118,15 +120,27 @@ vector<Nodo> prim2(ListaAdyacencias G){
 }
 //*/
 
-vector<Nodo> prim(ListaAdyacencias G){
+vector<Nodo> prim(ListaAdyacencias& G){
     // Inicializacion
     vector<Peso> res(G.size(), INT_MAX);
-    vector<Nodo> padres(G.size(), -1);
+    vector<Nodo> padres(G.size());
     vector<bool> visitados(G.size(), false);
+
+    printf("\nPASADO TEST 1\n");
 
     priority_queue<AristaAd, vector<AristaAd>, compare> cola;
 
-    cola.push(AristaAd(G.getNodo(0),0));
+    printf("\nPASADO TEST 2\n");
+
+    Nodo pN = G.getNodo(0);
+
+    printf("\nPASADO TEST 2.5\n");
+
+    AristaAd primerNodo(pN, 0);
+
+    cola.push(primerNodo);
+
+    printf("\nPASADO TEST 3\n");
 
     while (!cola.empty()){
         AristaAd u = cola.top();
