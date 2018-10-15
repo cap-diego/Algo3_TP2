@@ -16,8 +16,6 @@ using namespace std;
 
 typedef float Peso;
 
-
-
 struct Nodo {
     float x,y;
     int indice;
@@ -127,6 +125,10 @@ public:
 
     Nodo& getNodo(int i){
         return nodos[i];
+    }
+
+    vector<Nodo>& getNodos(){
+        return nodos;
     }
 
     //devuelvo el vector con los pesos de los ejes de los vecinos de k pasos de noda
@@ -283,6 +285,7 @@ public:
     }
 
 };
+
 //funciones DSU, para kruskal
 void init(vector<int>& padre, int cantNodos , vector<int>&);
 int find(int indiceNodo, vector<int>&, vector<int>& altura, int subidos);

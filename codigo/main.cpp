@@ -101,7 +101,8 @@ int main() {
     //l.print();
 
     //*/
-    vector<Nodo> agm = prim(l);
+    //vector<Nodo> agm = prim(l);
+    vector<Nodo> agm = primSinCola(l);
     //vector<Nodo> agm2 = prim2(l);
 
     printf("\nRESULTADO: \n");
