@@ -154,9 +154,8 @@ def graficarGrafo(nombre):
     with open(path) as csvfile:
         spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
         for row in spamreader:
-            n = row[3]
             #print(n)
-            G.add_edge(row[0], row[1],cluster=row[2], weight=n)
+            G.add_edge(row[0], row[1], weight=row[2])
     pos = nx.spring_layout(G)
 
     #print(list(G.edges()))
@@ -165,21 +164,12 @@ def graficarGrafo(nombre):
     # nodes
     #nx.draw_networkx_nodes(G, pos, node_size=1)
     #edge
-    edges = G.edges()
-    clusters = [G[u][v]['cluster'] for u,v in edges]
-    colors = []
-    for c in clusters:
-        if (int(c) == -1):
-            colors+=['g']
-        else:
-            colors=['g']
-    ejes = [(u, v) for (u, v,d) in G.edges(data=True)]
     #colors = range(20)
-    nx.draw(G, pos,edges=ejes, node_color='r', edge_color=colors,
+    nx.draw(G, pos,node_color='r',
         width=1, edge_cmap=plt.cm.Blues, with_labels=True)
 
     #nx.draw_networkx_edges(G,pos,edges=ejes,width=1, alpha=0.0)# edge_color='g', style='dashed')
-    nx.draw_networkx_edge_labels(G,pos,font_size=5,edge_labels=edge_weights)
+    nx.draw_networkx_edge_labels(G,pos,font_size=10,edge_labels=edge_weights)
 
     #nx.draw(G, pos = pos, with_labels=True)
     #nx.draw_networkx_edge_labels(G, pos)
@@ -201,6 +191,7 @@ def graficarNodos(nombre):
             lista = lista + row
             fixed_positions[row[0]] = (float(row[1]),float(row[2]))
             dic_colores[row[3]] = str(row[3])
+            print(row[3])
             G.add_node(row[0],cluster=row[3] ,pos=(row[1],row[2]))
         #G.add_nodes_from(lista)
     fixed_nodes = fixed_positions.keys()
@@ -213,14 +204,15 @@ def graficarNodos(nombre):
     for i in range (len(list(G.nodes()))):
         #print("color nodo act: " + str(dic_colores[G.node[str(i)]['cluster']]))
         #print(G.node[str(i)])
-        print(G.node[str(i)]['cluster'])
-        colores += [ listacnames[int(dic_colores[G.node[str(i)]['cluster']]) % len(listacnames)] ]
+        #print(G.node[str(i)]['cluster'])
+        colores += [ listacnames[int(dic_colores[G.node[str(i)]['cluster']]) % (len(listacnames))] ]
     #print(G.node[str(0)]['cluster'])
-    print(colores)
+    #print(colores)
 
-
+    print(dic_colores)
+    print(len(dic_colores.keys()))
     pos = nx.spring_layout(G,pos=fixed_positions, fixed = fixed_nodes)
-    nx.draw_networkx_nodes(G,pos,node_color = colores,node_size=10)
+    nx.draw_networkx_nodes(G,pos,node_color=colores,node_size=5)
     #pos = nx.get_node_attributes(G,'pos')
     #pos = nx.spring_layout(G)
     #nx.draw(G,pos,with_labels=True)
@@ -229,9 +221,10 @@ def graficarNodos(nombre):
 
 
 def main():
-    #graficarGrafo('grafo')
-    #graficarGrafo('agm')
-    graficarNodos("nodos")
+    #graficarGrafo('prim')
+    #graficarGrafo('kruskal')
+    graficarNodos("nodosK")
+    graficarNodos("nodosP")
     #graficarGrafo('sacandoAristask1')
     #graficarGrafo('sacandoAristask2')
     plt.show()
