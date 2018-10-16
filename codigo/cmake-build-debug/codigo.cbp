@@ -8,6 +8,7 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
+<<<<<<< HEAD
 				<Option working_dir="C:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
@@ -20,10 +21,25 @@
 			<Target title="Codigo">
 				<Option output="C:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/Codigo.exe" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="C:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug"/>
+=======
+				<Option working_dir="E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/mingw32-make.exe -f &quot;E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="D:/MinGW/bin/mingw32-make.exe -f &quot;E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/mingw32-make.exe -f &quot;E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/mingw32-make.exe -f &quot;E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Codigo">
+				<Option output="E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/Codigo.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug"/>
+>>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+<<<<<<< HEAD
 					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/5.3.0/include/c++"/>
 					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/5.3.0/include/c++/mingw32"/>
 					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/5.3.0/include/c++/backward"/>
@@ -41,10 +57,30 @@
 			<Target title="Codigo/fast">
 				<Option output="C:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/Codigo.exe" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="C:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug"/>
+=======
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/mingw32-make.exe -f &quot;E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/Makefile&quot;  VERBOSE=1 Codigo"/>
+					<CompileFile command="D:/MinGW/bin/mingw32-make.exe -f &quot;E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/mingw32-make.exe -f &quot;E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/mingw32-make.exe -f &quot;E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Codigo/fast">
+				<Option output="E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/Codigo.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug"/>
+>>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+<<<<<<< HEAD
 					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/5.3.0/include/c++"/>
 					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/5.3.0/include/c++/mingw32"/>
 					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/5.3.0/include/c++/backward"/>
@@ -111,6 +147,74 @@
 			<Option target="Codigo"/>
 		</Unit>
 		<Unit filename="C:/Proyectos/Algo3Diego/Algo3_TP2/codigo/CMakeLists.txt">
+=======
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/mingw32-make.exe -f &quot;E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/Makefile&quot;  VERBOSE=1 Codigo/fast"/>
+					<CompileFile command="D:/MinGW/bin/mingw32-make.exe -f &quot;E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/mingw32-make.exe -f &quot;E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/mingw32-make.exe -f &quot;E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/mingw32-make.exe -f &quot;E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="D:/MinGW/bin/mingw32-make.exe -f &quot;E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/mingw32-make.exe -f &quot;E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/mingw32-make.exe -f &quot;E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/mingw32-make.exe -f &quot;E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="D:/MinGW/bin/mingw32-make.exe -f &quot;E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/mingw32-make.exe -f &quot;E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/mingw32-make.exe -f &quot;E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/basics.h">
+			<Option target="Codigo"/>
+		</Unit>
+		<Unit filename="E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/bellman-ford.cpp">
+			<Option target="Codigo"/>
+		</Unit>
+		<Unit filename="E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/bellman-ford.h">
+			<Option target="Codigo"/>
+		</Unit>
+		<Unit filename="E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/floyd-warshall.cpp">
+			<Option target="Codigo"/>
+		</Unit>
+		<Unit filename="E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/floyd-warshall.h">
+			<Option target="Codigo"/>
+		</Unit>
+		<Unit filename="E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/kruskal.cpp">
+			<Option target="Codigo"/>
+		</Unit>
+		<Unit filename="E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/kruskal.h">
+			<Option target="Codigo"/>
+		</Unit>
+		<Unit filename="E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/main.cpp">
+			<Option target="Codigo"/>
+		</Unit>
+		<Unit filename="E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/prim.cpp">
+			<Option target="Codigo"/>
+		</Unit>
+		<Unit filename="E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/prim.h">
+			<Option target="Codigo"/>
+		</Unit>
+		<Unit filename="E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/CMakeLists.txt">
+>>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

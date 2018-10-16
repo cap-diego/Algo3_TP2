@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 ToolSet: 3.22@C:\MinGW
 Options: 
 CMake: 3.8.2@C:\Program Files\JetBrains\CLion 2017.2.3\bin\cmake\bin\cmake.exe
+=======
+ToolSet: 5.0@D:\MinGW
+Options: 
+CMake: 3.8.2@D:\JetBrains\CLion 2017.2.3\bin\cmake\bin\cmake.exe
+>>>>>>> 011efd61039637a904f5eed584b038e68505ca1a

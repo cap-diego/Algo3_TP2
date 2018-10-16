@@ -52,6 +52,7 @@ int main() {
 
     printf("\nPRUEBA DE ALGO PRIM\n");
     ListaAdyacencias l(6);
+<<<<<<< HEAD
     Nodo n0(10, 10, 0);
     Nodo n1(10, 10, 1);
     Nodo n2(10, 10, 2);
@@ -61,6 +62,42 @@ int main() {
 
     Arista a1(n0, n1, 4);
     Arista a2(n0, n2, 7);
+=======
+
+    Nodo n0(10, 10, 0);
+    Nodo n1(20, 20, 1);
+    Nodo n2(40, 20, 2);
+    Nodo n3(60, 10, 3);
+    Nodo n4(50, 5, 4);
+    Nodo n5(4, 6, 5);
+
+    printf("\nCREADOS NODOS\n");
+
+    Arista a1(n0, n1, 4);
+    Arista a2(n0, n2, 7);
+    Arista a3(n0, n5, 3);
+    Arista a4(n1, n2, 3);
+    Arista a5(n1, n4, 1);
+    Arista a6(n2, n3, 1);
+    Arista a7(n4, n2, 1);
+    Arista a8(n4, n3, 4);
+    Arista a9(n5, n4, 3);
+
+    printf("\nCREADAS ARISTAS\n");
+
+    l.agregarArista(a1);
+    l.agregarArista(a2);
+    l.agregarArista(a3);
+    l.agregarArista(a4);
+    l.agregarArista(a5);
+    l.agregarArista(a6);
+    l.agregarArista(a7);
+    l.agregarArista(a8);
+    l.agregarArista(a9);
+
+    printf("\nCARGADAS ARISTAS\n");
+
+>>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
 //    l.agregarArista(0, 1, 4);
 //    l.agregarArista(0, 2, 7);
 //    l.agregarArista(0, 5, 3);
@@ -76,7 +113,12 @@ int main() {
     //l.print();
 
     //*/
+<<<<<<< HEAD
     vector<Nodo> agm = prim(l);
+=======
+    //vector<Nodo> agm = prim(l);
+    vector<Nodo> agm = primSinCola(l);
+>>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
     //vector<Nodo> agm2 = prim2(l);
 
     printf("\nRESULTADO: \n");

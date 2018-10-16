@@ -38,19 +38,33 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
+<<<<<<< HEAD
 CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2017.2.3\bin\cmake\bin\cmake.exe"
 
 # The command to remove a file.
 RM = "C:\Program Files\JetBrains\CLion 2017.2.3\bin\cmake\bin\cmake.exe" -E remove -f
+=======
+CMAKE_COMMAND = "D:\JetBrains\CLion 2017.2.3\bin\cmake\bin\cmake.exe"
+
+# The command to remove a file.
+RM = "D:\JetBrains\CLion 2017.2.3\bin\cmake\bin\cmake.exe" -E remove -f
+>>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
+<<<<<<< HEAD
 CMAKE_SOURCE_DIR = C:\Proyectos\Algo3Diego\Algo3_TP2\codigo
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\cmake-build-debug
+=======
+CMAKE_SOURCE_DIR = E:\Proyectos\Algo3Diego\Algo3_TP2\codigo
+
+# The top-level build directory on which CMake was run.
+CMAKE_BINARY_DIR = E:\Proyectos\Algo3Diego\Algo3_TP2\codigo\cmake-build-debug
+>>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -58,7 +72,11 @@ CMAKE_BINARY_DIR = C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\cmake-build-debug
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+<<<<<<< HEAD
 	"C:\Program Files\JetBrains\CLion 2017.2.3\bin\cmake\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+=======
+	"D:\JetBrains\CLion 2017.2.3\bin\cmake\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+>>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -69,7 +87,11 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+<<<<<<< HEAD
 	"C:\Program Files\JetBrains\CLion 2017.2.3\bin\cmake\bin\cmake.exe" -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+=======
+	"D:\JetBrains\CLion 2017.2.3\bin\cmake\bin\cmake.exe" -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+>>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -79,9 +101,15 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
+<<<<<<< HEAD
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\cmake-build-debug\CMakeFiles C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\cmake-build-debug\CMakeFiles\progress.marks
 	$(MAKE) -f CMakeFiles\Makefile2 all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\cmake-build-debug\CMakeFiles 0
+=======
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\Proyectos\Algo3Diego\Algo3_TP2\codigo\cmake-build-debug\CMakeFiles E:\Proyectos\Algo3Diego\Algo3_TP2\codigo\cmake-build-debug\CMakeFiles\progress.marks
+	$(MAKE) -f CMakeFiles\Makefile2 all
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\Proyectos\Algo3Diego\Algo3_TP2\codigo\cmake-build-debug\CMakeFiles 0
+>>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
 .PHONY : all
 
 # The main clean target

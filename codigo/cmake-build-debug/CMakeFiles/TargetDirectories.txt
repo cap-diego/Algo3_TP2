@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 C:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/CMakeFiles/Codigo.dir
 C:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/CMakeFiles/edit_cache.dir
 C:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+=======
+E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/CMakeFiles/Codigo.dir
+E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/CMakeFiles/edit_cache.dir
+E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+>>>>>>> 011efd61039637a904f5eed584b038e68505ca1a

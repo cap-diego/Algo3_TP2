@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Install script for directory: C:/Proyectos/Algo3Diego/Algo3_TP2/codigo
+=======
+# Install script for directory: E:/Proyectos/Algo3Diego/Algo3_TP2/codigo
+>>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -35,5 +39,9 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
+<<<<<<< HEAD
 file(WRITE "C:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+=======
+file(WRITE "E:/Proyectos/Algo3Diego/Algo3_TP2/codigo/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+>>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
