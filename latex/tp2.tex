@@ -1,0 +1,66 @@
+\documentclass[8pt,a4paper]{article}
+\usepackage{clrscode}
+\usepackage[conEntregas]{tp2}
+\usepackage[spanish]{babel} % para que comandos como \today den el resultado en castellano
+\usepackage{a4wide} % márgenes un poco más anchos que lo usual
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\newcommand{\subscript}[2]{$#1 _ #2$}
+\usepackage[utf8]{inputenc} 
+\usepackage{pdfpages}
+\usepackage{amsmath}
+\usepackage{vmargin}
+\setpapersize{A4}
+
+
+\begin{document}
+\titulo{Trabajo Práctico 2}
+\subtitulo{Clustering}
+
+\fecha{\today}
+
+\materia{Algoritmos y Estructura de Datos III}
+
+\integrante{Buceta, Diego}{001/17}{diegobuceta35@gmail.com}
+\integrante{Springhart, Gonzalo}{308/17}{glspringhart@gmail.com}
+% Pongan cuantos integrantes quieran
+
+\maketitle
+
+\newpage
+%\includepdf[pages={1,2}]{tp1.pdf}
+
+\section{Introducción al problema}
+%Versear un toque más acá...
+En este informe informe vamos a ver distintos problemas cuyas posibles soluciones involucran árboles generadores mínimos y algoritmos que los generan. En particular los problemas son el \textbf{Clustering} y el \textbf{Arbitraje}.
+
+\section{Clustering}
+En el mundo del machine learning, problema de Clustering consiste en poder agrupar datos en distintos grupos llamados clusters, donde se espera que los datos de un cluster tengan algún tipo de relación o característica que los distinga de los datos en otros clusters. Este problema es de gran interés ya que tiene muchos usos como por ejemplo (...).
+% aca estan los usos https://en.wikipedia.org/wiki/Cluster_analysis#Applications
+% aca otros https://home.deib.polimi.it/matteucc/Clustering/tutorial_html/
+%
+%
+%Hay que confirmar esto de acá abajo, creo que se cumple esto pero habría que ver algun paper o página que diga que esto es así. Además seguro requiere reescritura.
+El problema de Clustering es un problema difícil, ya que no existe un algoritmo exacto que pueda generar clusters a partir de un conjunto de datos sino que existen \textbf{heuristicas} que intentan resolver el problema. La heurística utilizada en este informe esta detallada en el paper (nombre paper) de (autor paper), y su forma de calcular los clusters es la siguiente: Formamos un grafo completo con los datos, interpretando los pesos de las aristas como la distancia entre los vértices que son unidos por ellas, luego recorremos las aristas y borramos las que se consideren como \textbf{inconsistentes}, de acuerdo al paper una arista $a$ se considera inconsistente si su peso supera en cierta cantidad de desviaciones standard a las medias de los pesos de $k$ vecinos de los vertices en sus puntas. También se puede considerar inconsistente si el \textit{factor} o la \textit{razón} del peso de la arista con los pesos de $k$ vecinos de los vertices en sus puntas supera por un valor dado $f$.
+\section{Justificación teórica}
+\section{Algoritmos presentados}
+\subsection{Complejidad}
+\section{Experimentación}
+
+\pagebreak
+
+%Acá va todo lo que hicieron Dylan y Gabi.
+\section{Arbitraje}
+\section{Justificación teórica}
+\section{Algoritmos presentados}
+\subsection{Complejidad}
+\section{Experimentación}
+
+%Esto puede no ir quiza, hay que verlo
+\section{Comparaciones de algoritmos de los problemas resueltos}
+
+\section{Bibliografía}
+
+\end{document}
