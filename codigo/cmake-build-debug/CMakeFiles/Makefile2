@@ -44,33 +44,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-<<<<<<< HEAD
 CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2017.2.3\bin\cmake\bin\cmake.exe"
 
 # The command to remove a file.
 RM = "C:\Program Files\JetBrains\CLion 2017.2.3\bin\cmake\bin\cmake.exe" -E remove -f
-=======
-CMAKE_COMMAND = "D:\JetBrains\CLion 2017.2.3\bin\cmake\bin\cmake.exe"
-
-# The command to remove a file.
-RM = "D:\JetBrains\CLion 2017.2.3\bin\cmake\bin\cmake.exe" -E remove -f
->>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-<<<<<<< HEAD
 CMAKE_SOURCE_DIR = C:\Proyectos\Algo3Diego\Algo3_TP2\codigo
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\cmake-build-debug
-=======
-CMAKE_SOURCE_DIR = E:\Proyectos\Algo3Diego\Algo3_TP2\codigo
-
-# The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = E:\Proyectos\Algo3Diego\Algo3_TP2\codigo\cmake-build-debug
->>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
 
 #=============================================================================
 # Target rules for target CMakeFiles/Codigo.dir
@@ -79,11 +65,7 @@ CMAKE_BINARY_DIR = E:\Proyectos\Algo3Diego\Algo3_TP2\codigo\cmake-build-debug
 CMakeFiles/Codigo.dir/all:
 	$(MAKE) -f CMakeFiles\Codigo.dir\build.make CMakeFiles/Codigo.dir/depend
 	$(MAKE) -f CMakeFiles\Codigo.dir\build.make CMakeFiles/Codigo.dir/build
-<<<<<<< HEAD
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5,6 "Built target Codigo"
-=======
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\Proyectos\Algo3Diego\Algo3_TP2\codigo\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5,6 "Built target Codigo"
->>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
 .PHONY : CMakeFiles/Codigo.dir/all
 
 # Include target in all.
@@ -93,15 +75,9 @@ all: CMakeFiles/Codigo.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Codigo.dir/rule: cmake_check_build_system
-<<<<<<< HEAD
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\cmake-build-debug\CMakeFiles 6
 	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/Codigo.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\cmake-build-debug\CMakeFiles 0
-=======
-	$(CMAKE_COMMAND) -E cmake_progress_start E:\Proyectos\Algo3Diego\Algo3_TP2\codigo\cmake-build-debug\CMakeFiles 6
-	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/Codigo.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start E:\Proyectos\Algo3Diego\Algo3_TP2\codigo\cmake-build-debug\CMakeFiles 0
->>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
 .PHONY : CMakeFiles/Codigo.dir/rule
 
 # Convenience name for target.

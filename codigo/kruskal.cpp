@@ -3,10 +3,11 @@
 #include <string>
 #include <math.h>
 
+
 template<typename T>
 float calcularMedia(vector<T>&, int);
 
-int main2() {
+int main() {
 
     int cantidadDeNodos;
     vector<Nodo> input;
@@ -37,8 +38,13 @@ int main2() {
 
     exportarNodos(input,"nodos",padre);
 
+
     //Ahora quiero sacar ejes
-    //COMO ESTO LO HAGO CON UN AGM, NO ME PREOCUPO POR HACER ESTO CON UN MISMO NODO PORQUE ESO ES IMPOSIBLE EN ESTE CASO
+
+
+
+
+        //COMO ESTO LO HAGO CON UN AGM, NO ME PREOCUPO POR HACER ESTO CON UN MISMO NODO PORQUE ESO ES IMPOSIBLE EN ESTE CASO
     int cantidadClusters=0;
     retirarEjesInconsistentes(l2,cantidadDeNodos,2,padre, cantidadClusters);
     //exportarGrafo(l2,"sacandoAristask2");
@@ -92,12 +98,12 @@ void exportarGrafo(ListaIncidencia& l, string nombre) {
     myfile.close();
 }
 
-
 void retirarEjesInconsistentes(ListaIncidencia& l2, int cantidadDeNodos, int kPasosVecindario, vector<int>& padre, int& cantidadClusters){
     //necesito recorrer los ejes y verificar cuales cumplen la nocion de eje inconsistente
     //1) nocion es : cuantas desviaciones estandar hay entre el peso de un eje y la media en el vecindario de sus nodos
     //2) nocion es: calcular la proporcion entre el peso de un eje y las medias en los vecindarios de sus nodos
     //param importantes: media, desv_standar, vecindario de un nodo,
+
     ListaAdyacencias la(cantidadDeNodos);
     l2.convertirALista(la);
     float media = 0, std_desv = 0;
@@ -155,6 +161,7 @@ void retirarEjesInconsistentes(ListaIncidencia& l2, int cantidadDeNodos, int kPa
             std_desv = variance(pesosDeVecinos, media);
             //cout << "media: " << media << endl;
             //cout << "std_desv : " << std_desv << endl;
+
             if (l2.getArista(j).peso > 2 * std_desv && std_desv != 0) { //si es eje inconsistente
                 l2.sacarArista(l2.getArista(j));
                 la.sacarArista(l2.getArista(j));
@@ -174,6 +181,7 @@ void retirarEjesInconsistentes(ListaIncidencia& l2, int cantidadDeNodos, int kPa
                     }
                     colaNodos.pop();
                 }
+
             }
         }*/
     }
@@ -268,7 +276,7 @@ void init(vector<int>& padre, int cantNodos, vector<int>& altura){
 int find(int indiceNodo, vector<int>& padre, vector<int>& altura, int subidos) { //devuelvo  el indice del nodo que es rep
     //cout <<"entro a find"<<endl;
     //padre tiene en la pos iesima el nodo "representante" del iesimo nodo
-    if(padre[indiceNodo] == indiceNodo) { //si el rep del nodo es él mismo
+     if(padre[indiceNodo] == indiceNodo) { //si el rep del nodo es él mismo
         altura[indiceNodo] = subidos;
         return indiceNodo;
     }else if(padre[indiceNodo] != indiceNodo){

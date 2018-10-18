@@ -1,3 +1,4 @@
+
 #ifndef CODIGO_BASICS_2H
 #define CODIGO_BASICS_2H
 
@@ -15,6 +16,7 @@
 using namespace std;
 
 typedef float Peso;
+
 
 
 struct Nodo {
@@ -106,7 +108,6 @@ public:
         }
         rep[ar.desde.indice].erase(it);
     }
-
     int size() {
         return (int)rep.size();
     }
@@ -116,7 +117,6 @@ public:
     }
 
     void operator=(ListaAdyacencias& m) { rep = m.rep; }
-
     void agregarArista(Arista& ar) {
         nodos[ar.desde.indice] = ar.desde;
         nodos[ar.hasta.indice] = ar.hasta;
@@ -128,10 +128,6 @@ public:
 
     Nodo& getNodo(int i){
         return nodos[i];
-    }
-
-    vector<Nodo>& getNodos(){
-        return nodos;
     }
 
     //devuelvo el vector con los pesos de los ejes de los vecinos de k pasos de noda
@@ -236,7 +232,6 @@ public:
     Arista& getArista(Nodo a, Nodo b) {
         return getArista(indiceArista(a,b));
     }
-
     Nodo& getPrimerNodo(Arista ar){
         return ar.desde;
     }
@@ -261,13 +256,11 @@ public:
     void sacarArista(Nodo a , Nodo b) {
         sacarArista(getArista(indiceArista(a,b)));
     }
-
     void sacarArista(Arista a) {
         int i;
         rep[a.indice].indice=-1; //deshabilitamos esa arista
         aristasActuales--; //reducimos la cantidad de aristas
     }
-
     int cantidad_aristas() {
         return aristasActuales;
     }
@@ -298,35 +291,12 @@ void unir_componentes(int indiceNodo1, int indiceNodo2, vector<int>&, int cantNo
 
 
 //algoritmos
-ListaIncidencia AGM_Kruskal(ListaIncidencia& grafo, int cantNodos);
-void retirarEjesInconsistentes(ListaIncidencia& l, float media, float varianza, float std_desv);
-
-
-//funciones aux
-float variance ( vector<float>& v , float mean, int );
-
-//funciones de input
-void cargarInfo(vector<Nodo>&, int&, float&, float&, string);
-
-//funcion de conversion a grafo
-void convertirNodosAAristas(ListaIncidencia&, vector<Nodo>&, float&,float&,int k_vecinos); //el parametro k_vecinos es para generar un grafo con la metodologia k_vecinos. si es -1 significa que la metodologia va a ser usando la varianza y media
-
-
-//funciones para el output
-void exportarGrafo(ListaIncidencia&, string nombre);
-void exportarNodos(vector<Nodo>& vec, string nombre);
-
-
-//funciones DSU, para kruskal
-void init(vector<int>& padre, int cantNodos , vector<int>&);
-int find(int indiceNodo, vector<int>&, vector<int>& altura, int subidos);
-void unir_componentes(int indiceNodo1, int indiceNodo2, vector<int>&, int cantNodos,vector<int>& altura);
-
-
-//algoritmos
 ListaIncidencia AGM_Kruskal(ListaIncidencia& grafo, vector<int>& padre, vector<int>& altura , int cantNodos);
 void retirarEjesInconsistentes(ListaIncidencia& l2, int cantidadDeNodos, int kPasosVecindario, vector<int>&, int&);
 
+//Ponele que las listas las pasas como parámetros
+//void eliminarEjesInconsistentes(ListaIncidencia& listIn, ListaAdyacencias& listAd);
+vector<int> clusterizarDatos(ListaIncidencia& listIn, ListaAdyacencias& listAd, int kPasosVec);
 
 //funciones aux
 float variance ( vector<float>& v , float mean );
