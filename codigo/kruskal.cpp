@@ -187,6 +187,30 @@ void retirarEjesInconsistentes(ListaIncidencia& l2, int cantidadDeNodos, int kPa
     }
 }
 
+vector<int> clusterizarDatos(ListaIncidencia& listIn, ListaAdyacencias& listAd, int kPasosVec, int cantDesv){
+    vector<int> clusterDeNodo(listAd.size(), 0);
+    //Pasar por todas las aristas
+    for(int idArista = 0; idArista < listIn.cantidad_aristas(); idArista++){
+        //Hay que ver si la arista es inconsistente o no
+        //Hay que comparar el peso de la arista con las medias de pesos de los ejes
+        Arista aristaActual = listIn.getArista(idArista);
+
+        //Calculo los pesos
+        float pesoAristaARevisar = aristaActual.peso;
+        vector<Peso> pesosDeVecinos  = listAd.pesosVecinosDeKPasosDesdeNodo(aristaActual.hasta, aristaActual.desde, kPasosVec);
+        float pesoBorde1 = calcularMedia(pesosDeVecinos, pesosDeVecinos.size());
+        float desvStandar1 = sqrt(variance(pesosDeVecinos, pesoBorde1));
+
+        pesosDeVecinos.clear();
+        pesosDeVecinos = listAd.pesosVecinosDeKPasosDesdeNodo(aristaActual.hasta, aristaActual.desde, kPasosVec);
+        float pesoBorde2 = calcularMedia(pesosDeVecinos, pesosDeVecinos.size());
+        float desvStandar2 = sqrt(variance(pesosDeVecinos, pesoBorde2));
+
+        //Ahora se checkea si es o no inconsistente
+
+    }
+    return  clusterDeNodo;
+}
 
 void convertirNodosAAristas(ListaIncidencia& l, vector<Nodo>& v,int k_vecinos) {
 

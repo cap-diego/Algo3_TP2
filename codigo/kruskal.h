@@ -22,6 +22,7 @@ typedef float Peso;
 struct Nodo {
     float x,y;
     int indice;
+    //int cluster;
     Nodo() : indice(-1){}
     Nodo(float x, float y, int indice) {
         this->y=y;
@@ -296,7 +297,7 @@ void retirarEjesInconsistentes(ListaIncidencia& l2, int cantidadDeNodos, int kPa
 
 //Ponele que las listas las pasas como parámetros
 //void eliminarEjesInconsistentes(ListaIncidencia& listIn, ListaAdyacencias& listAd);
-vector<int> clusterizarDatos(ListaIncidencia& listIn, ListaAdyacencias& listAd, int kPasosVec);
+vector<int> clusterizarDatos(ListaIncidencia& listIn, ListaAdyacencias& listAd, int kPasosVec, int cantDesv);
 
 //funciones aux
 float variance ( vector<float>& v , float mean );
