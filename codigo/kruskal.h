@@ -85,25 +85,11 @@ public:
 
 };
 
-<<<<<<< HEAD
-struct AristaAd{
-    Nodo adyacente;
-    Peso peso;
-    AristaAd(Nodo a, Peso p) : adyacente(a), peso(p) {};
-};
-
-=======
->>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
 class ListaAdyacencias {
 private:
     //vector< vector<Nodo> > rep;
     //vector< vector<std::pair<Nodo, Peso>> > rep;
-<<<<<<< HEAD
-    //vector< list< pair<Nodo, Peso> > > rep;
-    vector< list< AristaAd> > rep;
-=======
     vector< list< AristaAd > > rep;
->>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
     vector<Nodo> nodos;
 public:
     ListaAdyacencias() {}
@@ -114,45 +100,27 @@ public:
     }
 
     void sacarArista(Arista ar) { //O(grado(ar.desde)
-<<<<<<< HEAD
-        list<AristaAd>::iterator it = rep[ar.desde.indice].begin();
-=======
         list<AristaAd >::iterator it = rep[ar.desde.indice].begin();
->>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
         while(it != rep[ar.desde.indice].end() && (*it).adyacente.indice!=ar.hasta.indice) {
             it++;
         }
         rep[ar.desde.indice].erase(it);
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
     int size() {
         return (int)rep.size();
     }
 
-<<<<<<< HEAD
-    list<AristaAd>& operator[](Nodo x) {
-=======
     list<AristaAd >& operator[](Nodo x) {
->>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
         return rep[x.indice];
     }
 
     void operator=(ListaAdyacencias& m) { rep = m.rep; }
-<<<<<<< HEAD
 
     void agregarArista(Arista& ar) {
         nodos[ar.desde.indice] = ar.desde;
         nodos[ar.hasta.indice] = ar.hasta;
-        AristaAd p(ar.hasta, ar.peso);
-=======
-    void agregarArista(Arista& ar) {
-        nodos[ar.desde.indice] = ar.desde;
-        nodos[ar.hasta.indice] = ar.hasta;
         AristaAd p(ar.hasta,ar.peso);
->>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
         AristaAd p2(ar.desde, ar.peso);
         rep[ar.hasta.indice].push_back(p2);
         rep[ar.desde.indice].push_back(p);
@@ -162,14 +130,10 @@ public:
         return nodos[i];
     }
 
-<<<<<<< HEAD
-    //Esto se pudo haber roto cuando pase a AristaAd
-=======
     vector<Nodo>& getNodos(){
         return nodos;
     }
 
->>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
     //devuelvo el vector con los pesos de los ejes de los vecinos de k pasos de noda
     vector<Peso> pesosVecinosDeKPasosDesdeNodo(Nodo &nodo, Nodo &b, int k){
         vector<Peso> pesos, aux;
@@ -177,22 +141,11 @@ public:
         Nodo nodoactual;
         //pongo en cola todos los nodos que se llegan en k pasos desde nodo
         colaDeNodos.push(nodo);
-<<<<<<< HEAD
-        while(k > 0){
-            cout <<"K: "<<k<<endl;
-            nodoactual = colaDeNodos.front();
-            cout <<"nodo actual: "<<nodoactual.indice<<" nodo b: "<<b.indice<<endl;
-            for(auto l : rep[nodoactual.indice]){ //lista de pares nodo,peso
-                cout <<"VECINOS DE ARISTA: "<<rep[nodoactual.indice].size()<<endl;
-                if( l.adyacente!=b) {
-                    cout <<"meto en la cola el: "<<l.adyacente.indice<<endl;
-=======
         while(k > 1){
             cout <<"K: "<<k<<endl;
             nodoactual = colaDeNodos.front();
             for(auto l : rep[nodoactual.indice]){ //lista de pares nodo,peso
                 if( l.adyacente!=b) {
->>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
                     colaDeNodos.push(l.adyacente);
                 }
             }
@@ -201,28 +154,15 @@ public:
             aux = pesosDeVecinosDesdeNodo(nodoactual, b);
             for(auto p: aux) {
                 pesos.push_back(p);
-<<<<<<< HEAD
-                cout << "meto pesos de nodo: "<<nodoactual.indice<<endl;
-=======
->>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
             }
             //elimino el primero de la cola
             colaDeNodos.pop();
             k--;
         }
-<<<<<<< HEAD
-
-        cout <<"TERMINO D VACIAR COLA"<<endl;
-=======
->>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
         //vacio la cola
         while(colaDeNodos.size() > 0) {
 
             nodoactual = colaDeNodos.front();
-<<<<<<< HEAD
-            cout <<"nodoactual: "<<nodoactual.indice<<endl;
-=======
->>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
             aux = pesosDeVecinosDesdeNodo(nodoactual,b);
             nodoactual = colaDeNodos.front();
             for(auto p: aux) {
@@ -235,17 +175,10 @@ public:
 
     vector<Peso> pesosDeVecinosDesdeNodo(Nodo& nodo, Nodo& b) {
         vector<Peso> p;
-<<<<<<< HEAD
-        for(auto l : rep[nodo.indice]){
-            if (not(l.adyacente==b)) {
-                p.push_back(l.peso);
-                cout <<"METO EN PESOS"<<endl;
-=======
         //Aca chequeamos que los pesos que agregamos sean desde el "lado" del vecindario que NO pertenece b
         for(auto l : rep[nodo.indice]){
             if (not(l.adyacente==b)) {
                 p.push_back(l.peso);
->>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
             }
         }
         return p;
@@ -303,25 +236,7 @@ public:
     Arista& getArista(Nodo a, Nodo b) {
         return getArista(indiceArista(a,b));
     }
-<<<<<<< HEAD
-    Nodo& getPrimerNodo(Arista& ar){
-        return ar.desde;
-    }
-    Nodo& getSegundoNodo(Arista& ar) {
-        return ar.hasta;
-    }
-    int indiceArista(Nodo a, Nodo b) {
-        Arista ar;
-        ar.desde=a;
-        ar.hasta=b;
-        for (int i = 0; i < cantidad_aristas(); ++i) {
-            if(ar == rep[i]){ //si existe la arista de nodos que ingrese
-                sacarArista(ar);
-                return i;
-            }
-        }
 
-=======
     Nodo& getPrimerNodo(Arista ar){
         return ar.desde;
     }
@@ -342,20 +257,17 @@ public:
             }
         }
         return -1;
->>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
     }
     void sacarArista(Nodo a , Nodo b) {
         sacarArista(getArista(indiceArista(a,b)));
     }
-<<<<<<< HEAD
-    void sacarArista(Arista& a) {
-=======
+
     void sacarArista(Arista a) {
->>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
         int i;
         rep[a.indice].indice=-1; //deshabilitamos esa arista
         aristasActuales--; //reducimos la cantidad de aristas
     }
+
     int cantidad_aristas() {
         return aristasActuales;
     }
@@ -405,8 +317,6 @@ void exportarGrafo(ListaIncidencia&, string nombre);
 void exportarNodos(vector<Nodo>& vec, string nombre);
 
 
-<<<<<<< HEAD
-=======
 //funciones DSU, para kruskal
 void init(vector<int>& padre, int cantNodos , vector<int>&);
 int find(int indiceNodo, vector<int>&, vector<int>& altura, int subidos);
@@ -433,5 +343,4 @@ void exportarGrafo(ListaIncidencia&, string nombre);
 void exportarNodos(vector<Nodo>& vec, string nombre, vector<int>&);
 
 
->>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
 #endif //CODIGO_BASICS_H

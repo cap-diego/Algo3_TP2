@@ -52,17 +52,6 @@ int main() {
 
     printf("\nPRUEBA DE ALGO PRIM\n");
     ListaAdyacencias l(6);
-<<<<<<< HEAD
-    Nodo n0(10, 10, 0);
-    Nodo n1(10, 10, 1);
-    Nodo n2(10, 10, 2);
-    Nodo n3(10, 10, 3);
-    Nodo n4(10, 10, 4);
-    Nodo n5(10, 10, 5);
-
-    Arista a1(n0, n1, 4);
-    Arista a2(n0, n2, 7);
-=======
 
     Nodo n0(10, 10, 0);
     Nodo n1(20, 20, 1);
@@ -97,7 +86,6 @@ int main() {
 
     printf("\nCARGADAS ARISTAS\n");
 
->>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
 //    l.agregarArista(0, 1, 4);
 //    l.agregarArista(0, 2, 7);
 //    l.agregarArista(0, 5, 3);
@@ -113,12 +101,8 @@ int main() {
     //l.print();
 
     //*/
-<<<<<<< HEAD
-    vector<Nodo> agm = prim(l);
-=======
     //vector<Nodo> agm = prim(l);
     vector<Nodo> agm = primSinCola(l);
->>>>>>> 011efd61039637a904f5eed584b038e68505ca1a
     //vector<Nodo> agm2 = prim2(l);
 
     printf("\nRESULTADO: \n");
