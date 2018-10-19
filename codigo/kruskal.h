@@ -142,7 +142,7 @@ public:
             cout <<"K: "<<k<<endl;
             nodoactual = colaDeNodos.front();
             for(auto l : rep[nodoactual.indice]){ //lista de pares nodo,peso
-                if( l.adyacente!=b) {
+                if( l.adyacente != b && l.peso != -1) {
                     colaDeNodos.push(l.adyacente);
                 }
             }
@@ -156,6 +156,7 @@ public:
             colaDeNodos.pop();
             k--;
         }
+
         //vacio la cola
         while(colaDeNodos.size() > 0) {
 
@@ -174,11 +175,15 @@ public:
         vector<Peso> p;
         //Aca chequeamos que los pesos que agregamos sean desde el "lado" del vecindario que NO pertenece b
         for(auto l : rep[nodo.indice]){
-            if (not(l.adyacente==b)) {
+            if (not(l.adyacente == b)) {
                 p.push_back(l.peso);
             }
         }
         return p;
+    }
+
+    void asignarCluster(Nodo& x, Nodo& b, int clusterID){
+        //
     }
 };
 

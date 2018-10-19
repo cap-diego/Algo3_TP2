@@ -189,11 +189,13 @@ void retirarEjesInconsistentes(ListaIncidencia& l2, int cantidadDeNodos, int kPa
 
 vector<int> clusterizarDatos(ListaIncidencia& listIn, ListaAdyacencias& listAd, int kPasosVec, int cantDesv){
     vector<int> clusterDeNodo(listAd.size(), 0);
+    int cantClusters = 0;
+
     //Pasar por todas las aristas
     for(int idArista = 0; idArista < listIn.cantidad_aristas(); idArista++){
         //Hay que ver si la arista es inconsistente o no
         //Hay que comparar el peso de la arista con las medias de pesos de los ejes
-        Arista aristaActual = listIn.getArista(idArista);
+        Arista& aristaActual = listIn.getArista(idArista);
 
         //Calculo los pesos
         float pesoAristaARevisar = aristaActual.peso;
@@ -207,6 +209,47 @@ vector<int> clusterizarDatos(ListaIncidencia& listIn, ListaAdyacencias& listAd, 
         float desvStandar2 = sqrt(variance(pesosDeVecinos, pesoBorde2));
 
         //Ahora se checkea si es o no inconsistente
+        if((pesoAristaARevisar > (cantDesv * desvStandar1)) || ((pesoAristaARevisar > (cantDesv * desvStandar2)))){
+            //Es inconsistente, lo tengo que borrar
+            //Para borrarlo, cambio el peso de la arista en listAd a -1, asi la funcion de pesos vecinos no la toma
+            aristaActual.peso = -1;
+            listAd.sacarArista(aristaActual);
+            listIn.sacarArista(aristaActual);
+
+            //Ahora hay que darle un cluster a los nodos que queden de cada lado de la arista
+            //Hago un BFS o DFS para asignar el cluster a los nodos
+            if(clusterDeNodo[aristaActual.desde.indice] == 0 && clusterDeNodo[aristaActual.hasta.indice] == 0){
+                //Se forman dos clusters
+
+                //Le pongo el cluster a una de las comp conexas
+                cantClusters++;
+
+                //CICLO DONDE NOMBRO TODOS LOS NODOS
+
+                //Le pongo el cluster a la otra
+                cantClusters++;
+
+                //CICLO DONDE NOMBRO TODOS LOS NODOS
+            }
+            else if(clusterDeNodo[aristaActual.desde.indice] == 0){
+                //Se forma un solo cluster
+                cantClusters++;
+
+                //CICLO DONDE NOMBRO TODOS LOS NODOS
+            }
+            else if(clusterDeNodo[aristaActual.hasta.indice] == 0){
+                //Se forma un solo cluster
+                cantClusters++;
+
+                //CICLO DONDE NOMBRO TODOS LOS NODOS
+            }
+            else{
+                //Se forma un solo cluster
+                cantClusters++;
+
+                //CICLO DONDE NOMBRO TODOS LOS NODOS
+            }
+        }
 
     }
     return  clusterDeNodo;
