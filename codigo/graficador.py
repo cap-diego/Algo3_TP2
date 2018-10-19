@@ -127,7 +127,7 @@ cnames = {
 
 def graficarGrafo(nombre):
     G = nx.Graph()
-    path = '../../codigo/grafos/' + nombre + ".csv"
+    path = 'grafos/' + nombre + ".csv"
     f = plt.figure(nombre)
     with open(path) as csvfile:
         spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
@@ -160,7 +160,7 @@ def graficarGrafo(nombre):
 
 def graficarNodos(nombre):
     G = nx.Graph()
-    path = '../../codigo/grafos/' + nombre + ".csv"
+    path = 'grafos/' + nombre + ".csv"
     f = plt.figure(nombre)
     lista = []
     fixed_positions = {}
@@ -168,10 +168,10 @@ def graficarNodos(nombre):
     with open(path) as csvfile:
         spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
         for row in spamreader:
+            #row0 = indice, row1=posx, row2=posy, row3=clusterpertenece
             lista = lista + row
             fixed_positions[row[0]] = (float(row[1]),float(row[2]))
             dic_colores[row[3]] = str(row[3])
-            print(row[3])
             G.add_node(row[0],cluster=row[3] ,pos=(row[1],row[2]))
         #G.add_nodes_from(lista)
     fixed_nodes = fixed_positions.keys()
@@ -182,18 +182,13 @@ def graficarNodos(nombre):
         listacnames += [(cnames[i])]
 
     for i in range (len(list(G.nodes()))):
-        #print("color nodo act: " + str(dic_colores[G.node[str(i)]['cluster']]))
-        #print(G.node[str(i)])
-        #print(G.node[str(i)]['cluster'])
-        colores += [listacnames[int(15 + int(dic_colores[G.node[str(i)]['cluster']])) % (len(listacnames))]]
-    #print(G.node[str(0)]['cluster'])
-    #print(colores)
+        colores += [listacnames[int(2+int(dic_colores[G.node[str(i)]['cluster']])) % (len(listacnames))]]
 
     print(dic_colores)
-    print(len(dic_colores.keys()))
-
+    #print(len(dic_colores.keys()))
+    print(len(listacnames))
     pos = nx.spring_layout(G,pos=fixed_positions, fixed = fixed_nodes)
-    nx.draw_networkx_nodes(G,pos,node_color=colores,node_size=15)
+    nx.draw_networkx_nodes(G,pos,node_color=colores,node_size=7)
     #pos = nx.get_node_attributes(G,'pos')
     #pos = nx.spring_layout(G)
     #nx.draw(G,pos,with_labels=True)
@@ -202,12 +197,8 @@ def graficarNodos(nombre):
 
 
 def main():
-    #graficarGrafo('prim')
-    #graficarGrafo('kruskal')
     graficarNodos("nodosK")
     graficarNodos("nodosP")
-    #graficarGrafo('sacandoAristask1')
-    #graficarGrafo('sacandoAristask2')
     plt.show()
 
 main()

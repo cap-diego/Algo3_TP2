@@ -11,10 +11,6 @@ kruskal.h
 C:/Users/diego/Documents/Facultad/AED 3/Labor/TP2/codigo/kruskal.h
 fstream
 -
-string
--
-math.h
--
 
 C:/Users/diego/Documents/Facultad/AED 3/Labor/TP2/codigo/kruskal.h
 iostream
@@ -38,5 +34,7 @@ cstdio
 queue
 -
 list
+-
+random
 -
 
