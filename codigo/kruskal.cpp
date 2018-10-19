@@ -187,6 +187,7 @@ void retirarEjesInconsistentes(ListaIncidencia& l2, int cantidadDeNodos, int kPa
     }
 }
 
+//Asumo que la lista de Adyacencia y la de incidencia son del AGM
 vector<int> clusterizarDatos(ListaIncidencia& listIn, ListaAdyacencias& listAd, int kPasosVec, int cantDesv){
     vector<int> clusterDeNodo(listAd.size(), 0);
     int cantClusters = 0;
@@ -209,9 +210,10 @@ vector<int> clusterizarDatos(ListaIncidencia& listIn, ListaAdyacencias& listAd, 
         float desvStandar2 = sqrt(variance(pesosDeVecinos, pesoBorde2));
 
         //Ahora se checkea si es o no inconsistente
-        if((pesoAristaARevisar > (cantDesv * desvStandar1)) || ((pesoAristaARevisar > (cantDesv * desvStandar2)))){
+        if((((pesoAristaARevisar - pesoBorde1)/desvStandar1) > (cantDesv)) || (((pesoAristaARevisar - pesoBorde2)/desvStandar2) > (cantDesv))){
             //Es inconsistente, lo tengo que borrar
             //Para borrarlo, cambio el peso de la arista en listAd a -1, asi la funcion de pesos vecinos no la toma
+            vector<bool> visitados(listAd.size(), false);
             aristaActual.peso = -1;
             listAd.sacarArista(aristaActual);
             listIn.sacarArista(aristaActual);
@@ -225,29 +227,65 @@ vector<int> clusterizarDatos(ListaIncidencia& listIn, ListaAdyacencias& listAd, 
                 cantClusters++;
 
                 //CICLO DONDE NOMBRO TODOS LOS NODOS
+                //int valorAReemplazar = 0;
+
+                queue<Nodo> nodosANombrar;
+
+                nodosANombrar.push(aristaActual.desde);
+
+                while(!nodosANombrar.empty()){
+                    Nodo& nodoANombrar = nodosANombrar.front();
+                    clusterDeNodo[nodoANombrar.indice] = cantClusters;
+                    nodosANombrar.pop();
+
+                    for(AristaAd v : listAd[nodoANombrar]){
+                        if(v.adyacente != aristaActual.hasta && v.adyacente != nodoANombrar && !(visitados[v.adyacente.indice])){
+                            nodosANombrar.push(v.adyacente);
+                        }
+                    }
+                }
 
                 //Le pongo el cluster a la otra
                 cantClusters++;
+                visitados = vector<bool>(listAd.size(), false);
 
                 //CICLO DONDE NOMBRO TODOS LOS NODOS
-            }
-            else if(clusterDeNodo[aristaActual.desde.indice] == 0){
-                //Se forma un solo cluster
-                cantClusters++;
 
-                //CICLO DONDE NOMBRO TODOS LOS NODOS
-            }
-            else if(clusterDeNodo[aristaActual.hasta.indice] == 0){
-                //Se forma un solo cluster
-                cantClusters++;
+                nodosANombrar.push(aristaActual.hasta);
 
-                //CICLO DONDE NOMBRO TODOS LOS NODOS
+                while(!nodosANombrar.empty()){
+                    Nodo& nodoANombrar = nodosANombrar.front();
+                    clusterDeNodo[nodoANombrar.indice] = cantClusters;
+                    nodosANombrar.pop();
+
+                    for(AristaAd v : listAd[nodoANombrar]){
+                        if(v.adyacente != aristaActual.desde && v.adyacente != nodoANombrar && !(visitados[v.adyacente.indice])){
+                            nodosANombrar.push(v.adyacente);
+                        }
+                    }
+                }
+
+                //Ya estan clusterizados
             }
             else{
                 //Se forma un solo cluster
                 cantClusters++;
 
                 //CICLO DONDE NOMBRO TODOS LOS NODOS
+                queue<Nodo> nodosANombrar;
+                nodosANombrar.push(aristaActual.hasta);
+
+                while(!nodosANombrar.empty()){
+                    Nodo& nodoANombrar = nodosANombrar.front();
+                    clusterDeNodo[nodoANombrar.indice] = cantClusters;
+                    nodosANombrar.pop();
+
+                    for(AristaAd v : listAd[nodoANombrar]){
+                        if(v.adyacente != aristaActual.desde && v.adyacente != nodoANombrar && !(visitados[v.adyacente.indice])){
+                            nodosANombrar.push(v.adyacente);
+                        }
+                    }
+                }
             }
         }
 
