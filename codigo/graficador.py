@@ -188,7 +188,7 @@ def graficarNodos(nombre):
     #print(len(dic_colores.keys()))
     print(len(listacnames))
     pos = nx.spring_layout(G,pos=fixed_positions, fixed = fixed_nodes)
-    nx.draw_networkx_nodes(G,pos,node_color=colores,node_size=7)
+    nx.draw_networkx_nodes(G,pos,node_color=colores,node_size=10)
     #pos = nx.get_node_attributes(G,'pos')
     #pos = nx.spring_layout(G)
     #nx.draw(G,pos,with_labels=True)
@@ -198,6 +198,7 @@ def graficarNodos(nombre):
 
 def main():
     graficarNodos("nodosK")
+    graficarNodos("nodosk_SPC")
     graficarNodos("nodosP")
     plt.show()
 
