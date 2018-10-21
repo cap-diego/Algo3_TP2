@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.3.22)  21 OCT 2018 12:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.3.22)  21 OCT 2018 19:19
 entering extended mode
 **./tp2.tex
 (tp2.tex
@@ -6,8 +6,8 @@ LaTeX2e <2017-04-15>
 Babel <3.18> and hyphenation patterns for 75 language(s) loaded.
 ("C:\Users\diego\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\article.cls"
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-("C:\Users\diego\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\size10.clo"
-File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+("C:\Users\diego\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\size12.clo"
+File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
 \c@section=\count80
@@ -754,12 +754,7 @@ Package: vmargin 2004/07/15 V2.5 set document margins (VK)
 Package: vmargin 2004/07/15 V2.5 set document margins (VK)
 \PaperWidth=\dimen120
 \PaperHeight=\dimen121
-)
-
-LaTeX Warning: Unused global option(s):
-    [8pt].
-
-("C:\Users\diego\Documents\Facultad\AED 3\Labor\TP2\latex\build\tp2.aux"
+) ("C:\Users\diego\Documents\Facultad\AED 3\Labor\TP2\latex\build\tp2.aux"
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 )
@@ -902,7 +897,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 30--30
  []
 
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 30--30
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 30--30
 [][] 
  []
 
@@ -912,90 +907,116 @@ Overfull \hbox (15.0pt too wide) in paragraph at lines 30--30
 pg> <./logo_uba.jpg>]
 Warning: Indentation ends at level -1 in codebox on page 1.
 
-Overfull \hbox (54.5378pt too wide) in paragraph at lines 50--50
+Overfull \hbox (138.96481pt too wide) in paragraph at lines 50--50
 | [] 
  []
 
 
-Overfull \hbox (56.52129pt too wide) in paragraph at lines 71--71
-[]$[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 entero \OT1/cmr/m/n/10 : \OML/cmm/m/it/1
-0 indice; padre \OT1/cmr/m/n/10 : \OML/cmm/m/it/10 vectordeenteros; altura \OT1
-/cmr/m/n/10 : \OML/cmm/m/it/10 vectordeenteros; nivelesSubidos \OT1/cmr/m/n/10 
+Overfull \hbox (143.70625pt too wide) in paragraph at lines 71--71
+[]$[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 entero \OT1/cmr/m/n/12 : \OML/cmm/m/it/1
+2 indice; padre \OT1/cmr/m/n/12 : \OML/cmm/m/it/12 vectordeenteros; altura \OT1
+/cmr/m/n/12 : \OML/cmm/m/it/12 vectordeenteros; nivelesSubidos \OT1/cmr/m/n/12 
 :
  []
 
 
-Overfull \hbox (32.749pt too wide) in paragraph at lines 71--71
+Overfull \hbox (113.00151pt too wide) in paragraph at lines 71--71
 | [] 
- []
-
-
-Overfull \hbox (40.9086pt too wide) in paragraph at lines 87--87
-[]$[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 indiceNodo\OT1/cmr/m/n/10 1 : \OML/cmm/m
-/it/10 entero; indiceNodo\OT1/cmr/m/n/10 2 : \OML/cmm/m/it/10 entero; padre \OT
-1/cmr/m/n/10 : \OML/cmm/m/it/10 vectordeenteros; altura \OT1/cmr/m/n/10 :
  []
 
 Warning: Indentation ends at level -2 in codebox on page 1.
 [1]
 Warning: Indentation ends at level -1 in codebox on page 2.
 
-Overfull \hbox (111.86359pt too wide) in paragraph at lines 114--114
-[]$[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 listaAristas \OT1/cmr/m/n/10 : \OML/cmm/
-m/it/10 listaincidencia; []; profVecindario; f[]; forma; cantidadDeClusters; p
-adre \OT1/cmr/m/n/10 :
+Overfull \hbox (208.58328pt too wide) in paragraph at lines 114--114
+[]$[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 listaAristas \OT1/cmr/m/n/12 : \OML/cmm/
+m/it/12 listaincidencia; []; profVecindario; f[]; forma; cantidadDeClusters; p
+adre \OT1/cmr/m/n/12 :
  []
 
 
-Overfull \hbox (357.35028pt too wide) in paragraph at lines 114--114
+Overfull \hbox (494.35413pt too wide) in paragraph at lines 114--114
 | [] 
  []
 
 
-Overfull \hbox (18.85751pt too wide) in paragraph at lines 127--127
-[]\T1/cmr/m/n/10 Forma 2: $\OML/cmm/m/it/10 W\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 
-XY\OT1/cmr/m/n/10 ) \OML/cmm/m/it/10 > Promedio\OT1/cmr/m/n/10 (\OML/cmm/m/it/1
-0 Vecindario\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 X\OT1/cmr/m/n/10 )) + \OML/cmm/m/
-it/10 []$ $\OMS/cmsy/m/n/10 $ $\OML/cmm/m/it/10 desviacion\OT1/cmr/m/n/10 (\O
-ML/cmm/m/it/10 Vecindario\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 X\OT1/cmr/m/n/10 ))$
+Overfull \hbox (20.9962pt too wide) in paragraph at lines 122--122
+[]\T1/cmr/m/n/12 Tomaremos los ca-sos de test brin-da-dos en http://cs.joensuu.
+fi/sipu/datasets/
+ []
+
+
+Overfull \hbox (95.48488pt too wide) in paragraph at lines 128--128
+[]\T1/cmr/m/n/12 Forma 2: $\OML/cmm/m/it/12 W\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 
+XY\OT1/cmr/m/n/12 ) \OML/cmm/m/it/12 > Promedio\OT1/cmr/m/n/12 (\OML/cmm/m/it/1
+2 Vecindario\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 X\OT1/cmr/m/n/12 )) + \OML/cmm/m/
+it/12 []$ $\OMS/cmsy/m/n/12 $ $\OML/cmm/m/it/12 desviacion\OT1/cmr/m/n/12 (\O
+ML/cmm/m/it/12 Vecindario\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 X\OT1/cmr/m/n/12 ))$
 
  []
 
-[2] ("C:\Users\diego\Documents\Facultad\AED 3\Labor\TP2\latex\build\tp2.aux"
+
+Overfull \hbox (57.83124pt too wide) in paragraph at lines 128--128
+\OML/cmm/m/it/12 y$ $W\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 XY\OT1/cmr/m/n/12 ) \OM
+L/cmm/m/it/12 > Promedio\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 Vecindario\OT1/cmr/m/
+n/12 (\OML/cmm/m/it/12 Y\OT1/cmr/m/n/12 )) + \OML/cmm/m/it/12 []$ $\OMS/cmsy/m
+/n/12 $ $\OML/cmm/m/it/12 desviacion\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 Vecindar
+io\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 Y\OT1/cmr/m/n/12 ))$\T1/cmr/m/n/12 , 
+ []
+
+[2]
+<graficos/aggregation.png, id=29, 820.56563pt x 653.44125pt>
+File: graficos/aggregation.png Graphic file (type png)
+<use graficos/aggregation.png>
+Package pdftex.def Info: graficos/aggregation.png  used on input line 138.
+(pdftex.def)             Requested size: 328.22043pt x 261.37187pt.
+ [3]
+<graficos/aggregation2.png, id=33, 820.56563pt x 653.44125pt>
+File: graficos/aggregation2.png Graphic file (type png)
+<use graficos/aggregation2.png>
+Package pdftex.def Info: graficos/aggregation2.png  used on input line 145.
+(pdftex.def)             Requested size: 328.22043pt x 261.37187pt.
+ [4 <./graficos/aggregation.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 149--152
+
+ []
+
+[5 <./graficos/aggregation2.png>]
+("C:\Users\diego\Documents\Facultad\AED 3\Labor\TP2\latex\build\tp2.aux"
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 ) ) 
 Here is how much of TeX's memory you used:
- 5895 strings out of 493305
- 82798 string characters out of 3129802
- 159211 words of memory out of 3000000
- 9305 multiletter control sequences out of 15000+200000
- 15204 words of font info for 34 fonts, out of 3000000 for 9000
+ 5926 strings out of 493305
+ 83278 string characters out of 3129802
+ 159235 words of memory out of 3000000
+ 9323 multiletter control sequences out of 15000+200000
+ 18180 words of font info for 44 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,8n,39p,386b,359s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,8n,39p,1605b,359s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\diego\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600
-\ecbx1000.pk> <C:\Users\diego\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen
-\ec\dpi600\eccc1000.pk> <C:\Users\diego\AppData\Local\MiKTeX\2.9\fonts\pk\ljfou
-r\jknappen\ec\dpi600\ecbx1440.pk> <C:\Users\diego\AppData\Local\MiKTeX\2.9\font
-s\pk\ljfour\jknappen\ec\dpi600\ecrm0700.pk> <C:\Users\diego\AppData\Local\MiKTe
-X\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecss1000.pk> <C:\Users\diego\AppData\L
-ocal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecsx1000.pk> <C:\Users\diego
-\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1000.pk> <C:\U
-sers\diego\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1000
+\ecbx1200.pk> <C:\Users\diego\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen
+\ec\dpi600\eccc1200.pk> <C:\Users\diego\AppData\Local\MiKTeX\2.9\fonts\pk\ljfou
+r\jknappen\ec\dpi600\ecbx1728.pk> <C:\Users\diego\AppData\Local\MiKTeX\2.9\font
+s\pk\ljfour\jknappen\ec\dpi600\ecrm0800.pk> <C:\Users\diego\AppData\Local\MiKTe
+X\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecss1200.pk> <C:\Users\diego\AppData\L
+ocal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecsx1200.pk> <C:\Users\diego
+\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1200.pk> <C:\U
+sers\diego\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200
 .pk> <C:\Users\diego\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi60
-0\ecrm1200.pk> <C:\Users\diego\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappe
-n\ec\dpi600\ecbx1200.pk> <C:\Users\diego\AppData\Local\MiKTeX\2.9\fonts\pk\ljfo
-ur\jknappen\ec\dpi600\ecbx2074.pk><C:/Users/diego/AppData/Local/Programs/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/diego/AppData/Local/Pr
-ograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/diego/AppD
-ata/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/User
-s/diego/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.p
+0\ecrm1440.pk> <C:\Users\diego\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappe
+n\ec\dpi600\ecbx1440.pk> <C:\Users\diego\AppData\Local\MiKTeX\2.9\fonts\pk\ljfo
+ur\jknappen\ec\dpi600\ecbx2488.pk><C:/Users/diego/AppData/Local/Programs/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/diego/AppData/Local/Pr
+ograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/diego/AppD
+ata/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/User
+s/diego/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.p
 fb><C:/Users/diego/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
 s/cm/cmsy10.pfb>
 Output written on "C:\Users\diego\Documents\Facultad\AED 3\Labor\TP2\latex\buil
-d\tp2.pdf" (3 pages, 518584 bytes).
+d\tp2.pdf" (6 pages, 897927 bytes).
 PDF statistics:
- 374 PDF objects out of 1000 (max. 8388607)
+ 391 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
