@@ -56,38 +56,38 @@ include CMakeFiles/codigo.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/codigo.dir/flags.make
 
-CMakeFiles/codigo.dir/kruskal.cpp.obj: CMakeFiles/codigo.dir/flags.make
-CMakeFiles/codigo.dir/kruskal.cpp.obj: ../kruskal.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\diego\Documents\Facultad\AED 3\Labor\TP2\codigo\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/codigo.dir/kruskal.cpp.obj"
-	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\codigo.dir\kruskal.cpp.obj -c "C:\Users\diego\Documents\Facultad\AED 3\Labor\TP2\codigo\kruskal.cpp"
+CMakeFiles/codigo.dir/cluster.cpp.obj: CMakeFiles/codigo.dir/flags.make
+CMakeFiles/codigo.dir/cluster.cpp.obj: ../cluster.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\diego\Documents\Facultad\AED 3\Labor\TP2\codigo\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/codigo.dir/cluster.cpp.obj"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\codigo.dir\cluster.cpp.obj -c "C:\Users\diego\Documents\Facultad\AED 3\Labor\TP2\codigo\cluster.cpp"
 
-CMakeFiles/codigo.dir/kruskal.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/codigo.dir/kruskal.cpp.i"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\diego\Documents\Facultad\AED 3\Labor\TP2\codigo\kruskal.cpp" > CMakeFiles\codigo.dir\kruskal.cpp.i
+CMakeFiles/codigo.dir/cluster.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/codigo.dir/cluster.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\diego\Documents\Facultad\AED 3\Labor\TP2\codigo\cluster.cpp" > CMakeFiles\codigo.dir\cluster.cpp.i
 
-CMakeFiles/codigo.dir/kruskal.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/codigo.dir/kruskal.cpp.s"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\diego\Documents\Facultad\AED 3\Labor\TP2\codigo\kruskal.cpp" -o CMakeFiles\codigo.dir\kruskal.cpp.s
+CMakeFiles/codigo.dir/cluster.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/codigo.dir/cluster.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\diego\Documents\Facultad\AED 3\Labor\TP2\codigo\cluster.cpp" -o CMakeFiles\codigo.dir\cluster.cpp.s
 
-CMakeFiles/codigo.dir/kruskal.cpp.obj.requires:
+CMakeFiles/codigo.dir/cluster.cpp.obj.requires:
 
-.PHONY : CMakeFiles/codigo.dir/kruskal.cpp.obj.requires
+.PHONY : CMakeFiles/codigo.dir/cluster.cpp.obj.requires
 
-CMakeFiles/codigo.dir/kruskal.cpp.obj.provides: CMakeFiles/codigo.dir/kruskal.cpp.obj.requires
-	$(MAKE) -f CMakeFiles\codigo.dir\build.make CMakeFiles/codigo.dir/kruskal.cpp.obj.provides.build
-.PHONY : CMakeFiles/codigo.dir/kruskal.cpp.obj.provides
+CMakeFiles/codigo.dir/cluster.cpp.obj.provides: CMakeFiles/codigo.dir/cluster.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\codigo.dir\build.make CMakeFiles/codigo.dir/cluster.cpp.obj.provides.build
+.PHONY : CMakeFiles/codigo.dir/cluster.cpp.obj.provides
 
-CMakeFiles/codigo.dir/kruskal.cpp.obj.provides.build: CMakeFiles/codigo.dir/kruskal.cpp.obj
+CMakeFiles/codigo.dir/cluster.cpp.obj.provides.build: CMakeFiles/codigo.dir/cluster.cpp.obj
 
 
 # Object files for target codigo
 codigo_OBJECTS = \
-"CMakeFiles/codigo.dir/kruskal.cpp.obj"
+"CMakeFiles/codigo.dir/cluster.cpp.obj"
 
 # External object files for target codigo
 codigo_EXTERNAL_OBJECTS =
 
-codigo.exe: CMakeFiles/codigo.dir/kruskal.cpp.obj
+codigo.exe: CMakeFiles/codigo.dir/cluster.cpp.obj
 codigo.exe: CMakeFiles/codigo.dir/build.make
 codigo.exe: CMakeFiles/codigo.dir/linklibs.rsp
 codigo.exe: CMakeFiles/codigo.dir/objects1.rsp
@@ -100,7 +100,7 @@ CMakeFiles/codigo.dir/build: codigo.exe
 
 .PHONY : CMakeFiles/codigo.dir/build
 
-CMakeFiles/codigo.dir/requires: CMakeFiles/codigo.dir/kruskal.cpp.obj.requires
+CMakeFiles/codigo.dir/requires: CMakeFiles/codigo.dir/cluster.cpp.obj.requires
 
 .PHONY : CMakeFiles/codigo.dir/requires
 

@@ -23,61 +23,45 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="kruskal.cpp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/kruskal.cpp">
+      <file leaf-file-name="cluster.cpp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cluster.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="98" column="33" lean-forward="false" selection-start-line="98" selection-start-column="33" selection-end-line="98" selection-end-column="33" />
+            <state relative-caret-position="384">
+              <caret line="65" column="28" lean-forward="true" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
-                <element signature="e#5206#5218#0" expanded="true" />
-                <element signature="e#16714#18576#0" expanded="false" />
-                <element signature="e#18578#19410#0" expanded="false" />
-                <element signature="e#19412#20079#0" expanded="false" />
-                <element signature="e#20759#21063#0" expanded="false" />
-                <element signature="e#21065#21226#0" expanded="false" />
-                <element signature="e#21227#21345#0" expanded="false" />
-                <element signature="e#21930#22381#0" expanded="false" />
-                <element signature="e#22383#22673#0" expanded="false" />
-                <element signature="e#22675#23890#0" expanded="false" />
-                <element signature="e#23892#24757#0" expanded="false" />
-                <element signature="e#24759#25311#0" expanded="false" />
-                <element signature="e#25313#26282#0" expanded="false" />
+                <element signature="e#5049#5061#0" expanded="true" />
+                <element signature="e#5265#5359#0" expanded="false" />
+                <element signature="e#5361#5842#0" expanded="false" />
+                <element signature="e#5844#6238#0" expanded="false" />
+                <element signature="e#16557#18419#0" expanded="false" />
+                <element signature="e#18421#19253#0" expanded="false" />
+                <element signature="e#19255#19922#0" expanded="false" />
+                <element signature="e#20602#20906#0" expanded="false" />
+                <element signature="e#20908#21069#0" expanded="false" />
+                <element signature="e#21070#21188#0" expanded="false" />
+                <element signature="e#21190#21771#0" expanded="false" />
+                <element signature="e#21773#22224#0" expanded="false" />
+                <element signature="e#22226#22516#0" expanded="false" />
+                <element signature="e#22518#23733#0" expanded="false" />
+                <element signature="e#23735#24600#0" expanded="false" />
+                <element signature="e#24602#25154#0" expanded="false" />
+                <element signature="e#25156#26125#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="kruskal.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kruskal.h">
+      <file leaf-file-name="cluster.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cluster.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3004">
-              <caret line="183" column="5" lean-forward="false" selection-start-line="183" selection-start-column="5" selection-end-line="183" selection-end-column="5" />
+            <state relative-caret-position="111">
+              <caret line="440" column="27" lean-forward="false" selection-start-line="440" selection-start-column="27" selection-end-line="440" selection-end-column="27" />
               <folding>
                 <element signature="e#51#70#0" expanded="true" />
-                <element signature="e#11098#11409#0" expanded="false" />
-                <element signature="e#13300#13312#0" expanded="true" />
+                <element signature="e#11097#11408#0" expanded="false" />
+                <element signature="e#13299#13311#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="prim.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/prim.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="prim.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/prim.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="143" selection-end-column="1" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -125,8 +109,9 @@
         <option value="$PROJECT_DIR$/basics.h" />
         <option value="$PROJECT_DIR$/prim.cpp" />
         <option value="$PROJECT_DIR$/prim.h" />
-        <option value="$PROJECT_DIR$/kruskal.h" />
         <option value="$PROJECT_DIR$/kruskal.cpp" />
+        <option value="$PROJECT_DIR$/kruskal.h" />
+        <option value="$PROJECT_DIR$/cluster.cpp" />
       </list>
     </option>
   </component>
@@ -137,7 +122,6 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-15" />
     <option name="y" value="17" />
     <option name="width" value="960" />
     <option name="height" value="260" />
@@ -214,12 +198,12 @@
       <option name="presentableId" value="Default" />
       <updated>1539096518748</updated>
       <workItem from="1539096521817" duration="179402000" />
-      <workItem from="1539970335202" duration="16900000" />
+      <workItem from="1539970335202" duration="17437000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="196302000" />
+    <option name="totallyTimeSpent" value="196839000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -227,15 +211,15 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15052083" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31355932" sideWeight="0.55364585" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31355932" sideWeight="0.5515625" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2976695" sideWeight="0.54479164" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2976695" sideWeight="0.54895836" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32944915" sideWeight="0.48541668" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2976695" sideWeight="0.45520833" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2976695" sideWeight="0.45104167" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -253,7 +237,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="41" />
+      <option name="time" value="43" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -272,37 +256,41 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/kruskal.cpp">
+    <entry file="file://$PROJECT_DIR$/cluster.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
-            <element signature="e#5206#5218#0" expanded="true" />
-            <element signature="e#16714#18576#0" expanded="false" />
-            <element signature="e#18578#19410#0" expanded="false" />
-            <element signature="e#19412#20079#0" expanded="false" />
-            <element signature="e#20759#21063#0" expanded="false" />
-            <element signature="e#21065#21226#0" expanded="false" />
-            <element signature="e#21227#21345#0" expanded="false" />
-            <element signature="e#21930#22381#0" expanded="false" />
-            <element signature="e#22383#22673#0" expanded="false" />
-            <element signature="e#22675#23890#0" expanded="false" />
-            <element signature="e#23892#24757#0" expanded="false" />
-            <element signature="e#24759#25311#0" expanded="false" />
-            <element signature="e#25313#26282#0" expanded="false" />
+            <element signature="e#5049#5061#0" expanded="true" />
+            <element signature="e#5265#5359#0" expanded="false" />
+            <element signature="e#5361#5842#0" expanded="false" />
+            <element signature="e#5844#6238#0" expanded="false" />
+            <element signature="e#16557#18419#0" expanded="false" />
+            <element signature="e#18421#19253#0" expanded="false" />
+            <element signature="e#19255#19922#0" expanded="false" />
+            <element signature="e#20602#20906#0" expanded="false" />
+            <element signature="e#20908#21069#0" expanded="false" />
+            <element signature="e#21070#21188#0" expanded="false" />
+            <element signature="e#21190#21771#0" expanded="false" />
+            <element signature="e#21773#22224#0" expanded="false" />
+            <element signature="e#22226#22516#0" expanded="false" />
+            <element signature="e#22518#23733#0" expanded="false" />
+            <element signature="e#23735#24600#0" expanded="false" />
+            <element signature="e#24602#25154#0" expanded="false" />
+            <element signature="e#25156#26125#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kruskal.h">
+    <entry file="file://$PROJECT_DIR$/cluster.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8381">
           <caret line="493" column="0" lean-forward="true" selection-start-line="493" selection-start-column="0" selection-end-line="493" selection-end-column="0" />
           <folding>
             <element signature="e#51#70#0" expanded="true" />
-            <element signature="e#11098#11409#0" expanded="false" />
-            <element signature="e#13300#13312#0" expanded="true" />
+            <element signature="e#11097#11408#0" expanded="false" />
+            <element signature="e#13299#13311#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -318,6 +306,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -360,30 +349,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kruskal.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3004">
-          <caret line="183" column="5" lean-forward="false" selection-start-line="183" selection-start-column="5" selection-end-line="183" selection-end-column="5" />
-          <folding>
-            <element signature="e#51#70#0" expanded="true" />
-            <element signature="e#11098#11409#0" expanded="false" />
-            <element signature="e#13300#13312#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/MinGW/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_bvector.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="232">
           <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prim.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="40" />
           <folding />
         </state>
       </provider>
@@ -396,25 +365,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kruskal.cpp">
+    <entry file="file://$PROJECT_DIR$/prim.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="98" column="33" lean-forward="false" selection-start-line="98" selection-start-column="33" selection-end-line="98" selection-end-column="33" />
+        <state relative-caret-position="119">
+          <caret line="7" column="24" lean-forward="true" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cluster.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="440" column="27" lean-forward="false" selection-start-line="440" selection-start-column="27" selection-end-line="440" selection-end-column="27" />
+          <folding>
+            <element signature="e#51#70#0" expanded="true" />
+            <element signature="e#11097#11408#0" expanded="false" />
+            <element signature="e#13299#13311#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cluster.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="65" column="28" lean-forward="true" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
-            <element signature="e#5206#5218#0" expanded="true" />
-            <element signature="e#16714#18576#0" expanded="false" />
-            <element signature="e#18578#19410#0" expanded="false" />
-            <element signature="e#19412#20079#0" expanded="false" />
-            <element signature="e#20759#21063#0" expanded="false" />
-            <element signature="e#21065#21226#0" expanded="false" />
-            <element signature="e#21227#21345#0" expanded="false" />
-            <element signature="e#21930#22381#0" expanded="false" />
-            <element signature="e#22383#22673#0" expanded="false" />
-            <element signature="e#22675#23890#0" expanded="false" />
-            <element signature="e#23892#24757#0" expanded="false" />
-            <element signature="e#24759#25311#0" expanded="false" />
-            <element signature="e#25313#26282#0" expanded="false" />
+            <element signature="e#5049#5061#0" expanded="true" />
+            <element signature="e#5265#5359#0" expanded="false" />
+            <element signature="e#5361#5842#0" expanded="false" />
+            <element signature="e#5844#6238#0" expanded="false" />
+            <element signature="e#16557#18419#0" expanded="false" />
+            <element signature="e#18421#19253#0" expanded="false" />
+            <element signature="e#19255#19922#0" expanded="false" />
+            <element signature="e#20602#20906#0" expanded="false" />
+            <element signature="e#20908#21069#0" expanded="false" />
+            <element signature="e#21070#21188#0" expanded="false" />
+            <element signature="e#21190#21771#0" expanded="false" />
+            <element signature="e#21773#22224#0" expanded="false" />
+            <element signature="e#22226#22516#0" expanded="false" />
+            <element signature="e#22518#23733#0" expanded="false" />
+            <element signature="e#23735#24600#0" expanded="false" />
+            <element signature="e#24602#25154#0" expanded="false" />
+            <element signature="e#25156#26125#0" expanded="false" />
           </folding>
         </state>
       </provider>

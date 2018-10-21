@@ -1,4 +1,4 @@
-#include "kruskal.h"
+#include "cluster.h"
 
 bool todosVisitados(vector<bool>& v){
     for(int i = 0; i < v.size(); i++){

@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/codigo.dir/kruskal.cpp.obj"
+  "CMakeFiles/codigo.dir/cluster.cpp.obj"
   "codigo.pdb"
   "codigo.exe"
   "codigo.exe.manifest"

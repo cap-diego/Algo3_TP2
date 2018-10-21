@@ -3,4 +3,4 @@ project(codigo)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(codigo kruskal.cpp)
+add_executable(codigo cluster.cpp)

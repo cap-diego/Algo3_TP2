@@ -6,15 +6,15 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/diego/Documents/Facultad/AED 3/Labor/TP2/codigo/kruskal.cpp
-kruskal.h
-C:/Users/diego/Documents/Facultad/AED 3/Labor/TP2/codigo/kruskal.h
+C:/Users/diego/Documents/Facultad/AED 3/Labor/TP2/codigo/cluster.cpp
+cluster.h
+C:/Users/diego/Documents/Facultad/AED 3/Labor/TP2/codigo/cluster.h
 fstream
 -
 chrono
 -
 
-C:/Users/diego/Documents/Facultad/AED 3/Labor/TP2/codigo/kruskal.h
+C:/Users/diego/Documents/Facultad/AED 3/Labor/TP2/codigo/cluster.h
 iostream
 -
 vector

@@ -1,7 +1,7 @@
 #ifndef CODIGO_PRIM_H
 #define CODIGO_PRIM_H
 
-#include "kruskal.h"
+#include "cluster.h"
 
 bool todosVisitados(vector<bool>& v);
 Nodo menorNoVisitado(vector<int>& distancia, vector<bool>& visitados);

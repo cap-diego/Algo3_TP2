@@ -122,32 +122,32 @@ codigo/fast:
 	$(MAKE) -f CMakeFiles\codigo.dir\build.make CMakeFiles/codigo.dir/build
 .PHONY : codigo/fast
 
-kruskal.obj: kruskal.cpp.obj
+cluster.obj: cluster.cpp.obj
 
-.PHONY : kruskal.obj
+.PHONY : cluster.obj
 
 # target to build an object file
-kruskal.cpp.obj:
-	$(MAKE) -f CMakeFiles\codigo.dir\build.make CMakeFiles/codigo.dir/kruskal.cpp.obj
-.PHONY : kruskal.cpp.obj
+cluster.cpp.obj:
+	$(MAKE) -f CMakeFiles\codigo.dir\build.make CMakeFiles/codigo.dir/cluster.cpp.obj
+.PHONY : cluster.cpp.obj
 
-kruskal.i: kruskal.cpp.i
+cluster.i: cluster.cpp.i
 
-.PHONY : kruskal.i
+.PHONY : cluster.i
 
 # target to preprocess a source file
-kruskal.cpp.i:
-	$(MAKE) -f CMakeFiles\codigo.dir\build.make CMakeFiles/codigo.dir/kruskal.cpp.i
-.PHONY : kruskal.cpp.i
+cluster.cpp.i:
+	$(MAKE) -f CMakeFiles\codigo.dir\build.make CMakeFiles/codigo.dir/cluster.cpp.i
+.PHONY : cluster.cpp.i
 
-kruskal.s: kruskal.cpp.s
+cluster.s: cluster.cpp.s
 
-.PHONY : kruskal.s
+.PHONY : cluster.s
 
 # target to generate assembly for a file
-kruskal.cpp.s:
-	$(MAKE) -f CMakeFiles\codigo.dir\build.make CMakeFiles/codigo.dir/kruskal.cpp.s
-.PHONY : kruskal.cpp.s
+cluster.cpp.s:
+	$(MAKE) -f CMakeFiles\codigo.dir\build.make CMakeFiles/codigo.dir/cluster.cpp.s
+.PHONY : cluster.cpp.s
 
 # Help Target
 help:
@@ -158,9 +158,9 @@ help:
 	@echo ... codigo
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... kruskal.obj
-	@echo ... kruskal.i
-	@echo ... kruskal.s
+	@echo ... cluster.obj
+	@echo ... cluster.i
+	@echo ... cluster.s
 .PHONY : help
 
 

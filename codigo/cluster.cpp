@@ -1,4 +1,4 @@
-#include "kruskal.h"
+#include "cluster.h"
 #include <fstream>
 #include <chrono>
 
@@ -19,7 +19,7 @@
 int main() {
 
     int cantidadDeNodos;
-    int cantRep = 4;
+    int cantRep = 3;
     vector<Nodo> input;
     cargarInfo(input,cantidadDeNodos, "zahn");
     vector<int> padre(cantidadDeNodos);//O(n)
@@ -27,13 +27,10 @@ int main() {
     vector<Nodo> inputK(cantidadDeNodos);
 
     int gradoNodos=cantidadDeNodos-1;
-    cout <<"prepara para generar grafo con el que despues voy a trabajar"<<endl;
-
     long long int cantidadAristasConGradoIndicado = cantidadDeNodos * gradoNodos / 2;
-    cout <<"Cantidad de aristas indicado: "<< cantidadAristasConGradoIndicado<<endl;
 
     ListaIncidencia l1(cantidadAristasConGradoIndicado); //Creo una lista de incidencia
-    cout <<"cant nodos grafo completo: "<< l1.cantidad_aristas()<<endl;
+    cout <<"Cantidad de nodos de grafo completo: "<< l1.cantidad_aristas()<<endl;
     MatrizAdyacencias m(cantidadDeNodos); //Creo la matriz de adyacencias
     ListaAdyacencias la(cantidadDeNodos); //Creo la lista de adyacencias
     convertirNodosAAristas(l1,m, input, gradoNodos);

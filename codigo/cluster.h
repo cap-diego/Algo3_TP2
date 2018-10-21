@@ -30,7 +30,6 @@ float cantDespuesDeComa(const float& x, const int& numDecimals) {
 }
 
 
-
 struct Nodo {
     float x,y;
     int indice;
@@ -442,20 +441,19 @@ template<typename T>
 float calcularMedia(vector<T>&);
 bool todosVisitados(vector<bool>& v);
 Nodo menorNoVisitado(vector<int>& distancia, vector<bool>& visitados);
-vector<Nodo> primSinCola(ListaAdyacencias& G);
 Nodo menorNoVisitado(vector<Nodo> nodos, vector<float>& distancia, vector<bool>& visitados);
 //funciones DSU, para kruskal
 void init(vector<int>& padre, int cantNodos , vector<int>&);
 int find(int indiceNodo, vector<int>&, vector<int>& altura, int subidos);
-int find_Sin_PathCompression(int indiceNodo, vector<int>&);
 void unir_componentes(int indiceNodo1, int indiceNodo2, vector<int>&, int cantNodos,vector<int>& altura);
+int find_Sin_PathCompression(int indiceNodo, vector<int>&);
 void init_Sin_PathComp(vector<int>& padre);
 void unir_componentes_Sin_PathComp(int indiceNodo1, int indiceNodo2, vector<int>& padre);
 
-vector<Nodo> prim2(ListaAdyacencias& G);
 
 //algoritmos
-void retirarEjesInconsistentes(MatrizAdyacencias& m, ListaIncidencia& l2, int cantidadDeNodos, int kPasosVecindario, vector<int>& padre, int& cantidadClusters);
+vector<Nodo> prim2(ListaAdyacencias& G);
+vector<Nodo> primSinCola(ListaAdyacencias& G);
 ListaIncidencia AGM_Kruskal(ListaIncidencia& grafo, vector<int>& padre, vector<int>& altura , int cantNodos);
 ListaIncidencia AGM_Kruskal_SinPathComp(ListaIncidencia& grafo, vector<int>& padre , int cantNodos);
 
