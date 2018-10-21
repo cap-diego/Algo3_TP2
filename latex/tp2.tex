@@ -48,8 +48,105 @@ El problema de Clustering es un problema difícil, ya que no existe un algoritmo
 sino que existen \textbf{heuristicas} que intentan resolver el problema. La heurística utilizada en este informe esta detallada en el paper (nombre paper) de (autor paper), y su forma de calcular los clusters es la siguiente: Formamos un grafo completo con los datos, interpretando los pesos de las aristas como la distancia entre los vértices que son unidos por ellas, luego recorremos las aristas y borramos las que se consideren como \textbf{inconsistentes}, de acuerdo al paper una arista $a$ se considera inconsistente si su peso supera en cierta cantidad de desviaciones standard a las medias de los pesos de $k$ vecinos de los vertices en sus puntas. También se puede considerar inconsistente si el \textit{factor} o la \textit{razón} del peso de la arista con los pesos de $k$ vecinos de los vertices en sus puntas supera por un valor dado $f$. Al remover un eje inconsistente, las componentes conexas formadas son identificadas con un indice, entonces luego de recorrer todas las aristas, todas las componentes conexas van a tener un  indice distinto y podemos interpretarlas como los clusters del grafo.
 \section{Justificación teórica}
 \section{Algoritmos presentados}
+
+\subsection{Kruskal}
+\begin{codebox}
+  \Procname{$\proc{KruskalSinPathComp}(ListaIncidencia: grafoCompleto, cantNodos: entero)$}
+\li padre $\gets$ vector de enteros de tamaño de cantNodos y cargado con el valor de su posición en cada posición
+\li AGM $\gets$ lista de incidencia vacia, de tamaño cantNodos-1
+\li OrdenarPorPeso(grafoCompleto)
+\li \For e:Arista $\in$ grafoCompleto 
+\li \If $getPadre(indice(e.primerNodo), padre) $=$ getPadre(indice(e.segundoNodo),padre)$ \Then
+\li agregar(e,agm)
+\li \End
+\li \End
+\li Devolver AGM
+\end{codebox}
+
+\begin{codebox}
+\Procname{$\proc{getPadre}(entero: indice, padre: vector de enteros)$}
+\li \If $padre[indice] == indice$ \Then
+\li Devolver indice
+\li \Else
+\li getPadre(indice(padre[indice]),padre)
+\li \End
+\end{codebox}
+
+
+\begin{codebox}
+\Procname{$\proc{getPadreConPathComp}(entero: indice, padre: vector de enteros, altura:vector de enteros, nivelesSubidos: entero$}
+\li \If $padre[indice] == indice$ \Then
+\li altura[indice] = nivelesSubidos
+\li Devolver indice
+\li \Else
+\li padre[indice] = getPadreConPathComp(indice(padre[indice]),padre,altura,nivelesSubidos+1)
+\li Devolver padre[indice]
+\li \End
+\end{codebox}
+
+
+\begin{codebox}
+\Procname{$\proc{unirPadres}(indiceNodo1: entero, indiceNodo2:entero, padre: vector de enteros)$}
+\li padreNodo1 $\gets$ getPadre(indiceNodo1, padre)
+\li padre[indiceNodo2]=padreNodo1
+\end{codebox}
+
+\begin{codebox}
+\Procname{$\proc{unirPadresConPathComp}(indiceNodo1: entero, indiceNodo2:entero, padre: vector de enteros, altura:vector de enteros, nivelesSubidos: entero)$}
+\li padreNodo1 $\gets$ getPadreConPathComp(indiceNodo1, padre,altura,0)
+\li padreNodo2 $\gets$ getPadreConPathComp(indiceNodo2, padre,altura,0)
+\li padreMenosAltura $\gets$ min(altura[padreNodo1],altura[padreNodo2])
+\li padreMasAltura $\gets$ max(altura[padreNodo1],altura[padreNodo2])
+\li padre[padreMenosAltura]=padreMasAltura
+\end{codebox}
+
+
+\begin{codebox}
+\Procname{$\proc{armarGrafoCompleto}(nodos:vector de Nodos)$}
+\li listaAristas $\gets$ inicializar lista de incidencia
+\li matrizAristas $\gets$ inicializar matriz de adyacencia
+\li \For $i \gets 0$ \To $tam(nodos)$
+\li 	\For  $j \gets i+1$ \To $tam(nodos)$
+			\li armar arista con datos de v[i] y v[j]
+			\li agregar arista a listaAristas
+		\End
+	\End
+\li armar matriz de adyacencia con la lista de incidencia
+\li Devolver Matriz de adyacencia y Lista de incidencia
+\end{codebox}
+
+\begin{codebox}
+\Procname{$\proc{retirarEjesInconsistentes}(listaAristas:lista incidencia, \sigma_{T}, profVecindario, f_{T}, forma, cantidadDeClusters, padre: vector de enteros )$}
+\li \For $e:listaAristas$
+\li calcular media y desviacion respecto del vecindario de profVecindario de profundidad de cada extremo de e. (usando una modificación de BFS)
+\li si es inconsistente
+\li sacar e de las listas
+\li recorrer en la lista de ady todos los nodos alcanzables de uno de los extremos y modificar su representante en padre con cantidadDeClusters (usando una modificación de BFS)
+\li aumentar en 1 el valor de cantidadDeClusters
+
+\li \End
+\end{codebox}
+
 \subsection{Complejidad}
 \section{Experimentación}
+
+\subsection{Variaciones}
+\begin{verse}
+Los experimentos estarán centrados en analizar las diferentes tipos clusterizaciones que pueden realizarse variando las definiciones de eje inconsistente. Intentaremos analizar las configuraciones necesarias para que se pueda alcanzar una clusterización lo más cercana a la de la percepción humana y los resultados interesantes al que pueden llegarse.
+
+Dados los siguientes: $f_{T}$ multiplicador del promedio, $\sigma_{T}$ multiplicador de la desviación, y la profundidad del vecindario de los extremos del eje candidato, W(XY) el peso del eje candidato, y sea X e Y sus nodos extremos, definiremos un eje inconsistente:
+\begin{itemize}
+\item Forma 1: $\frac{W(XY)}{Promedio(Vecindario(X))}$ $>$ $f_{T}$ $  y $ $\frac{W(XY)}{Promedio(Vecindario(Y))}$ $>$ $f_{T}$, \\Es decir, la proporción entre el peso del eje candidato y el promedio de peso del vecindario de sus extremos es mayor al coeficiente dado.
+\item Forma 2: $W(XY) >  Promedio(Vecindario(X)) + \sigma_{T}$ $ * $ $ desviacion(Vecindario(X)) $ $ y$ $W(XY) >  Promedio(Vecindario(Y)) + \sigma_{T}$ $ * $ $ desviacion(Vecindario(Y)) $, \\Es decir, que el peso del eje candidato supere al promedio del vecindario de sus extremos por al menos $\sigma_{T}$ unidades de la desviación del vecindario del extremo.
+
+\item Forma 3: Que se cumpla ambas
+\end{itemize}
+
+
+
+
+
+\end{verse}
 %Acá espero a lo que me diga Diego
 
 \pagebreak
