@@ -78,8 +78,8 @@ public:
     }
 };
 
-/*/
-vector<Nodo> prim2(ListaAdyacencias G){
+
+vector<Nodo> prim2(ListaAdyacencias& G){
     // Inicializacion
     vector<Peso> res(G.size(), INT_MAX);
     vector<Nodo> padres(G.size(), -1);
@@ -102,7 +102,6 @@ vector<Nodo> prim2(ListaAdyacencias G){
     }
     return padres;
 }
-//*/
 
 vector<Nodo> prim(ListaAdyacencias& G){
     // Inicializacion

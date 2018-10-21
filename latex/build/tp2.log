@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.3.22)  19 OCT 2018 11:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.3.22)  20 OCT 2018 21:51
 entering extended mode
 **./tp2.tex
 (tp2.tex
@@ -759,9 +759,7 @@ Package: vmargin 2004/07/15 V2.5 set document margins (VK)
 LaTeX Warning: Unused global option(s):
     [8pt].
 
-
-("C:\Users\diego\Documents\Facultad\AED 3\Labor\TP2\Algo3_TP2\latex\build\tp2.a
-ux"
+("C:\Users\diego\Documents\Facultad\AED 3\Labor\TP2\latex\build\tp2.aux"
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 )
@@ -781,7 +779,8 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 18.
- ("C:\Users\diego\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
+
+("C:\Users\diego\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 18.
@@ -872,18 +871,18 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 <logo_dc.jpg, id=1, 215.6055pt x 83.5923pt>
 File: logo_dc.jpg Graphic file (type jpg)
 <use logo_dc.jpg>
-Package pdftex.def Info: logo_dc.jpg  used on input line 32.
+Package pdftex.def Info: logo_dc.jpg  used on input line 30.
 (pdftex.def)             Requested size: 215.60497pt x 83.59207pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 32--32
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
 
  []
 
-LaTeX Font Info:    Try loading font information for U+lasy on input line 32.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 30.
 ("C:\Users\diego\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ulasy.fd"
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 32.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 30.
 
 ("C:\Users\diego\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
@@ -891,54 +890,101 @@ File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 <logo_uba.jpg, id=2, 225.4824pt x 231.7458pt>
 File: logo_uba.jpg Graphic file (type jpg)
 <use logo_uba.jpg>
-Package pdftex.def Info: logo_uba.jpg  used on input line 32.
+Package pdftex.def Info: logo_uba.jpg  used on input line 30.
 (pdftex.def)             Requested size: 225.48184pt x 231.74522pt.
-LaTeX Font Info:    Try loading font information for T1+cmss on input line 32.
+LaTeX Font Info:    Try loading font information for T1+cmss on input line 30.
 
 ("C:\Users\diego\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\t1cmss.fd"
 File: t1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-Underfull \hbox (badness 10000) in paragraph at lines 32--32
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
 
  []
 
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 32--32
+Overfull \hbox (15.0pt too wide) in paragraph at lines 30--30
 [][] 
  []
 
 [1
 
 {C:/Users/diego/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./logo_dc.j
-pg> <./logo_uba.jpg>] [1]
-("C:\Users\diego\Documents\Facultad\AED 3\Labor\TP2\Algo3_TP2\latex\build\tp2.a
-ux"
+pg> <./logo_uba.jpg>]
+Warning: Indentation ends at level -1 in codebox on page 1.
+
+Overfull \hbox (54.5378pt too wide) in paragraph at lines 50--50
+| [] 
+ []
+
+
+Overfull \hbox (56.52129pt too wide) in paragraph at lines 71--71
+[]$[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 entero \OT1/cmr/m/n/10 : \OML/cmm/m/it/1
+0 indice; padre \OT1/cmr/m/n/10 : \OML/cmm/m/it/10 vectordeenteros; altura \OT1
+/cmr/m/n/10 : \OML/cmm/m/it/10 vectordeenteros; nivelesSubidos \OT1/cmr/m/n/10 
+:
+ []
+
+
+Overfull \hbox (32.749pt too wide) in paragraph at lines 71--71
+| [] 
+ []
+
+
+Overfull \hbox (40.9086pt too wide) in paragraph at lines 87--87
+[]$[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 indiceNodo\OT1/cmr/m/n/10 1 : \OML/cmm/m
+/it/10 entero; indiceNodo\OT1/cmr/m/n/10 2 : \OML/cmm/m/it/10 entero; padre \OT
+1/cmr/m/n/10 : \OML/cmm/m/it/10 vectordeenteros; altura \OT1/cmr/m/n/10 :
+ []
+
+Warning: Indentation ends at level -2 in codebox on page 1.
+[1]
+Warning: Indentation ends at level -1 in codebox on page 2.
+
+Overfull \hbox (111.86359pt too wide) in paragraph at lines 114--114
+[]$[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 listaAristas \OT1/cmr/m/n/10 : \OML/cmm/
+m/it/10 listaincidencia; []; profVecindario; f[]; forma; cantidadDeClusters; p
+adre \OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (357.35028pt too wide) in paragraph at lines 114--114
+| [] 
+ []
+
+[2] ("C:\Users\diego\Documents\Facultad\AED 3\Labor\TP2\latex\build\tp2.aux"
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 ) ) 
 Here is how much of TeX's memory you used:
- 5876 strings out of 493305
- 82677 string characters out of 3129802
- 154211 words of memory out of 3000000
- 9290 multiletter control sequences out of 15000+200000
- 12413 words of font info for 30 fonts, out of 3000000 for 9000
+ 5889 strings out of 493305
+ 82727 string characters out of 3129802
+ 159211 words of memory out of 3000000
+ 9299 multiletter control sequences out of 15000+200000
+ 15204 words of font info for 34 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,8n,39p,273b,359s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\diego\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600
-\ecbx1440.pk> <C:\Users\diego\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen
-\ec\dpi600\ecrm0700.pk> <C:\Users\diego\AppData\Local\MiKTeX\2.9\fonts\pk\ljfou
-r\jknappen\ec\dpi600\ecss1000.pk> <C:\Users\diego\AppData\Local\MiKTeX\2.9\font
-s\pk\ljfour\jknappen\ec\dpi600\ecsx1000.pk> <C:\Users\diego\AppData\Local\MiKTe
-X\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1000.pk> <C:\Users\diego\AppData\L
-ocal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1000.pk> <C:\Users\diego
-\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\U
-sers\diego\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1200
+\ecbx1000.pk> <C:\Users\diego\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen
+\ec\dpi600\eccc1000.pk> <C:\Users\diego\AppData\Local\MiKTeX\2.9\fonts\pk\ljfou
+r\jknappen\ec\dpi600\ecbx1440.pk> <C:\Users\diego\AppData\Local\MiKTeX\2.9\font
+s\pk\ljfour\jknappen\ec\dpi600\ecrm0700.pk> <C:\Users\diego\AppData\Local\MiKTe
+X\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecss1000.pk> <C:\Users\diego\AppData\L
+ocal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecsx1000.pk> <C:\Users\diego
+\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1000.pk> <C:\U
+sers\diego\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1000
 .pk> <C:\Users\diego\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi60
-0\ecbx2074.pk>
-Output written on "C:\Users\diego\Documents\Facultad\AED 3\Labor\TP2\Algo3_TP2\
-latex\build\tp2.pdf" (2 pages, 437014 bytes).
+0\ecrm1200.pk> <C:\Users\diego\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappe
+n\ec\dpi600\ecbx1200.pk> <C:\Users\diego\AppData\Local\MiKTeX\2.9\fonts\pk\ljfo
+ur\jknappen\ec\dpi600\ecbx2074.pk><C:/Users/diego/AppData/Local/Programs/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/diego/AppData/Local/Pr
+ograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/diego/AppD
+ata/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/User
+s/diego/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10
+.pfb>
+Output written on "C:\Users\diego\Documents\Facultad\AED 3\Labor\TP2\latex\buil
+d\tp2.pdf" (3 pages, 500685 bytes).
 PDF statistics:
- 270 PDF objects out of 1000 (max. 8388607)
+ 361 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

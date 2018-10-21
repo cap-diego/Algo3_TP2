@@ -182,11 +182,12 @@ def graficarNodos(nombre):
         listacnames += [(cnames[i])]
 
     for i in range (len(list(G.nodes()))):
-        colores += [listacnames[int(2+int(dic_colores[G.node[str(i)]['cluster']])) % (len(listacnames))]]
+        colores += [listacnames[int(20+int(dic_colores[G.node[str(i)]['cluster']])) % (len(listacnames))]]
 
     print(dic_colores)
     #print(len(dic_colores.keys()))
     print(len(listacnames))
+    #plt.axis([6300,15700,55000,65000])
     pos = nx.spring_layout(G,pos=fixed_positions, fixed = fixed_nodes)
     nx.draw_networkx_nodes(G,pos,node_color=colores,node_size=10)
     #pos = nx.get_node_attributes(G,'pos')

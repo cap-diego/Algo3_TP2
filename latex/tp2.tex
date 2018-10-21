@@ -17,16 +17,14 @@
 
 \begin{document}
 \titulo{Trabajo Práctico 2}
-\subtitulo{Clustering}
+\subtitulo{Modelando problemas problemas con grafos}
 
 \fecha{\today}
 
 \materia{Algoritmos y Estructura de Datos III}
 
 \integrante{Buceta, Diego}{001/17}{diegobuceta35@gmail.com}
-\integrante{Springhart, Gonzalo}{308/17}{glspringhart@gmail.com}
-\integrante{Tasat, Dylan}{/17}{@gmail.com}
-\integrante{Gabriel, Jimenez}{/17}{@gmail.com}
+\integrante{Springhart, Gonzalo}{318/17}{glspringhart@gmail.com}
 % Pongan cuantos integrantes quieran
 
 \maketitle
@@ -37,7 +35,87 @@
 \section{Introducción al problema}
 \section{Justificación teórica}
 \section{Algoritmos presentados}
+\subsection{Kruskal}
+\begin{codebox}
+  \Procname{$\proc{KruskalSinPathComp}(ListaIncidencia: grafoCompleto, cantNodos: entero)$}
+\li padre $\gets$ vector de enteros de tamaño de cantNodos y cargado con el valor de su posición en cada posición
+\li AGM $\gets$ lista de incidencia vacia, de tamaño cantNodos-1
+\li OrdenarPorPeso(grafoCompleto)
+\li \For e:Arista $\in$ grafoCompleto 
+\li \If $getPadre(indice(e.primerNodo), padre) $=$ getPadre(indice(e.segundoNodo),padre)$ \Then
+\li agregar(e,agm)
+\li \End
+\li \End
+\li Devolver AGM
+\end{codebox}
+
+\begin{codebox}
+\Procname{$\proc{getPadre}(entero: indice, padre: vector de enteros)$}
+\li \If $padre[indice] == indice$ \Then
+\li Devolver indice
+\li \Else
+\li getPadre(indice(padre[indice]),padre)
+\li \End
+\end{codebox}
+
+
+\begin{codebox}
+\Procname{$\proc{getPadreConPathComp}(entero: indice, padre: vector de enteros, altura:vector de enteros, nivelesSubidos: entero$}
+\li \If $padre[indice] == indice$ \Then
+\li altura[indice] = nivelesSubidos
+\li Devolver indice
+\li \Else
+\li padre[indice] = getPadreConPathComp(indice(padre[indice]),padre,altura,nivelesSubidos+1)
+\li Devolver padre[indice]
+\li \End
+\end{codebox}
+
+
+\begin{codebox}
+\Procname{$\proc{unirPadres}(indiceNodo1: entero, indiceNodo2:entero, padre: vector de enteros)$}
+\li padreNodo1 $\gets$ getPadre(indiceNodo1, padre)
+\li padre[indiceNodo2]=padreNodo1
+\end{codebox}
+
+\begin{codebox}
+\Procname{$\proc{unirPadresConPathComp}(indiceNodo1: entero, indiceNodo2:entero, padre: vector de enteros, altura:vector de enteros, nivelesSubidos: entero)$}
+\li padreNodo1 $\gets$ getPadreConPathComp(indiceNodo1, padre,altura,0)
+\li padreNodo2 $\gets$ getPadreConPathComp(indiceNodo2, padre,altura,0)
+\li padreMenosAltura $\gets$ min(altura[padreNodo1],altura[padreNodo2])
+\li padreMasAltura $\gets$ max(altura[padreNodo1],altura[padreNodo2])
+\li padre[padreMenosAltura]=padreMasAltura
+\end{codebox}
+
+
+\begin{codebox}
+\Procname{$\proc{armarGrafoCompleto}(nodos:vector de Nodos)$}
+\li listaAristas $\gets$ inicializar lista de incidencia
+\li matrizAristas $\gets$ inicializar matriz de adyacencia
+\li \For $i \gets 0$ \To $tam(nodos)$
+\li 	\For  $j \gets i+1$ \To $tam(nodos)$
+			\li armar arista con datos de v[i] y v[j]
+			\li agregar arista a listaAristas
+		\End
+	\End
+\li armar matriz de adyacencia con la lista de incidencia
+\li Devolver Matriz de adyacencia y Lista de incidencia
+\end{codebox}
+
+\begin{codebox}
+\Procname{$\proc{retirarEjesInconsistentes}(listaAristas:lista incidencia, \sigma_{T}, profVecindario, f_{T}, forma, cantidadDeClusters, padre: vector de enteros )$}
+\li \For $e:listaAristas$
+\li calcular media y desviacion respecto del vecindario de profVecindario de profundidad de cada extremo de e. (usando una modificación de BFS)
+\li si es inconsistente
+\li sacar e de las listas
+\li recorrer en la lista de ady todos los nodos alcanzables de uno de los extremos y modificar su representante en padre con cantidadDeClusters (usando una modificación de BFS)
+\li aumentar en 1 el valor de cantidadDeClusters
+
+\li \End
+\end{codebox}
+
+
 \subsection{Complejidad}
+
 \section{Experimentación}
 
 

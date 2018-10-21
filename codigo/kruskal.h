@@ -166,6 +166,9 @@ public:
     vector<Nodo>& getNodos(){
         return nodos;
     }
+    int size(){
+        return nodos.size();
+    }
     void sacarArista(int na, int nb) {
         list<AristaAd >::iterator it = rep[na].begin();
         while(it != rep[na].end() && (*it).adyacente.indice!=nb) {
@@ -178,10 +181,6 @@ public:
             it++;
         }
         if((*it).adyacente.indice == na) rep[nb].erase(it);
-    }
-
-    int size() {
-        return (int)rep.size();
     }
 
     list<AristaAd >& operator[](Nodo x) {
@@ -310,10 +309,6 @@ public:
                 aristasActuales++;
                 aristasTotales++;
             }
-    }
-    void actualizarArista(int pos, Arista nueva){ //pre: pos esta en rango
-        nueva.indice = pos;
-        rep[pos] = nueva;
     }
     Arista& getArista(int in) {
         return rep[in];
@@ -452,14 +447,17 @@ Nodo menorNoVisitado(vector<Nodo> nodos, vector<float>& distancia, vector<bool>&
 //funciones DSU, para kruskal
 void init(vector<int>& padre, int cantNodos , vector<int>&);
 int find(int indiceNodo, vector<int>&, vector<int>& altura, int subidos);
-int find_Sin_PathCompression(int indiceNodo, vector<int>&, vector<int>& altura, int subidos);
+int find_Sin_PathCompression(int indiceNodo, vector<int>&);
 void unir_componentes(int indiceNodo1, int indiceNodo2, vector<int>&, int cantNodos,vector<int>& altura);
+void init_Sin_PathComp(vector<int>& padre);
+void unir_componentes_Sin_PathComp(int indiceNodo1, int indiceNodo2, vector<int>& padre);
 
+vector<Nodo> prim2(ListaAdyacencias& G);
 
 //algoritmos
 void retirarEjesInconsistentes(MatrizAdyacencias& m, ListaIncidencia& l2, int cantidadDeNodos, int kPasosVecindario, vector<int>& padre, int& cantidadClusters);
 ListaIncidencia AGM_Kruskal(ListaIncidencia& grafo, vector<int>& padre, vector<int>& altura , int cantNodos);
-ListaIncidencia AGM_Kruskal_SinPathComp(ListaIncidencia& grafo, vector<int>& padre, vector<int>& altura , int cantNodos);
+ListaIncidencia AGM_Kruskal_SinPathComp(ListaIncidencia& grafo, vector<int>& padre , int cantNodos);
 
 
 void retirarEjesInconsistentes(ListaIncidencia& l2, int cantidadDeNodos, float cantDesv, vector<int>&, int&, int forma, float cantProm, int profundidadVecindario);

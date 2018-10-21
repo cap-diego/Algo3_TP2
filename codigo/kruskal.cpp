@@ -21,7 +21,7 @@ int main() {
     int cantidadDeNodos;
     int cantRep = 4;
     vector<Nodo> input;
-    cargarInfo(input,cantidadDeNodos, "g3000");
+    cargarInfo(input,cantidadDeNodos, "zahn");
     vector<int> padre(cantidadDeNodos);//O(n)
     vector<int> altura(cantidadDeNodos); //O(n)
     vector<Nodo> inputK(cantidadDeNodos);
@@ -31,12 +31,11 @@ int main() {
 
     long long int cantidadAristasConGradoIndicado = cantidadDeNodos * gradoNodos / 2;
     cout <<"Cantidad de aristas indicado: "<< cantidadAristasConGradoIndicado<<endl;
+
     ListaIncidencia l1(cantidadAristasConGradoIndicado); //Creo una lista de incidencia
-    cout <<"lista lista"<<endl;
+    cout <<"cant nodos grafo completo: "<< l1.cantidad_aristas()<<endl;
     MatrizAdyacencias m(cantidadDeNodos); //Creo la matriz de adyacencias
     ListaAdyacencias la(cantidadDeNodos); //Creo la lista de adyacencias
-
-
     convertirNodosAAristas(l1,m, input, gradoNodos);
     if(gradoNodos!=cantidadDeNodos-1) { //si el grafo que genere no era completo, entonces use la matriz para crearlo, lo paso a lista inc
         m.convertirAListaInc(l1);
@@ -44,21 +43,18 @@ int main() {
 
 
     cout <<"Se ha generado el grafo completo de: "<<l1.cantidad_aristas()<<" aristas" <<endl;
-    ListaIncidencia l2 = (AGM_Kruskal(l1,padre,altura,cantidadDeNodos));
+    ListaIncidencia l2(AGM_Kruskal(l1,padre,altura,cantidadDeNodos));
 
     //Generamos el AGM
     /*auto tiempoK = medir_tiempo(cantRep,AGM_Kruskal(l1,padre,altura,cantidadDeNodos););
-    auto tiempoK_SPT = medir_tiempo(cantRep, AGM_Kruskal_SinPathComp(l1,padre,altura,cantidadDeNodos););
-    cout <<"LOS TIEMPOS FUERON: "<<endl<< "Kruskal normal: "<<tiempoK<<" . Kruskal modif:"<< tiempoK_SPT<<endl;*/
-    cout <<"Se genera el agm de kruskal de "<<l2.cantidad_aristas()<<" aristas"<<endl;
+    auto tiempoK_SPT = medir_tiempo(cantRep, AGM_Kruskal_SinPathComp(l1,padre,cantidadDeNodos););
+    cout <<"LOS TIEMPOS FUERON: "<<endl<< "Kruskal normal: "<<tiempoK<<" . Kruskal modif:"<< tiempoK_SPT<<endl;
+    cout <<"Se genera el agm de kruskal de "<<l2.cantidad_aristas()<<" aristas"<<endl;*/
     m.convertirAListaAdy(la); //Cargo la lista de adyacencia
-
-    ListaIncidencia l3 = AGM_Kruskal_SinPathComp(l1,padre,altura,cantidadDeNodos);
+    ListaIncidencia l3(AGM_Kruskal_SinPathComp(l1,padre,cantidadDeNodos));
     cout <<"Se genera el AGM de kruskal sin path comp de : "<<l3.cantidad_aristas()<<endl;
 
     vector<Nodo> primAGM = primSinCola(la);
-
-
     cout <<"Generado prim de "<< primAGM.size()-1<<" aristas" <<endl;
     float dist;
     vector<int> padreK(cantidadDeNodos,0), padreP(cantidadDeNodos,0), padreK_SPC(cantidadDeNodos,0);
@@ -81,7 +77,7 @@ int main() {
     //Parametros a modificar
     int cantClusters = 0, forma =1;
     int  profundidadVecindario=2;
-    float cantProm =1.47,cantDesv = 3.3;
+    float cantProm =1.07,cantDesv = 1.8;
 
     retirarEjesInconsistentes(l2,cantidadDeNodos,cantDesv,padreK,cantClusters, forma,cantProm, profundidadVecindario);
     cantClusters = 0;
@@ -190,23 +186,53 @@ void retirarEjesInconsistentes(ListaIncidencia& l2, int cantidadDeNodos, float c
     float media = 0, std_desv = 0, mediaExt1, mediaExt2;
     vector<Peso> pesosDeVecinos;
     float proporcionEntreEjeYProm = cantDespuesDeComa(cantProm,profundidadVecindario), proporcionExt1, proporcionExt2;
-    int d = profundidadVecindario;
+    int d = profundidadVecindario;for (int e = 0; e < padre.size(); ++e) {
+        padre[e]=0;
+    }
     int ca=l2.cantidad_aristas();
     int digDspDeComa = 2;
     float factorDsvExt1, factorDsvExt2;
     for (int j = 0; j < ca; ++j) {//O(M)
         //Recorro las aristas y analizo si hay inconsistentes
-
-        if (l2.getArista(j).indice != -1){ //Si la arista existe (cuando la eliminamos, en realidad la deshabilitamos)
+        Arista ar= l2.getArista(j);
+        if(ar.indice!=-1){
+        //if (l2.getArista(j).indice != -1 && ar.desde.x <= 15700 && ar.hasta.x<=15700 && ar.desde.y <= 65000 && ar.hasta.y <=65000 && ar.desde.x >=6300 && ar.hasta.x>=6300&&ar.desde.y>=55000 && ar.hasta.y>=55000 ){ //Si la arista existe (cuando la eliminamos, en realidad la deshabilitamos)
             //cout << "-------------------------ARISTA: " << l2.getArista(j).indice <<" de nodos:" << l2.getArista(j).desde.indice <<"("<<l2.getArista(j).desde.x<<","<<l2.getArista(j).desde.y<<")" << "--"
               //   << l2.getArista(j).hasta.indice <<"("<<l2.getArista(j).hasta.x<<","<<l2.getArista(j).hasta.y<<") peso: " <<l2.getArista(j).peso<<endl;
             //Consigo los pesos de los vecinos a 'd' pasos de aristas desde l2.getArista(j).desde y que NO pasen por l2.getArista(j), es decir, consigo el vecindario de uno de los extremos de la arista
+            if(forma == 3){
+                float media1, media2;
+                pesosDeVecinos = la.pesosVecinosDeKPasosDesdeNodo(l2.getArista(j).desde, l2.getArista(j).hasta, d);//extremo 1
+                media1 = cantDespuesDeComa(calcularMedia(pesosDeVecinos),digDspDeComa);
+                factorDsvExt1 = cantDespuesDeComa((media1+(cantDesv * desviacion_std(pesosDeVecinos, media1))),digDspDeComa);
+                pesosDeVecinos = la.pesosVecinosDeKPasosDesdeNodo(l2.getArista(j).hasta, l2.getArista(j).desde, d); //extremo 2
+                media2 = cantDespuesDeComa(calcularMedia(pesosDeVecinos),digDspDeComa);
+                factorDsvExt2 = cantDespuesDeComa(media2+((cantDesv * desviacion_std(pesosDeVecinos,media2))),digDspDeComa);
 
-            if(l2.getArista(j).desde.x > 20){
-           //     cout << "-------------------------ARISTA: " << l2.getArista(j).indice <<" de nodos:" << l2.getArista(j).desde.indice <<"("<<l2.getArista(j).desde.x<<","<<l2.getArista(j).desde.y<<")" << "--"
-                    // << l2.getArista(j).hasta.indice <<"("<<l2.getArista(j).hasta.x<<","<<l2.getArista(j).hasta.y<<") peso: " <<l2.getArista(j).peso<<endl;
+
+                if(l2.getArista(j).peso > factorDsvExt1  &&  l2.getArista(j).peso > factorDsvExt2){
+                    l2.sacarArista(l2.getArista(j));
+                    la.sacarArista(l2.getArista(j));
+                    //modificar el padre de todos los nodos que son alcanzables desde uno de los extremos de la arista sacada.
+                    queue<Nodo> colaNodos;
+                    colaNodos.push(l2.getArista(j).desde);
+                    while (colaNodos.size() > 0 ){
+                        //cout <<"colanodos.szE: "<<colaNodos.size()<<endl;
+                        padre[colaNodos.front().indice] = cantidadClusters;
+                        //meto en la cola los vecinos del nodo actual
+                        list<AristaAd> vecinos = la[colaNodos.front()];
+                        //cout <<"obtengo vecinos del nodo: "<<colaNodos.front().indice<<endl;
+                        list<AristaAd>::iterator it = vecinos.begin();
+                        while(it!=vecinos.end()) {
+                            if(padre[(*it).adyacente.indice] != cantidadClusters) colaNodos.push((*it).adyacente);
+                            it++;
+                        }
+                        colaNodos.pop();
+                    }
+                    cantidadClusters++;
+                }
             }
-            if(forma== 1) {
+            else if(forma== 1) {
                 float media1, media2;
                 pesosDeVecinos = la.pesosVecinosDeKPasosDesdeNodo(l2.getArista(j).desde, l2.getArista(j).hasta, d);//extremo 1
                 media1 = cantDespuesDeComa(calcularMedia(pesosDeVecinos),digDspDeComa);
@@ -312,14 +338,16 @@ void convertirNodosAAristas(ListaIncidencia& l, MatrizAdyacencias& m, vector<Nod
             ar.desde = v[i];
             for (int j = i+1; j < v.size(); ++j) {
                 //cout <<"a"<<endl;
-                ar.hasta = v[j];
-                ar.peso = distancia(v[i],v[j]);
-                ar.indice = cantAg;
-                //cout <<"agrego arista: "<<ar.desde.indice<<","<<ar.hasta.indice<<endl;
-                l.agregarArista(ar);
-                m.agregarArista(ar);
-                //cout <<"indice nodo desde de la arista agregada: "<<l.getArista(cantAg).desde.indice<<"vs indice nodo desde ag: "<<v[i].indice<<endl;
-                cantAg++;
+
+                    ar.hasta = v[j];
+                    ar.peso = distancia(v[i], v[j]);
+                    ar.indice = cantAg;
+                    //cout <<"agrego arista: "<<ar.desde.indice<<","<<ar.hasta.indice<<endl;
+                    l.agregarArista(ar);
+                    m.agregarArista(ar);
+                    //cout <<"indice nodo desde de la arista agregada: "<<l.getArista(cantAg).desde.indice<<"vs indice nodo desde ag: "<<v[i].indice<<endl;
+                    cantAg++;
+
             }
         }
     } else{
@@ -353,36 +381,28 @@ void convertirNodosAAristas(ListaIncidencia& l, MatrizAdyacencias& m, vector<Nod
 ListaIncidencia AGM_Kruskal(ListaIncidencia& grafo, vector<int>& padre, vector<int>& altura , int cantNodos){
     //Como es agm, m = n-1
     ListaIncidencia agm;//O(n)
-
     init(padre,cantNodos,altura); //O(n)
     grafo.ordenarPorPeso();//O( m * Log(m)) + O(m)
     for (int i = 0; i < grafo.cantidad_aristas(); ++i) { //O(n)*O(log n)
         //cout <<"USANDO ARISTA: "<< i <<" de: "<<grafo.cantidad_aristas()<<endl;
         if(not( find(grafo.getArista(i).desde.indice,padre,altura,0) == find(grafo.getArista(i).hasta.indice,padre,altura,0) ) ) {  //si pertenecen a diferentes comp conexas
-            //agrego la arista i al agm
-            //cout <<"agrego arista: "<< grafo.getArista(i).indice<<"de nodos: "<< grafo.getArista(i).desde.indice<<"-"<<grafo.getArista(i).hasta.indice<<endl;
-            agm.agregarArista(grafo.getArista(i));
             //ahora uno las comp conexas
+            agm.agregarArista(grafo.getArista(i));
             unir_componentes(grafo.getArista(i).desde.indice,grafo.getArista(i).hasta.indice,padre,cantNodos,altura);
         }
     }
     return agm;
 }
 
-
-ListaIncidencia AGM_Kruskal_SinPathComp(ListaIncidencia& grafo, vector<int>& padre, vector<int>& altura , int cantNodos){
+ListaIncidencia AGM_Kruskal_SinPathComp(ListaIncidencia& grafo, vector<int>& padre, int cantNodos){
     //Como es agm, m = n-1
     ListaIncidencia agm;//O(n)
-    init(padre,cantNodos,altura); //O(n)
+    init_Sin_PathComp(padre); //O(n)
     grafo.ordenarPorPeso();//O( m * Log(m)) + O(m)
     for (int i = 0; i < grafo.cantidad_aristas(); ++i) { //O(n)*O(log n)
-        //cout <<"USANDO ARISTA: "<< i <<" de: "<<grafo.cantidad_aristas()<<endl;
-        if(not(find_Sin_PathCompression(grafo.getArista(i).desde.indice,padre,altura,0) == find_Sin_PathCompression(grafo.getArista(i).hasta.indice,padre,altura,0))) {  //si pertenecen a diferentes comp conexas
-            //agrego la arista i al agm
-            //cout <<"agrego arista: "<< grafo.getArista(i).indice<<"de nodos: "<< grafo.getArista(i).desde.indice<<"-"<<grafo.getArista(i).hasta.indice<<endl;
+        if(not(find_Sin_PathCompression(grafo.getArista(i).desde.indice,padre) == find_Sin_PathCompression(grafo.getArista(i).hasta.indice,padre))) {
             agm.agregarArista(grafo.getArista(i));
-            //ahora uno las comp conexas
-            unir_componentes(grafo.getArista(i).desde.indice,grafo.getArista(i).hasta.indice,padre,cantNodos,altura);
+            unir_componentes_Sin_PathComp(grafo.getArista(i).desde.indice,grafo.getArista(i).hasta.indice,padre);
         }
     }
     return agm;
@@ -403,7 +423,7 @@ void cargarInfo(vector<Nodo>& v, int& cn,string nombre){
     v.resize(cn);
     float ax;
     //ahora leo todos los nodos
-    while (inFile >> x >> y && cantidadIng<cn) {
+    while (inFile >> x >> y >> ax && cantidadIng<cn) {
         nodo.indice = cantidadIng;
         nodo.x = x;
         nodo.y = y;
@@ -433,6 +453,11 @@ void init(vector<int>& padre, int cantNodos, vector<int>& altura){
         padre[i] = i;
     }
 }
+void init_Sin_PathComp(vector<int>& padre){
+    for (int i = 0; i < padre.size(); ++i) {
+        padre[i] = i;
+    }
+}
 
 int find(int indiceNodo, vector<int>& padre, vector<int>& altura, int subidos) { //devuelvo  el indice del nodo que es rep
     //padre tiene en la pos iesima el nodo "representante" del iesimo nodo
@@ -446,30 +471,18 @@ int find(int indiceNodo, vector<int>& padre, vector<int>& altura, int subidos) {
     }
 }
 
-
-int find_Sin_PathCompression(int indiceNodo, vector<int>& padre, vector<int>& altura, int subidos) {
+int find_Sin_PathCompression(int indiceNodo, vector<int>& padre) {
     if(padre[indiceNodo] == indiceNodo) { //si el rep del nodo es él mismo
-        altura[indiceNodo] = subidos;
         return indiceNodo;
     }else if(padre[indiceNodo] != indiceNodo){
-        return find(padre[indiceNodo],padre,altura,1+subidos);//devolvemos el representante sin actualizar el padre, de modo que siempre busqueemos este rep desde alguna parte que no sea el mismo vamos a hacer este recorrido
+        return find_Sin_PathCompression(padre[indiceNodo],padre);//devolvemos el representante sin actualizar el padre, de modo que siempre busqueemos este rep desde alguna parte que no sea el mismo vamos a hacer este recorrido
     }
 }
 
-void unir_componentes(int indiceNodo1, int indiceNodo2, vector<int>& padre, int cantNodos, vector<int>& altura){ //O(1)
-    int indicePadreNodo1 = find(indiceNodo1,padre,altura,0);
-    int indicePadreNodo2 = find(indiceNodo2,padre,altura,0);
-
-    if(altura[indicePadreNodo1] > altura[indicePadreNodo2]) { //si el arbol de representantes de la arista 1 es mas alto que el de la arista 2, entonces colgamos al de ar2 al de ar1, ya que como mucho los find van a ser de O(altura(ar1)), y es menos costoso pasar del mas chico al mas grande
-        padre[indicePadreNodo2] = indicePadreNodo1;
-    }else if(altura[indicePadreNodo1] < altura[indicePadreNodo2]) {
-        padre[indicePadreNodo1] = indicePadreNodo2;
-    }else {
-        padre[indicePadreNodo1] = indicePadreNodo2;
-        altura[indicePadreNodo1]++;
-    }
-    //tenemos en ar1 la que tiene una altura menor
-
+void unir_componentes_Sin_PathComp(int indiceNodo1, int indiceNodo2, vector<int>& padre){ //O(1)
+    int indicePadreNodo1 = find_Sin_PathCompression(indiceNodo1,padre);
+    int indicePadreNodo2 = find_Sin_PathCompression(indiceNodo2,padre);
+    padre[indicePadreNodo1] = indicePadreNodo2;
 }
 
 vector<Nodo> primSinCola(ListaAdyacencias& G){
@@ -509,7 +522,20 @@ vector<Nodo> primSinCola(ListaAdyacencias& G){
     return padres;
 }
 
+void unir_componentes(int indiceNodo1, int indiceNodo2, vector<int>& padre, int cantNodos, vector<int>& altura){ //O(1)
+    int indicePadreNodo1 = find(indiceNodo1,padre,altura,0);
+    int indicePadreNodo2 = find(indiceNodo2,padre,altura,0);
 
+    if(altura[indicePadreNodo1] > altura[indicePadreNodo2]) { //si el arbol de representantes de la arista 1 es mas alto que el de la arista 2, entonces colgamos al de ar2 al de ar1, ya que como mucho los find van a ser de O(altura(ar1)), y es menos costoso pasar del mas chico al mas grande
+        padre[indicePadreNodo2] = indicePadreNodo1;
+    }else if(altura[indicePadreNodo1] < altura[indicePadreNodo2]) {
+        padre[indicePadreNodo1] = indicePadreNodo2;
+    }else {
+        padre[indicePadreNodo1] = indicePadreNodo2;
+        altura[indicePadreNodo1]++;
+    }
+    //tenemos en ar1 la que tiene una altura menor
+}
 
 Nodo menorNoVisitado(vector<Nodo> nodos, vector<float>& distancia, vector<bool>& visitados){
 
@@ -532,4 +558,44 @@ Nodo menorNoVisitado(vector<Nodo> nodos, vector<float>& distancia, vector<bool>&
     }
 
     return min;
+}
+
+vector<Nodo> prim2(ListaAdyacencias& G){
+    // Inicializacion
+    vector<Peso> res(G.size(), INT_MAX);
+    vector<Nodo> padres(G.size());
+    vector<bool> visitados(G.size(), false);
+
+    printf("\nPASADO TEST 1\n");
+
+    priority_queue<AristaAd, vector<AristaAd>, compare> cola;
+
+    printf("\nPASADO TEST 2\n");
+
+    Nodo pN = G.getNodo(0);
+
+    printf("\nPASADO TEST 2.5\n");
+
+    AristaAd primerNodo(pN, 0);
+
+    cola.push(primerNodo);
+
+    printf("\nPASADO TEST 3\n");
+
+    while (!cola.empty()){
+        AristaAd u = cola.top();
+        cola.pop();
+        visitados[u.adyacente.indice] = true;
+        for(AristaAd ad : G[u.adyacente]){
+            if(!visitados[ad.adyacente.indice]){
+                cola.push(ad);
+                if(res[ad.adyacente.indice] > ad.peso){
+                    res[ad.adyacente.indice] = ad.peso;
+                    padres[ad.adyacente.indice] = u.adyacente;
+                }
+            }
+        }
+    }
+
+    return padres;
 }
