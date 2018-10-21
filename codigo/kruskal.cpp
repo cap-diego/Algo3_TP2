@@ -1,7 +1,7 @@
 #include "kruskal.h"
 #include <fstream>
 
-
+//*/
 int main() {
 
     int cantidadDeNodos;
@@ -56,11 +56,16 @@ int main() {
     cout<<"Se comienza a sacar aristas inconsistentes "<<endl;
 
     //Parametros a modificar
-    int cantClusters = 0, forma =1;
-    int  profundidadVecindario=2;
-    float cantProm =2.15,cantDesv = 2.8;
+    int cantClusters = 0, forma = 1;
+    int  profundidadVecindario = 2;
+    float cantProm = 2.15, cantDesv = 5;
+    ListaAdyacencias laAgm(cantidadDeNodos);
+    l2.convertirALista(laAgm);
 
-    retirarEjesInconsistentes(l2,cantidadDeNodos,cantDesv,padreK,cantClusters, forma,cantProm, profundidadVecindario);
+    vector<int> clusterDeNodo = clusterizarDatos(l2, laAgm, profundidadVecindario, cantDesv, cantClusters);
+
+    /*/
+    retirarEjesInconsistentes(l2, cantidadDeNodos, cantDesv, padreK, cantClusters, forma, cantProm, profundidadVecindario);
 
 
     cout <<"clusters sin mover de indice: "<<cantClusters<<endl;
@@ -78,7 +83,7 @@ int main() {
     }
     exportarNodos(input,"nodosK",padreK);
     cout <<"hay "<<acum<< " clusters de AGM de kruskal"<<endl;
-    cantClusters=0;
+    cantClusters = 0;
     retirarEjesInconsistentes(p,cantidadDeNodos,cantDesv,padreP, cantClusters, forma,cantProm ,profundidadVecindario);
     c.clear();
     c.resize(cantClusters+1, false);
@@ -93,13 +98,17 @@ int main() {
         padreP[i] = acum - padreP[i];
     }
     cout <<"hay "<<acum<< " clusters de AGM de prim"<<endl;
-    exportarNodos(input,"nodosP", padreP);
+    //*/
 
+    cout << "Se encontraron "<< cantClusters << " clusters en el grafo" << endl;
 
-    cout <<"fin"<<endl;
+    //exportarNodos(input,"nodosP", padreP);
+    exportarNodos(input, "nodosKClust", clusterDeNodo);
+
+    cout << "fin" <<endl;
     return 0;
 }
-
+//*/
 
 bool todosVisitados(vector<bool>& v){
     for(int i = 0; i < v.size(); i++){
@@ -112,6 +121,7 @@ bool todosVisitados(vector<bool>& v){
     //Se visitaron todos
     return true;
 }
+
 class compare {
 public:
     bool operator()(const AristaAd& a, const AristaAd& b) {
@@ -181,7 +191,7 @@ void retirarEjesInconsistentes(ListaIncidencia& l2, int cantidadDeNodos, float c
                 //     cout << "-------------------------ARISTA: " << l2.getArista(j).indice <<" de nodos:" << l2.getArista(j).desde.indice <<"("<<l2.getArista(j).desde.x<<","<<l2.getArista(j).desde.y<<")" << "--"
                 // << l2.getArista(j).hasta.indice <<"("<<l2.getArista(j).hasta.x<<","<<l2.getArista(j).hasta.y<<") peso: " <<l2.getArista(j).peso<<endl;
             }
-            if(forma== 1) {
+            if(forma == 1) {
                 float media1, media2;
                 pesosDeVecinos = la.pesosVecinosDeKPasosDesdeNodo(l2.getArista(j).desde, l2.getArista(j).hasta, d);//extremo 1
                 media1 = cantDespuesDeComa(calcularMedia(pesosDeVecinos),digDspDeComa);
@@ -275,12 +285,15 @@ void retirarEjesInconsistentes(ListaIncidencia& l2, int cantidadDeNodos, float c
     }
 }
 
-vector<int> clusterizarDatos(ListaIncidencia& listIn, ListaAdyacencias& listAd, int kPasosVec, int cantDesv){
+//*/
+vector<int> clusterizarDatos(ListaIncidencia& listIn, ListaAdyacencias& listAd, int kPasosVec, float cantDesv, int& cantClusters){
+    cout << "INICIO LA CLUSTERIZACION" << endl;
     vector<int> clusterDeNodo(listAd.size(), 0);
-    int cantClusters = 0;
+    //int cantClusters = 0;
 
     //Pasar por todas las aristas
     for(int idArista = 0; idArista < listIn.cantidad_aristas(); idArista++){
+        cout << "ID ARISTA: " << idArista << endl;
         //Hay que ver si la arista es inconsistente o no
         //Hay que comparar el peso de la arista con las medias de pesos de los ejes
         Arista& aristaActual = listIn.getArista(idArista);
@@ -288,16 +301,17 @@ vector<int> clusterizarDatos(ListaIncidencia& listIn, ListaAdyacencias& listAd, 
         //Calculo los pesos
         float pesoAristaARevisar = aristaActual.peso;
         vector<Peso> pesosDeVecinos  = listAd.pesosVecinosDeKPasosDesdeNodo(aristaActual.hasta, aristaActual.desde, kPasosVec);
-        float pesoBorde1 = calcularMedia(pesosDeVecinos, pesosDeVecinos.size());
-        float desvStandar1 = sqrt(variance(pesosDeVecinos, pesoBorde1));
+        float pesoBorde1 = calcularMedia(pesosDeVecinos);
+        float desvStandar1 = desviacion_std(pesosDeVecinos, pesoBorde1);
 
         pesosDeVecinos.clear();
         pesosDeVecinos = listAd.pesosVecinosDeKPasosDesdeNodo(aristaActual.hasta, aristaActual.desde, kPasosVec);
-        float pesoBorde2 = calcularMedia(pesosDeVecinos, pesosDeVecinos.size());
-        float desvStandar2 = sqrt(variance(pesosDeVecinos, pesoBorde2));
-
+        float pesoBorde2 = calcularMedia(pesosDeVecinos);
+        float desvStandar2 = desviacion_std(pesosDeVecinos, pesoBorde2);
+        cout << "VEO SI ES INCONSISTENTE...";
         //Ahora se checkea si es o no inconsistente
         if((((pesoAristaARevisar - pesoBorde1)/desvStandar1) > (cantDesv)) || (((pesoAristaARevisar - pesoBorde2)/desvStandar2) > (cantDesv))){
+            cout << " ES INCONSISTENTE" << endl;
             //Es inconsistente, lo tengo que borrar
             //Para borrarlo, cambio el peso de la arista en listAd a -1, asi la funcion de pesos vecinos no la toma
             vector<bool> visitados(listAd.size(), false);
@@ -308,6 +322,7 @@ vector<int> clusterizarDatos(ListaIncidencia& listIn, ListaAdyacencias& listAd, 
             //Ahora hay que darle un cluster a los nodos que queden de cada lado de la arista
             //Hago un BFS o DFS para asignar el cluster a los nodos
             if(clusterDeNodo[aristaActual.desde.indice] == 0 && clusterDeNodo[aristaActual.hasta.indice] == 0){
+                cout << "Forma 1" << endl;
                 //Se forman dos clusters
 
                 //Le pongo el cluster a una de las comp conexas
@@ -321,12 +336,15 @@ vector<int> clusterizarDatos(ListaIncidencia& listIn, ListaAdyacencias& listAd, 
                 nodosANombrar.push(aristaActual.desde);
 
                 while(!nodosANombrar.empty()){
-                    Nodo& nodoANombrar = nodosANombrar.front();
+                    Nodo nodoANombrar = nodosANombrar.front();
                     clusterDeNodo[nodoANombrar.indice] = cantClusters;
                     nodosANombrar.pop();
 
+                    cout << "ENCOLO VECINOS DE " << nodoANombrar.indice << endl;
                     for(AristaAd v : listAd[nodoANombrar]){
                         if(v.adyacente != aristaActual.hasta && v.adyacente != nodoANombrar && !(visitados[v.adyacente.indice])){
+                            cout << "ENCOLO NODO " << v.adyacente.indice << endl;
+                            visitados[v.adyacente.indice] = true;
                             nodosANombrar.push(v.adyacente);
                         }
                     }
@@ -341,20 +359,25 @@ vector<int> clusterizarDatos(ListaIncidencia& listIn, ListaAdyacencias& listAd, 
                 nodosANombrar.push(aristaActual.hasta);
 
                 while(!nodosANombrar.empty()){
-                    Nodo& nodoANombrar = nodosANombrar.front();
+                    Nodo nodoANombrar = nodosANombrar.front();
                     clusterDeNodo[nodoANombrar.indice] = cantClusters;
                     nodosANombrar.pop();
 
+                    cout << "ENCOLO VECINOS DE " << nodoANombrar.indice << endl;
                     for(AristaAd v : listAd[nodoANombrar]){
                         if(v.adyacente != aristaActual.desde && v.adyacente != nodoANombrar && !(visitados[v.adyacente.indice])){
+                            cout << "ENCOLO NODO " << v.adyacente.indice << endl;
+                            visitados[v.adyacente.indice] = true;
                             nodosANombrar.push(v.adyacente);
                         }
                     }
                 }
 
                 //Ya estan clusterizados
+                cout << "ARISTA " << idArista << " BORRADA" << endl;
             }
             else{
+                cout << "Forma 2" << endl;
                 //Se forma un solo cluster
                 cantClusters++;
 
@@ -363,22 +386,27 @@ vector<int> clusterizarDatos(ListaIncidencia& listIn, ListaAdyacencias& listAd, 
                 nodosANombrar.push(aristaActual.hasta);
 
                 while(!nodosANombrar.empty()){
-                    Nodo& nodoANombrar = nodosANombrar.front();
+                    Nodo nodoANombrar = nodosANombrar.front();
                     clusterDeNodo[nodoANombrar.indice] = cantClusters;
                     nodosANombrar.pop();
 
                     for(AristaAd v : listAd[nodoANombrar]){
                         if(v.adyacente != aristaActual.desde && v.adyacente != nodoANombrar && !(visitados[v.adyacente.indice])){
+                            visitados[v.adyacente.indice] = true;
                             nodosANombrar.push(v.adyacente);
                         }
                     }
                 }
+
+                //cout << "ARISTA " << idArista << " BORRADA" << endl;
             }
         }
 
     }
+    cout << "Se terminó la función de clusterizar" << endl;
     return  clusterDeNodo;
 }
+//*/
 
 void convertirNodosAAristas(ListaIncidencia& l, MatrizAdyacencias& m, vector<Nodo>& v,int k_vecinos) {
     //armo arbol completo

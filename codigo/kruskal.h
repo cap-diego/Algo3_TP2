@@ -29,8 +29,6 @@ float cantDespuesDeComa(const float& x, const int& numDecimals) {
     return static_cast<double>(y)+(1.0/m)*r;
 }
 
-
-
 struct Nodo {
     float x,y;
     int indice;
@@ -463,7 +461,7 @@ ListaIncidencia AGM_Kruskal(ListaIncidencia& grafo, vector<int>& padre, vector<i
 
 void retirarEjesInconsistentes(ListaIncidencia& l2, int cantidadDeNodos, float cantDesv, vector<int>&, int&, int forma, float cantProm, int profundidadVecindario);
 
-vector<int> clusterizarDatos(ListaIncidencia& listIn, ListaAdyacencias& listAd, int kPasosVec, int cantDesv);
+vector<int> clusterizarDatos(ListaIncidencia& listIn, ListaAdyacencias& listAd, int kPasosVec, float cantDesv, int& cantClusters);
 
 //funciones aux
 float desviacion_std(vector<float> &v, float mean);
