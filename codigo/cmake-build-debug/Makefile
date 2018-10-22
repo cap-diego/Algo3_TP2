@@ -122,60 +122,6 @@ Codigo/fast:
 	$(MAKE) -f CMakeFiles\Codigo.dir\build.make CMakeFiles/Codigo.dir/build
 .PHONY : Codigo/fast
 
-bellman-ford.obj: bellman-ford.cpp.obj
-
-.PHONY : bellman-ford.obj
-
-# target to build an object file
-bellman-ford.cpp.obj:
-	$(MAKE) -f CMakeFiles\Codigo.dir\build.make CMakeFiles/Codigo.dir/bellman-ford.cpp.obj
-.PHONY : bellman-ford.cpp.obj
-
-bellman-ford.i: bellman-ford.cpp.i
-
-.PHONY : bellman-ford.i
-
-# target to preprocess a source file
-bellman-ford.cpp.i:
-	$(MAKE) -f CMakeFiles\Codigo.dir\build.make CMakeFiles/Codigo.dir/bellman-ford.cpp.i
-.PHONY : bellman-ford.cpp.i
-
-bellman-ford.s: bellman-ford.cpp.s
-
-.PHONY : bellman-ford.s
-
-# target to generate assembly for a file
-bellman-ford.cpp.s:
-	$(MAKE) -f CMakeFiles\Codigo.dir\build.make CMakeFiles/Codigo.dir/bellman-ford.cpp.s
-.PHONY : bellman-ford.cpp.s
-
-floyd-warshall.obj: floyd-warshall.cpp.obj
-
-.PHONY : floyd-warshall.obj
-
-# target to build an object file
-floyd-warshall.cpp.obj:
-	$(MAKE) -f CMakeFiles\Codigo.dir\build.make CMakeFiles/Codigo.dir/floyd-warshall.cpp.obj
-.PHONY : floyd-warshall.cpp.obj
-
-floyd-warshall.i: floyd-warshall.cpp.i
-
-.PHONY : floyd-warshall.i
-
-# target to preprocess a source file
-floyd-warshall.cpp.i:
-	$(MAKE) -f CMakeFiles\Codigo.dir\build.make CMakeFiles/Codigo.dir/floyd-warshall.cpp.i
-.PHONY : floyd-warshall.cpp.i
-
-floyd-warshall.s: floyd-warshall.cpp.s
-
-.PHONY : floyd-warshall.s
-
-# target to generate assembly for a file
-floyd-warshall.cpp.s:
-	$(MAKE) -f CMakeFiles\Codigo.dir\build.make CMakeFiles/Codigo.dir/floyd-warshall.cpp.s
-.PHONY : floyd-warshall.cpp.s
-
 kruskal.obj: kruskal.cpp.obj
 
 .PHONY : kruskal.obj
@@ -203,60 +149,6 @@ kruskal.cpp.s:
 	$(MAKE) -f CMakeFiles\Codigo.dir\build.make CMakeFiles/Codigo.dir/kruskal.cpp.s
 .PHONY : kruskal.cpp.s
 
-main.obj: main.cpp.obj
-
-.PHONY : main.obj
-
-# target to build an object file
-main.cpp.obj:
-	$(MAKE) -f CMakeFiles\Codigo.dir\build.make CMakeFiles/Codigo.dir/main.cpp.obj
-.PHONY : main.cpp.obj
-
-main.i: main.cpp.i
-
-.PHONY : main.i
-
-# target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles\Codigo.dir\build.make CMakeFiles/Codigo.dir/main.cpp.i
-.PHONY : main.cpp.i
-
-main.s: main.cpp.s
-
-.PHONY : main.s
-
-# target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles\Codigo.dir\build.make CMakeFiles/Codigo.dir/main.cpp.s
-.PHONY : main.cpp.s
-
-prim.obj: prim.cpp.obj
-
-.PHONY : prim.obj
-
-# target to build an object file
-prim.cpp.obj:
-	$(MAKE) -f CMakeFiles\Codigo.dir\build.make CMakeFiles/Codigo.dir/prim.cpp.obj
-.PHONY : prim.cpp.obj
-
-prim.i: prim.cpp.i
-
-.PHONY : prim.i
-
-# target to preprocess a source file
-prim.cpp.i:
-	$(MAKE) -f CMakeFiles\Codigo.dir\build.make CMakeFiles/Codigo.dir/prim.cpp.i
-.PHONY : prim.cpp.i
-
-prim.s: prim.cpp.s
-
-.PHONY : prim.s
-
-# target to generate assembly for a file
-prim.cpp.s:
-	$(MAKE) -f CMakeFiles\Codigo.dir\build.make CMakeFiles/Codigo.dir/prim.cpp.s
-.PHONY : prim.cpp.s
-
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -266,21 +158,9 @@ help:
 	@echo ... Codigo
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... bellman-ford.obj
-	@echo ... bellman-ford.i
-	@echo ... bellman-ford.s
-	@echo ... floyd-warshall.obj
-	@echo ... floyd-warshall.i
-	@echo ... floyd-warshall.s
 	@echo ... kruskal.obj
 	@echo ... kruskal.i
 	@echo ... kruskal.s
-	@echo ... main.obj
-	@echo ... main.i
-	@echo ... main.s
-	@echo ... prim.obj
-	@echo ... prim.i
-	@echo ... prim.s
 .PHONY : help
 
 

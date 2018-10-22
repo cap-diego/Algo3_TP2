@@ -42,25 +42,27 @@ En el mundo del machine learning, problema de Clustering consiste en poder agrup
 % aca otros https://home.deib.polimi.it/matteucc/Clustering/tutorial_html/
 %
 %
-%Hay que confirmar esto de acá abajo, creo que se cumple esto pero habría que ver algun paper o página que diga que esto es así. Además seguro requiere reescritura.
-El problema de Clustering es un problema difícil, ya que no existe un algoritmo exacto que pueda generar clusters en tiempo polinomial a partir de un conjunto de datos, además el concepto de un cluster es ambiguo, dado un grafo no existe una única configuración de clusters que separe los datos, por lo que encontrar un conjunto de clusters que clasifique bien a los datos es un proceso iterativo.
+%Hay que confirmar esto de acá abajo, creo que se cumple esto pero habría que ver algun paper o página que diga que esto es así. Agrandar un touch el primer párrafo de acá
+El problema de Clustering es un problema difícil, ya que no existe un algoritmo exacto que pueda generar clusters en tiempo polinomial a partir de un conjunto de datos, además el concepto de un cluster es ambiguo, dado un grafo no existe una única configuración de clusters que separe los datos, sino que hay varias configuraciones que a simple vista pueden parecer válidas.
 
-sino que existen \textbf{heuristicas} que intentan resolver el problema. La heurística utilizada en este informe esta detallada en el paper (nombre paper) de (autor paper), y su forma de calcular los clusters es la siguiente: Formamos un grafo completo con los datos, interpretando los pesos de las aristas como la distancia entre los vértices que son unidos por ellas, luego recorremos las aristas y borramos las que se consideren como \textbf{inconsistentes}, de acuerdo al paper una arista $a$ se considera inconsistente si su peso supera en cierta cantidad de desviaciones standard a las medias de los pesos de $k$ vecinos de los vertices en sus puntas. También se puede considerar inconsistente si el \textit{factor} o la \textit{razón} del peso de la arista con los pesos de $k$ vecinos de los vertices en sus puntas supera por un valor dado $f$. Al remover un eje inconsistente, las componentes conexas formadas son identificadas con un indice, entonces luego de recorrer todas las aristas, todas las componentes conexas van a tener un  indice distinto y podemos interpretarlas como los clusters del grafo.
+Por lo tanto para resolver el problema utilizamos una \textbf{heuristica}, la misma esta basada en el método de detección de clustes explicado en el paper "Graph-Theoretical Methods for Detecting and Describing Gestalt Clusters" de Charles T. Zahn, y su forma de calcular los clusters es la siguiente: Consideramos nuestros datos como una serie de puntos en un plano, tomando un grafo completo $G$ usando los puntos como vertices y las distancias entre ellos como pesos en las aristas. Luego calculamos el Árbol Generador Mínimo de $G$ y lo llamamos $T$.
+Para poder encontrar los clusters hay que eliminar de $T$ a los ejes \textbf{inconsistentes}, según el paper un eje $e$ es inconsistente si su peso supera en cierta cantidad de desviaciones estandard a las medias de los pesos de las aristas que estén a distancia $k$ de los vértices que están en sus puntas. Al remover un eje inconsistente, las componentes conexas formadas son identificadas con un indice, entonces luego de recorrer todas las aristas, todas las componentes conexas van a tener un  indice distinto y podemos interpretarlas como los clusters del grafo.
+Para poder calcular el AGM del grafo $G$ se implementaron dos algoritmos, el algoritmo de Kruskal y el algoritmo de Prim, ambos levemente modificados para utilizar estructuras de Lista de Incidencia y Lista de Adyacencia respectivamente. Además, se implentaron dos versiones de Kruskal, una con path-compression y otra sin, a fin de poder compararlos en la experimentación.
 \section{Justificación teórica}
 \section{Algoritmos presentados}
 
 \subsection{Kruskal}
 \begin{codebox}
-  \Procname{$\proc{KruskalSinPathComp}(ListaIncidencia: grafoCompleto, cantNodos: entero)$}
-\li padre $\gets$ vector de enteros de tamaño de cantNodos y cargado con el valor de su posición en cada posición
-\li AGM $\gets$ lista de incidencia vacia, de tamaño cantNodos-1
-\li OrdenarPorPeso(grafoCompleto)
-\li \For e:Arista $\in$ grafoCompleto 
-\li \If $getPadre(indice(e.primerNodo), padre) $=$ getPadre(indice(e.segundoNodo),padre)$ \Then
-\li agregar(e,agm)
-\li \End
-\li \End
-\li Devolver AGM
+  	\Procname{$\proc{KruskalSinPathComp}(ListaIncidencia: grafoCompleto, cantNodos: entero)$}
+		\li padre $\gets$ vector de enteros de tamaño de cantNodos y cargado con el valor de su posición en cada posición
+		\li AGM $\gets$ lista de incidencia vacia, de tamaño cantNodos-1
+		\li OrdenarPorPeso(grafoCompleto)
+		\li \For e:Arista $\in$ grafoCompleto 
+			\li \If $getPadre(indice(e.primerNodo), padre) == getPadre(indice(e.segundoNodo),padre)$ \Then
+				\li agregar(e,agm)
+			\li \End
+		\li \End
+	\li Devolver AGM
 \end{codebox}
 
 \begin{codebox}
@@ -127,8 +129,12 @@ sino que existen \textbf{heuristicas} que intentan resolver el problema. La heur
 \li \End
 \end{codebox}
 
+\subsection{Prim}
+
 \subsection{Complejidad}
+
 \section{Experimentación}
+%Acá va lo de Diego
 
 \subsection{Variaciones}
 \begin{verse}

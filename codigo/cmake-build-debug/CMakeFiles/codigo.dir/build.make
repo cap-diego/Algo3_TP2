@@ -56,105 +56,9 @@ include CMakeFiles/Codigo.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Codigo.dir/flags.make
 
-CMakeFiles/Codigo.dir/main.cpp.obj: CMakeFiles/Codigo.dir/flags.make
-CMakeFiles/Codigo.dir/main.cpp.obj: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Codigo.dir/main.cpp.obj"
-	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Codigo.dir\main.cpp.obj -c C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\main.cpp
-
-CMakeFiles/Codigo.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Codigo.dir/main.cpp.i"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\main.cpp > CMakeFiles\Codigo.dir\main.cpp.i
-
-CMakeFiles/Codigo.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Codigo.dir/main.cpp.s"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\main.cpp -o CMakeFiles\Codigo.dir\main.cpp.s
-
-CMakeFiles/Codigo.dir/main.cpp.obj.requires:
-
-.PHONY : CMakeFiles/Codigo.dir/main.cpp.obj.requires
-
-CMakeFiles/Codigo.dir/main.cpp.obj.provides: CMakeFiles/Codigo.dir/main.cpp.obj.requires
-	$(MAKE) -f CMakeFiles\Codigo.dir\build.make CMakeFiles/Codigo.dir/main.cpp.obj.provides.build
-.PHONY : CMakeFiles/Codigo.dir/main.cpp.obj.provides
-
-CMakeFiles/Codigo.dir/main.cpp.obj.provides.build: CMakeFiles/Codigo.dir/main.cpp.obj
-
-
-CMakeFiles/Codigo.dir/bellman-ford.cpp.obj: CMakeFiles/Codigo.dir/flags.make
-CMakeFiles/Codigo.dir/bellman-ford.cpp.obj: ../bellman-ford.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Codigo.dir/bellman-ford.cpp.obj"
-	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Codigo.dir\bellman-ford.cpp.obj -c C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\bellman-ford.cpp
-
-CMakeFiles/Codigo.dir/bellman-ford.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Codigo.dir/bellman-ford.cpp.i"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\bellman-ford.cpp > CMakeFiles\Codigo.dir\bellman-ford.cpp.i
-
-CMakeFiles/Codigo.dir/bellman-ford.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Codigo.dir/bellman-ford.cpp.s"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\bellman-ford.cpp -o CMakeFiles\Codigo.dir\bellman-ford.cpp.s
-
-CMakeFiles/Codigo.dir/bellman-ford.cpp.obj.requires:
-
-.PHONY : CMakeFiles/Codigo.dir/bellman-ford.cpp.obj.requires
-
-CMakeFiles/Codigo.dir/bellman-ford.cpp.obj.provides: CMakeFiles/Codigo.dir/bellman-ford.cpp.obj.requires
-	$(MAKE) -f CMakeFiles\Codigo.dir\build.make CMakeFiles/Codigo.dir/bellman-ford.cpp.obj.provides.build
-.PHONY : CMakeFiles/Codigo.dir/bellman-ford.cpp.obj.provides
-
-CMakeFiles/Codigo.dir/bellman-ford.cpp.obj.provides.build: CMakeFiles/Codigo.dir/bellman-ford.cpp.obj
-
-
-CMakeFiles/Codigo.dir/floyd-warshall.cpp.obj: CMakeFiles/Codigo.dir/flags.make
-CMakeFiles/Codigo.dir/floyd-warshall.cpp.obj: ../floyd-warshall.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Codigo.dir/floyd-warshall.cpp.obj"
-	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Codigo.dir\floyd-warshall.cpp.obj -c C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\floyd-warshall.cpp
-
-CMakeFiles/Codigo.dir/floyd-warshall.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Codigo.dir/floyd-warshall.cpp.i"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\floyd-warshall.cpp > CMakeFiles\Codigo.dir\floyd-warshall.cpp.i
-
-CMakeFiles/Codigo.dir/floyd-warshall.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Codigo.dir/floyd-warshall.cpp.s"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\floyd-warshall.cpp -o CMakeFiles\Codigo.dir\floyd-warshall.cpp.s
-
-CMakeFiles/Codigo.dir/floyd-warshall.cpp.obj.requires:
-
-.PHONY : CMakeFiles/Codigo.dir/floyd-warshall.cpp.obj.requires
-
-CMakeFiles/Codigo.dir/floyd-warshall.cpp.obj.provides: CMakeFiles/Codigo.dir/floyd-warshall.cpp.obj.requires
-	$(MAKE) -f CMakeFiles\Codigo.dir\build.make CMakeFiles/Codigo.dir/floyd-warshall.cpp.obj.provides.build
-.PHONY : CMakeFiles/Codigo.dir/floyd-warshall.cpp.obj.provides
-
-CMakeFiles/Codigo.dir/floyd-warshall.cpp.obj.provides.build: CMakeFiles/Codigo.dir/floyd-warshall.cpp.obj
-
-
-CMakeFiles/Codigo.dir/prim.cpp.obj: CMakeFiles/Codigo.dir/flags.make
-CMakeFiles/Codigo.dir/prim.cpp.obj: ../prim.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Codigo.dir/prim.cpp.obj"
-	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Codigo.dir\prim.cpp.obj -c C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\prim.cpp
-
-CMakeFiles/Codigo.dir/prim.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Codigo.dir/prim.cpp.i"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\prim.cpp > CMakeFiles\Codigo.dir\prim.cpp.i
-
-CMakeFiles/Codigo.dir/prim.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Codigo.dir/prim.cpp.s"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\prim.cpp -o CMakeFiles\Codigo.dir\prim.cpp.s
-
-CMakeFiles/Codigo.dir/prim.cpp.obj.requires:
-
-.PHONY : CMakeFiles/Codigo.dir/prim.cpp.obj.requires
-
-CMakeFiles/Codigo.dir/prim.cpp.obj.provides: CMakeFiles/Codigo.dir/prim.cpp.obj.requires
-	$(MAKE) -f CMakeFiles\Codigo.dir\build.make CMakeFiles/Codigo.dir/prim.cpp.obj.provides.build
-.PHONY : CMakeFiles/Codigo.dir/prim.cpp.obj.provides
-
-CMakeFiles/Codigo.dir/prim.cpp.obj.provides.build: CMakeFiles/Codigo.dir/prim.cpp.obj
-
-
 CMakeFiles/Codigo.dir/kruskal.cpp.obj: CMakeFiles/Codigo.dir/flags.make
 CMakeFiles/Codigo.dir/kruskal.cpp.obj: ../kruskal.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Codigo.dir/kruskal.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Codigo.dir/kruskal.cpp.obj"
 	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Codigo.dir\kruskal.cpp.obj -c C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\kruskal.cpp
 
 CMakeFiles/Codigo.dir/kruskal.cpp.i: cmake_force
@@ -178,25 +82,17 @@ CMakeFiles/Codigo.dir/kruskal.cpp.obj.provides.build: CMakeFiles/Codigo.dir/krus
 
 # Object files for target Codigo
 Codigo_OBJECTS = \
-"CMakeFiles/Codigo.dir/main.cpp.obj" \
-"CMakeFiles/Codigo.dir/bellman-ford.cpp.obj" \
-"CMakeFiles/Codigo.dir/floyd-warshall.cpp.obj" \
-"CMakeFiles/Codigo.dir/prim.cpp.obj" \
 "CMakeFiles/Codigo.dir/kruskal.cpp.obj"
 
 # External object files for target Codigo
 Codigo_EXTERNAL_OBJECTS =
 
-Codigo.exe: CMakeFiles/Codigo.dir/main.cpp.obj
-Codigo.exe: CMakeFiles/Codigo.dir/bellman-ford.cpp.obj
-Codigo.exe: CMakeFiles/Codigo.dir/floyd-warshall.cpp.obj
-Codigo.exe: CMakeFiles/Codigo.dir/prim.cpp.obj
 Codigo.exe: CMakeFiles/Codigo.dir/kruskal.cpp.obj
 Codigo.exe: CMakeFiles/Codigo.dir/build.make
 Codigo.exe: CMakeFiles/Codigo.dir/linklibs.rsp
 Codigo.exe: CMakeFiles/Codigo.dir/objects1.rsp
 Codigo.exe: CMakeFiles/Codigo.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable Codigo.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Proyectos\Algo3Diego\Algo3_TP2\codigo\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Codigo.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Codigo.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -204,10 +100,6 @@ CMakeFiles/Codigo.dir/build: Codigo.exe
 
 .PHONY : CMakeFiles/Codigo.dir/build
 
-CMakeFiles/Codigo.dir/requires: CMakeFiles/Codigo.dir/main.cpp.obj.requires
-CMakeFiles/Codigo.dir/requires: CMakeFiles/Codigo.dir/bellman-ford.cpp.obj.requires
-CMakeFiles/Codigo.dir/requires: CMakeFiles/Codigo.dir/floyd-warshall.cpp.obj.requires
-CMakeFiles/Codigo.dir/requires: CMakeFiles/Codigo.dir/prim.cpp.obj.requires
 CMakeFiles/Codigo.dir/requires: CMakeFiles/Codigo.dir/kruskal.cpp.obj.requires
 
 .PHONY : CMakeFiles/Codigo.dir/requires

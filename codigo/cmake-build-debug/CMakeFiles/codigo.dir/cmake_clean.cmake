@@ -1,8 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Codigo.dir/main.cpp.obj"
-  "CMakeFiles/Codigo.dir/bellman-ford.cpp.obj"
-  "CMakeFiles/Codigo.dir/floyd-warshall.cpp.obj"
-  "CMakeFiles/Codigo.dir/prim.cpp.obj"
   "CMakeFiles/Codigo.dir/kruskal.cpp.obj"
   "Codigo.pdb"
   "Codigo.exe"

@@ -58,7 +58,7 @@ int main() {
     //Parametros a modificar
     int cantClusters = 0, forma = 1;
     int  profundidadVecindario = 2;
-    float cantProm = 2.15, cantDesv = 5;
+    float cantProm = 2.15, cantDesv = 10;
     ListaAdyacencias laAgm(cantidadDeNodos);
     l2.convertirALista(laAgm);
 
@@ -310,12 +310,12 @@ vector<int> clusterizarDatos(ListaIncidencia& listIn, ListaAdyacencias& listAd, 
         float desvStandar2 = desviacion_std(pesosDeVecinos, pesoBorde2);
         cout << "VEO SI ES INCONSISTENTE...";
         //Ahora se checkea si es o no inconsistente
-        if((((pesoAristaARevisar - pesoBorde1)/desvStandar1) > (cantDesv)) || (((pesoAristaARevisar - pesoBorde2)/desvStandar2) > (cantDesv))){
+        if((((pesoAristaARevisar)) > (cantDesv * desvStandar1) + pesoBorde1) && (((pesoAristaARevisar)) > (cantDesv * desvStandar2) + pesoBorde2)){
             cout << " ES INCONSISTENTE" << endl;
             //Es inconsistente, lo tengo que borrar
             //Para borrarlo, cambio el peso de la arista en listAd a -1, asi la funcion de pesos vecinos no la toma
             vector<bool> visitados(listAd.size(), false);
-            aristaActual.peso = -1;
+            //aristaActual.peso = -1;
             listAd.sacarArista(aristaActual);
             listIn.sacarArista(aristaActual);
 

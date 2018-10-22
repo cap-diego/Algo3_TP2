@@ -80,34 +80,10 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Proyectos/Algo3Diego/Algo3_TP2/codigo/basics.h">
-			<Option target="Codigo"/>
-		</Unit>
-		<Unit filename="C:/Proyectos/Algo3Diego/Algo3_TP2/codigo/bellman-ford.cpp">
-			<Option target="Codigo"/>
-		</Unit>
-		<Unit filename="C:/Proyectos/Algo3Diego/Algo3_TP2/codigo/bellman-ford.h">
-			<Option target="Codigo"/>
-		</Unit>
-		<Unit filename="C:/Proyectos/Algo3Diego/Algo3_TP2/codigo/floyd-warshall.cpp">
-			<Option target="Codigo"/>
-		</Unit>
-		<Unit filename="C:/Proyectos/Algo3Diego/Algo3_TP2/codigo/floyd-warshall.h">
-			<Option target="Codigo"/>
-		</Unit>
 		<Unit filename="C:/Proyectos/Algo3Diego/Algo3_TP2/codigo/kruskal.cpp">
 			<Option target="Codigo"/>
 		</Unit>
 		<Unit filename="C:/Proyectos/Algo3Diego/Algo3_TP2/codigo/kruskal.h">
-			<Option target="Codigo"/>
-		</Unit>
-		<Unit filename="C:/Proyectos/Algo3Diego/Algo3_TP2/codigo/main.cpp">
-			<Option target="Codigo"/>
-		</Unit>
-		<Unit filename="C:/Proyectos/Algo3Diego/Algo3_TP2/codigo/prim.cpp">
-			<Option target="Codigo"/>
-		</Unit>
-		<Unit filename="C:/Proyectos/Algo3Diego/Algo3_TP2/codigo/prim.h">
 			<Option target="Codigo"/>
 		</Unit>
 		<Unit filename="C:/Proyectos/Algo3Diego/Algo3_TP2/codigo/CMakeLists.txt">
