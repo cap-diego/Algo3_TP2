@@ -48,7 +48,13 @@ El problema de Clustering es un problema difícil, ya que no existe un algoritmo
 Por lo tanto para resolver el problema utilizamos una \textbf{heuristica}, la misma esta basada en el método de detección de clustes explicado en el paper "Graph-Theoretical Methods for Detecting and Describing Gestalt Clusters" de Charles T. Zahn, y su forma de calcular los clusters es la siguiente: Consideramos nuestros datos como una serie de puntos en un plano, tomando un grafo completo $G$ usando los puntos como vertices y las distancias entre ellos como pesos en las aristas. Luego calculamos el Árbol Generador Mínimo de $G$ y lo llamamos $T$.
 Para poder encontrar los clusters hay que eliminar de $T$ a los ejes \textbf{inconsistentes}, según el paper un eje $e$ es inconsistente si su peso supera en cierta cantidad de desviaciones estandard a las medias de los pesos de las aristas que estén a distancia $k$ de los vértices que están en sus puntas. Al remover un eje inconsistente, las componentes conexas formadas son identificadas con un indice, entonces luego de recorrer todas las aristas, todas las componentes conexas van a tener un  indice distinto y podemos interpretarlas como los clusters del grafo.
 Para poder calcular el AGM del grafo $G$ se implementaron dos algoritmos, el algoritmo de Kruskal y el algoritmo de Prim, ambos levemente modificados para utilizar estructuras de Lista de Incidencia y Lista de Adyacencia respectivamente. Además, se implentaron dos versiones de Kruskal, una con path-compression y otra sin, a fin de poder compararlos en la experimentación.
+%Agregar nota en el parrafo de abajo, aunque puede que lo saquemos later
+Este método de detección de clusters esta basado en los \textit{principios de la forma de organización perceptible} que están explicados en el paper anteriormente mencionado, en resumen se intento formular un método matemático que detecte clusters utilizando los principios de tal forma que los clusters formados correspondan con los que uno podría percibir al ver el grafo.
 \section{Justificación teórica}
+
+\subsection{Arboles Generadores Mínimos}
+En el método explicado anteriormente para calcular los clusters se 
+
 \section{Algoritmos presentados}
 
 \subsection{Kruskal}
