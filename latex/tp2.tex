@@ -1,5 +1,6 @@
 \documentclass[8pt,a4paper]{article}
 \usepackage{clrscode}
+\usepackage{url}
 \usepackage[conEntregas]{tp2}
 \usepackage[spanish]{babel} % para que comandos como \today den el resultado en castellano
 \usepackage{a4wide} % márgenes un poco más anchos que lo usual
@@ -37,22 +38,38 @@
 En este informe informe vamos a ver distintos problemas cuyas posibles soluciones involucran árboles generadores mínimos y algoritmos que los generan. En particular los problemas son el \textbf{Clustering} y el \textbf{Arbitraje}.
 
 \section{Clustering}
-En el mundo del machine learning, problema de Clustering consiste en poder agrupar datos en distintos grupos llamados clusters, donde se espera que los datos de un cluster tengan algún tipo de relación o característica que los distinga de los datos en otros clusters. Este problema es de gran interés ya que tiene muchos usos como por ejemplo (...).
+En el mundo del machine learning, problema de \textbf{Clustering} consiste en poder \textbf{agrupar datos} en distintos grupos llamados clusters, donde se espera que los datos de un cluster tengan algún tipo de \textbf{relación o característica} que los \textbf{distinga} de los datos en otros clusters. Este problema es de gran interés ya que tiene muchos usos como por ejemplo:
+\begin{itemize}
+	\item Las tomografías por emisión de positrones utilizan análisis de clusters para poder diferenciar tejidos en imagenes tridimensionales.
+	\item La investigación de mercados utilizan el clustering para poder particionar la población de consumidores en grupos para poder entender mejor la relación entre ellos.
+	\item El clustering puede ser utilizado por motores de búsqueda de páginas web para poder agrupar resultados similares.
+	\item La segmentación de imágenes utiliza clustering para poder detectar bordes u objetos en imágenes.
+\end{itemize}
+El análisis de Clusters es un problema de \textbf{aprendizaje no supervisado}, que puede ser abarcado de \textbf{varias maneras}, dependiendo de como uno \textbf{interprete que es lo que constituye un cluster} y como se puede encontrar de forma eficiente. Los diversos algortimos que resuelven el problema se pueden categorizar según su interpretación de lo que es cluster.
+Se puede reformular el problema de Clustering como un problema de \textbf{optimización multiobjetivo}, donde el algoritmo y los parámetros (por ejemplo la función para calcular distancias, o la cantidad esperada de clusters) relacionados a este dependen del conjunto de datos a analizar. El análisis de clusters es un \textbf{proceso iterativo} que involucra prueba y error, generalmente es necesario modificar parámetros hasta conseguir los resultados satisfactorios.
 % aca estan los usos https://en.wikipedia.org/wiki/Cluster_analysis#Applications
 % aca otros https://home.deib.polimi.it/matteucc/Clustering/tutorial_html/
 %
 %
-%Hay que confirmar esto de acá abajo, creo que se cumple esto pero habría que ver algun paper o página que diga que esto es así. Agrandar un touch el primer párrafo de acá
-\subsection{Dificultades del problema}
-El problema de Clustering es un problema difícil, ya que no existe un algoritmo exacto que pueda generar clusters en tiempo polinomial a partir de un conjunto de datos, además el concepto de un cluster es ambiguo, dado un grafo no existe una única configuración de clusters que separe los datos, sino que hay varias configuraciones que a simple vista pueden parecer válidas.
+\subsection{Dificultades del clustering, Aprendizaje Supervisado vs No Supervisado}
+%El problema de Clustering es un problema difícil, ya que no existe un algoritmo exacto que pueda generar clusters en tiempo polinomial a partir de un conjunto de datos, además el concepto de un cluster es ambiguo, dado un grafo no existe una única configuración de clusters que separe los datos, sino que hay varias configuraciones que a simple vista pueden parecer válidas.
+%El análisis de Clusters es un problema de \textbf{aprendizaje no supervisado}, eso significa que no se sabe nada a priori sobre el conjunto de datos inicial.
+Como se mencionó anteriormente el análisis de clusters es un problema de \textbf{aprendizaje no supervisado}, para poder entender como esto afecta al problema vamos a explicar de forma resumida los dos tipos principales de aprendizajes que existen en el mundo del machine learning.
+
+\subsubsection*{Aprendizaje Supervisado}
+El Aprendizaje Supervisado es una técnica de machine learning que, a partir de conjuntos de entradas y salidas esperadas intenta inferir una función que genere las salidas adecuadas para cualquier entrada.
+\subsubsection*{Aprendizaje No Supervisado}
+
+%\subsection{Aprendizaje Supervisado vs No Supervisado}
 
 %PONER LO DE LOS APRENDIZAJES
 %https://en.wikipedia.org/wiki/Supervised_learning
 %https://en.wikipedia.org/wiki/Unsupervised_learning
 
+%Hay que confirmar esto de acá abajo, creo que se cumple esto pero habría que ver algun paper o página que diga que esto es así. Agrandar un touch el primer párrafo de acá
 \subsection{Heuristica para resolver el problema}
 
-Por lo tanto para resolver el problema utilizamos una \textbf{heuristica}, la misma esta basada en el método de detección de clustes explicado en el paper "Graph-Theoretical Methods for Detecting and Describing Gestalt Clusters" de Charles T. Zahn, y su forma de calcular los clusters es la siguiente: Consideramos nuestros datos como una serie de puntos en un plano, tomando un grafo completo $G$ usando los puntos como vertices y las distancias entre ellos como pesos en las aristas. Luego calculamos el Árbol Generador Mínimo de $G$ y lo llamamos $T$.
+Para resolver el problema utilizamos una \textbf{heuristica}, la misma esta basada en el método de detección de clustes explicado en el paper "Graph-Theoretical Methods for Detecting and Describing Gestalt Clusters" de Charles T. Zahn, y su forma de calcular los clusters es la siguiente: Consideramos nuestros datos como una serie de puntos en un plano, tomando un grafo completo $G$ usando los puntos como vertices y las distancias entre ellos como pesos en las aristas. Luego calculamos el Árbol Generador Mínimo de $G$ y lo llamamos $T$.
 Para poder encontrar los clusters hay que eliminar de $T$ a los ejes \textbf{inconsistentes}, según el paper un eje $e$ es inconsistente si su peso supera en cierta cantidad de desviaciones estandard a las medias de los pesos de las aristas que estén a distancia $k$ de los vértices que están en sus puntas. Al remover un eje inconsistente, las componentes conexas formadas son identificadas con un indice, entonces luego de recorrer todas las aristas, todas las componentes conexas van a tener un  indice distinto y podemos interpretarlas como los clusters del grafo.
 Para poder calcular el AGM del grafo $G$ se implementaron dos algoritmos, el algoritmo de Kruskal y el algoritmo de Prim, ambos levemente modificados para utilizar estructuras de Lista de Incidencia y Lista de Adyacencia respectivamente. Además, se implentaron dos versiones de Kruskal, una con path-compression y otra sin, a fin de poder compararlos en la experimentación.
 %Agregar nota en el parrafo de abajo, aunque puede que lo saquemos later
@@ -80,10 +97,11 @@ En el método explicado anteriormente los clusters se calculan sobre un AGM del 
 		\li AGM $\gets$ lista de incidencia vacia, de tamaño cantNodos-1
 		\li OrdenarPorPeso(grafoCompleto)
 		\li \For{e:Arista $\in$ grafoCompleto} 
-			\li \If{$getPadre(indice(e.primerNodo), padre) == getPadre(indice(e.segundoNodo),padre)$} \Then
-				\li agregar(e,agm)
-			\li \End
-		\li \End
+			\li \Do
+			\li \If $getPadre(indice(e.primerNodo), padre) == getPadre(indice(e.segundoNodo),padre)$
+				\li \Then agregar(e,agm)
+					\End
+				\End
 	\li Devolver AGM
 \end{codebox}
 
@@ -190,5 +208,9 @@ Dados los siguientes: $f_{T}$ multiplicador del promedio, $\sigma_{T}$ multiplic
 \section{Comparaciones de algoritmos de los problemas resueltos}
 
 \section{Bibliografía}
+\begin{itemize}
+	\item \url{https://en.wikipedia.org/wiki/Cluster_analysis}
+	\item \url{https://en.wikipedia.org/wiki/Principles_of_grouping}
+\end{itemize}
 
 \end{document}
