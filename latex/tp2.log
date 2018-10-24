@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.3)  21 OCT 2018 23:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.3)  24 OCT 2018 00:30
 entering extended mode
 **./tp2.tex
 (tp2.tex
@@ -734,7 +734,10 @@ Package: vmargin 2004/07/15 V2.5 set document margins (VK)
 LaTeX Warning: Unused global option(s):
     [8pt].
 
-No file tp2.aux.
+(tp2.aux
+LaTeX Info: Redefining \. on input line 6.
+LaTeX Info: Redefining \% on input line 6.
+)
 \openout1 = `tp2.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
@@ -751,7 +754,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 18.
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 18.
@@ -867,15 +870,15 @@ Overfull \hbox (15.0pt too wide) in paragraph at lines 30--30
 [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <./logo_dc.jpg> <./logo_ub
-a.jpg>]
-Warning: Indentation ends at level -1 in codebox on page 1.
+a.jpg>] [1]
+Warning: Indentation ends at level -1 in codebox on page 2.
 
-Overfull \hbox (54.5378pt too wide) in paragraph at lines 66--66
+Overfull \hbox (54.5378pt too wide) in paragraph at lines 82--82
 | [] 
  []
 
 
-Overfull \hbox (56.52129pt too wide) in paragraph at lines 87--87
+Overfull \hbox (56.52129pt too wide) in paragraph at lines 103--103
 []$[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 entero \OT1/cmr/m/n/10 : \OML/cmm/m/it/1
 0 indice; padre \OT1/cmr/m/n/10 : \OML/cmm/m/it/10 vectordeenteros; altura \OT1
 /cmr/m/n/10 : \OML/cmm/m/it/10 vectordeenteros; nivelesSubidos \OT1/cmr/m/n/10 
@@ -883,33 +886,34 @@ Overfull \hbox (56.52129pt too wide) in paragraph at lines 87--87
  []
 
 
-Overfull \hbox (32.749pt too wide) in paragraph at lines 87--87
+Overfull \hbox (32.749pt too wide) in paragraph at lines 103--103
 | [] 
  []
 
-[1]
-Overfull \hbox (40.9086pt too wide) in paragraph at lines 103--103
+
+Overfull \hbox (40.9086pt too wide) in paragraph at lines 119--119
 []$[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 indiceNodo\OT1/cmr/m/n/10 1 : \OML/cmm/m
 /it/10 entero; indiceNodo\OT1/cmr/m/n/10 2 : \OML/cmm/m/it/10 entero; padre \OT
 1/cmr/m/n/10 : \OML/cmm/m/it/10 vectordeenteros; altura \OT1/cmr/m/n/10 :
  []
 
 Warning: Indentation ends at level -2 in codebox on page 2.
-Warning: Indentation ends at level -1 in codebox on page 2.
+[2]
+Warning: Indentation ends at level -1 in codebox on page 3.
 
-Overfull \hbox (111.86359pt too wide) in paragraph at lines 130--130
+Overfull \hbox (111.86359pt too wide) in paragraph at lines 146--146
 []$[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 listaAristas \OT1/cmr/m/n/10 : \OML/cmm/
 m/it/10 listaincidencia; []; profVecindario; f[]; forma; cantidadDeClusters; p
 adre \OT1/cmr/m/n/10 :
  []
 
 
-Overfull \hbox (357.35028pt too wide) in paragraph at lines 130--130
+Overfull \hbox (357.35028pt too wide) in paragraph at lines 146--146
 | [] 
  []
 
-[2]
-Overfull \hbox (18.85751pt too wide) in paragraph at lines 146--146
+
+Overfull \hbox (18.85751pt too wide) in paragraph at lines 162--162
 []\T1/cmr/m/n/10 Forma 2: $\OML/cmm/m/it/10 W\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 
 XY\OT1/cmr/m/n/10 ) \OML/cmm/m/it/10 > Promedio\OT1/cmr/m/n/10 (\OML/cmm/m/it/1
 0 Vecindario\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 X\OT1/cmr/m/n/10 )) + \OML/cmm/m/
@@ -923,34 +927,35 @@ LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 ) ) 
 Here is how much of TeX's memory you used:
- 5890 strings out of 493323
- 78895 string characters out of 3139061
- 159476 words of memory out of 3000000
- 9296 multiletter control sequences out of 15000+200000
- 15204 words of font info for 34 fonts, out of 3000000 for 9000
+ 5896 strings out of 493323
+ 78961 string characters out of 3139061
+ 160476 words of memory out of 3000000
+ 9299 multiletter control sequences out of 15000+200000
+ 15890 words of font info for 35 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,8n,39p,599b,359s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,8n,39p,792b,359s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Usuario\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi6
 00\eccc1000.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jkna
-ppen\ec\dpi600\ecbx1000.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\2.9\fonts\pk
-\ljfour\jknappen\ec\dpi600\ecbx1440.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\
-2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0700.pk> <C:\Users\Usuario\AppData\L
-ocal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecss1000.pk> <C:\Users\Usuar
-io\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecsx1000.pk> <C:
-\Users\Usuario\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ectt
+ppen\ec\dpi600\ecti1000.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\2.9\fonts\pk
+\ljfour\jknappen\ec\dpi600\ecbx1000.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\
+2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk> <C:\Users\Usuario\AppData\L
+ocal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0700.pk> <C:\Users\Usuar
+io\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecss1000.pk> <C:
+\Users\Usuario\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecsx
 1000.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec
-\dpi600\ecrm1000.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour
-\jknappen\ec\dpi600\ecrm1200.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\2.9\fon
-ts\pk\ljfour\jknappen\ec\dpi600\ecbx1200.pk> <C:\Users\Usuario\AppData\Local\Mi
-KTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2074.pk><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
-/cmsy10.pfb>
-Output written on tp2.pdf (5 pages, 533202 bytes).
+\dpi600\ectt1000.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour
+\jknappen\ec\dpi600\ecrm1000.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\2.9\fon
+ts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\Users\Usuario\AppData\Local\Mi
+KTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1200.pk> <C:\Users\Usuario\AppD
+ata\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2074.pk><C:/Program
+ Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmsy10.pfb>
+Output written on tp2.pdf (5 pages, 547125 bytes).
 PDF statistics:
- 409 PDF objects out of 1000 (max. 8388607)
+ 448 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

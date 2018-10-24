@@ -43,6 +43,7 @@ En el mundo del machine learning, problema de Clustering consiste en poder agrup
 %
 %
 %Hay que confirmar esto de acá abajo, creo que se cumple esto pero habría que ver algun paper o página que diga que esto es así. Agrandar un touch el primer párrafo de acá
+\subsection{Dificultades del problema}
 El problema de Clustering es un problema difícil, ya que no existe un algoritmo exacto que pueda generar clusters en tiempo polinomial a partir de un conjunto de datos, además el concepto de un cluster es ambiguo, dado un grafo no existe una única configuración de clusters que separe los datos, sino que hay varias configuraciones que a simple vista pueden parecer válidas.
 
 \subsection{Heuristica para resolver el problema}
@@ -54,8 +55,10 @@ Para poder calcular el AGM del grafo $G$ se implementaron dos algoritmos, el alg
 
 \subsection{Principios de la Forma (Gestalt Principles)}
 
-El método de detección de clusters esta basado en los \textit{principios de la forma de organización perceptible} que están explicados en el paper anteriormente mencionado, en resumen se intento formular un método matemático que detecte clusters utilizando los principios de tal forma que los clusters formados correspondan con los que uno podría percibir al ver el grafo.
-Hay diversos principios que explican como la percepción humana organiza datos sensoriales visuales, 
+%AMPLIAR UN CACHO ESTOOOOOOOOOOO
+El método de detección de clusters esta basado en los \textit{principios de la forma de organización perceptible} que están explicados en el paper anteriormente mencionado, en resumen se intento formular un método matemático que detecte clusters utilizando los principios de tal forma que los clusters formados correspondan con los que una persona podría percibir al ver el grafo.
+Los diversos principios explican como la percepción humana organiza datos sensoriales visuales, reconoce patrones y simplifica imágenes complejas. El principio fundamental para la detección de clusters es el \textbf{principio de la proximidad} que dice: "Los objetos o formas que se encuentren cerca unos de otros aparentan \textbf{formar grupos}", incluso si los objetos o formas son muy diferentes van a parecer formar parte de un grupo si se encuentran \textbf{cerca}. En este principio, el sentido de que dos objetos estén cerca no necesariamente es el de que su distancia sea corta, varios objetos pueden ser agrupados siguiendo este principio pero aplicado sobre otras características de los mismos, como sus tamaños, sus formas, sus colores, etc.
+
 \section{Justificación teórica}
 
 \subsection{Arboles Generadores Mínimos}
@@ -70,8 +73,8 @@ En el método explicado anteriormente los clusters se calculan sobre un AGM del 
 		\li padre $\gets$ vector de enteros de tamaño de cantNodos y cargado con el valor de su posición en cada posición
 		\li AGM $\gets$ lista de incidencia vacia, de tamaño cantNodos-1
 		\li OrdenarPorPeso(grafoCompleto)
-		\li \For e:Arista $\in$ grafoCompleto 
-			\li \If $getPadre(indice(e.primerNodo), padre) == getPadre(indice(e.segundoNodo),padre)$ \Then
+		\li \For{e:Arista $\in$ grafoCompleto} 
+			\li \If{$getPadre(indice(e.primerNodo), padre) == getPadre(indice(e.segundoNodo),padre)$} \Then
 				\li agregar(e,agm)
 			\li \End
 		\li \End
