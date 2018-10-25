@@ -125,37 +125,6 @@ cnames = {
 'yellow':               '#FFFF00',
 'yellowgreen':          '#9ACD32'}
 
-def graficarGrafo(nombre):
-    G = nx.Graph()
-    path = 'grafos/' + nombre + ".csv"
-    f = plt.figure(nombre)
-    with open(path) as csvfile:
-        spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
-        for row in spamreader:
-            #print(n)
-            G.add_edge(row[0], row[1], weight=row[2])
-    pos = nx.spring_layout(G)
-
-    #print(list(G.edges()))
-    edge_weights = {(u,v):d['weight'] for u,v,d in G.edges(data=True)}
-    #nx.draw(G, pos = pos, with_labels=True)
-    # nodes
-    #nx.draw_networkx_nodes(G, pos, node_size=1)
-    #edge
-
-    #colors = range(20)
-    #plt.axis([0,10000,0,10000])
-    nx.draw(G, pos,node_color='r',
-        width=0.5, edge_cmap=plt.cm.Blues, with_labels=True)
-
-    #nx.draw_networkx_edges(G,pos,edges=ejes,width=1, alpha=0.0)# edge_color='g', style='dashed')
-    nx.draw_networkx_edge_labels(G,pos,font_size=1,edge_labels=edge_weights)
-
-    #nx.draw(G, pos = pos, with_labels=True)
-    #nx.draw_networkx_edge_labels(G, pos)
-    #nx.draw(G, with_labels=True)
-    #plt.draw()
-
 
 
 def graficarNodos(nombre):
@@ -180,27 +149,16 @@ def graficarNodos(nombre):
     listacnames=[]
     for i in ((cnames.keys()) ):
         listacnames += [(cnames[i])]
-
     for i in range (len(list(G.nodes()))):
-        colores += [listacnames[int(20+int(dic_colores[G.node[str(i)]['cluster']])) % (len(listacnames))]]
-
-    print(dic_colores)
-    #print(len(dic_colores.keys()))
-    print(len(listacnames))
-    #plt.axis([6300,15700,55000,65000])
+        colores += [listacnames[int(18+int(dic_colores[G.node[str(i)]['cluster']])) % (len(listacnames))]]
     pos = nx.spring_layout(G,pos=fixed_positions, fixed = fixed_nodes)
-    nx.draw_networkx_nodes(G,pos,node_color=colores,node_size=10)
-    #pos = nx.get_node_attributes(G,'pos')
-    #pos = nx.spring_layout(G)
-    #nx.draw(G,pos,with_labels=True)
-    #nx.draw_networkx_nodes(G,pos=pos,with_labels='True')
-    #nx.draw(G, pos=pos, with_labels=True, node_size=35)
-
+    nx.draw_networkx(G,pos,node_color=colores,node_size=10, with_labels=False)
 
 def main():
-    graficarNodos("nodosK")
-    graficarNodos("nodosk_SPC")
-    graficarNodos("nodosP")
+    nombre_archivo = "zahn"
+    graficarNodos(nombre_archivo+"_nodosKruskal")
+    graficarNodos(nombre_archivo+"_nodosKruskal_SinPathComp")
+    graficarNodos(nombre_archivo+"_nodosPrim")
     plt.show()
 
 main()

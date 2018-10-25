@@ -16,43 +16,60 @@
     }();
 
 
-int main() {
-
+int main(int argc, char* argv[]){
     int cantidadDeNodos;
     int cantRep = 3;
+    string nombreIn = "";
     vector<Nodo> input;
-    cargarInfo(input,cantidadDeNodos, "zahn");
-    vector<int> padre(cantidadDeNodos);//O(n)
-    vector<int> altura(cantidadDeNodos); //O(n)
+    int cantClusters = 0, forma=1;
+    int  profundidadVecindario=1;
+    float cantProm = 1.1, cantDesv = 1.8;
+
+    cout <<"Ingrese nombre de archivo a leer (si se quiere ingresar por teclado ingresar -1): "<<endl;
+    cin >> nombreIn;
+    if(argc > 1 || nombreIn!="-1"){ //si la entrada es por txt
+        if(argc >1) nombreIn = argv[1];
+        cargarInfo(input,cantidadDeNodos, nombreIn);
+    }
+    if(argc==1 && nombreIn=="-1"){
+        cin>>cantidadDeNodos;
+        float x,y;
+        Nodo nodo;
+        input.resize(cantidadDeNodos);
+        int cantIngresados=0;
+        for (int i = 0; i < cantidadDeNodos; ++i) {
+            cin >> x>>y;
+            nodo.indice = cantIngresados;
+            nodo.x = x;
+            nodo.y = y;
+            input[cantIngresados] = nodo;
+            cantIngresados++;
+        }
+    }
+
+    vector<int> padre(cantidadDeNodos);
+    vector<int> altura(cantidadDeNodos);
     vector<Nodo> inputK(cantidadDeNodos);
 
     int gradoNodos=cantidadDeNodos-1;
     long long int cantidadAristasConGradoIndicado = cantidadDeNodos * gradoNodos / 2;
 
+
+    cout << "Ingrese los valores del coeficiente de promedio, del coeficiente de desviación y del tamaño del vecindario y la forma que se utilizara para determinar el eje inconsistente(1 o 2) (en este orden) "<<endl;
+    cin >> cantProm>>cantDesv>>profundidadVecindario>>forma;
+
     ListaIncidencia l1(cantidadAristasConGradoIndicado); //Creo una lista de incidencia
-    cout <<"Cantidad de nodos de grafo completo: "<< l1.cantidad_aristas()<<endl;
     MatrizAdyacencias m(cantidadDeNodos); //Creo la matriz de adyacencias
     ListaAdyacencias la(cantidadDeNodos); //Creo la lista de adyacencias
+    //Genero lista de incidencia y matriz de adyancencia del grafo completo generado a partir de los puntos ingresados
+
     convertirNodosAAristas(l1,m, input, gradoNodos);
-    if(gradoNodos!=cantidadDeNodos-1) { //si el grafo que genere no era completo, entonces use la matriz para crearlo, lo paso a lista inc
-        m.convertirAListaInc(l1);
-    } //si hice un grafo completo entonces ambas estan act
+    m.convertirAListaAdy(la); //Cargo la lista de adyacencia
 
-
-    cout <<"Se ha generado el grafo completo de: "<<l1.cantidad_aristas()<<" aristas" <<endl;
     ListaIncidencia l2(AGM_Kruskal(l1,padre,altura,cantidadDeNodos));
 
-    //Generamos el AGM
-    /*auto tiempoK = medir_tiempo(cantRep,AGM_Kruskal(l1,padre,altura,cantidadDeNodos););
-    auto tiempoK_SPT = medir_tiempo(cantRep, AGM_Kruskal_SinPathComp(l1,padre,cantidadDeNodos););
-    cout <<"LOS TIEMPOS FUERON: "<<endl<< "Kruskal normal: "<<tiempoK<<" . Kruskal modif:"<< tiempoK_SPT<<endl;
-    cout <<"Se genera el agm de kruskal de "<<l2.cantidad_aristas()<<" aristas"<<endl;*/
-    m.convertirAListaAdy(la); //Cargo la lista de adyacencia
     ListaIncidencia l3(AGM_Kruskal_SinPathComp(l1,padre,cantidadDeNodos));
-    cout <<"Se genera el AGM de kruskal sin path comp de : "<<l3.cantidad_aristas()<<endl;
-
     vector<Nodo> primAGM = primSinCola(la);
-    cout <<"Generado prim de "<< primAGM.size()-1<<" aristas" <<endl;
     float dist;
     vector<int> padreK(cantidadDeNodos,0), padreP(cantidadDeNodos,0), padreK_SPC(cantidadDeNodos,0);
     ListaIncidencia p = ListaIncidencia(l2.cantidad_aristas());
@@ -64,38 +81,44 @@ int main() {
         ar.desde=input[j];
         ar.hasta=primAGM[input[j].indice];
         p.agregarArista(ar);
-        //cout <<"AGREGO ARISTA: "<<cantAg<< " a PRIM  ("<<ar.desde.indice<<","<<ar.hasta.indice<<")"<<endl;
     }
 
-
     //Comienzo a sacar ejes
-    cout<<"Se comienza a sacar aristas inconsistentes "<<endl;
-
     //Parametros a modificar
-    int cantClusters = 0, forma =1;
-    int  profundidadVecindario=2;
-    float cantProm =1.07,cantDesv = 1.8;
+    //forma 1: ambas,forma:2 por por proporcion
 
     retirarEjesInconsistentes(l2,cantidadDeNodos,cantDesv,padreK,cantClusters, forma,cantProm, profundidadVecindario);
     cantClusters = 0;
     retirarEjesInconsistentes(l3,cantidadDeNodos,cantDesv,padreK_SPC,cantClusters,forma,cantProm,profundidadVecindario);
-
-    cout <<"clusters sin mover de indice: "<<cantClusters<<endl;
-
     vector<bool > c(cantClusters+1,false);
-    for (int i = 0; i < padreK.size(); ++i) {
-       c[padreK[i]] = true;
+    for (int i = 0; i < padreK_SPC.size(); ++i) {
+        c[padreK_SPC[i]] = true;
     }
     int acum = 0;
     for (int k = 0; k < c.size(); ++k) {
         if(c[k]) acum++;
     }
-    for(int i = 0; i < padreK.size();i++){
-        padreK[i] = acum - padreK[i];
+    cout <<"Clusterizacion Kruskal sin path comp"<<endl;
+    for(int i = 0; i < padreK_SPC.size();i++){
+        padreK_SPC[i] = (cantClusters - padreK_SPC[i]);
+        cout << "Nodo: " << i << " cluster: "<<padreK_SPC[i]<<endl;
     }
-    exportarNodos(input,"nodosK_SPC",padreK_SPC);
-    exportarNodos(input,"nodosK",padreK);
-    cout <<"hay "<<acum<< " clusters de AGM de kruskal"<<endl;
+    c.clear();
+    c.resize(cantClusters+1,false);
+    for (int i = 0; i < padreK.size(); ++i) {
+        c[padreK[i]] = true;
+    }
+    acum = 0;
+    for (int k = 0; k < c.size(); ++k) {
+        if(c[k]) acum++;
+    }
+    cout <<"Clusterización Kruskal"<<endl;
+    for(int i = 0; i < padreK.size();i++){
+        padreK[i] = (cantClusters - padreK[i]);
+        cout << "Nodo: " << i << " cluster: "<<padreK[i]<<endl;
+    }
+    exportarNodos(input,nombreIn+"_nodosKruskal_SinPathComp",padreK_SPC);
+    exportarNodos(input,nombreIn+"_nodosKruskal",padreK);
     cantClusters=0;
     retirarEjesInconsistentes(p,cantidadDeNodos,cantDesv,padreP, cantClusters, forma,cantProm ,profundidadVecindario);
     c.clear();
@@ -107,14 +130,14 @@ int main() {
     for (int k = 0; k < c.size(); ++k) {
         if(c[k]) acum++;
     }
+    cout <<"Clusterización Prim"<<endl;
     for(int i = 0; i < padreP.size();i++){
-        padreP[i] = acum - padreP[i];
+        padreP[i] = (cantClusters - padreP[i]);
+        cout << "Nodo: " << i << " cluster: "<<padreP[i]<<endl;
     }
-    cout <<"hay "<<acum<< " clusters de AGM de prim"<<endl;
-    exportarNodos(input,"nodosP", padreP);
+    exportarNodos(input,nombreIn+"_nodosPrim", padreP);
 
 
-    cout <<"fin"<<endl;
     return 0;
 }
 
@@ -153,14 +176,16 @@ float distancia(Nodo& n1, Nodo& n2){
 }
 
 void exportarNodos(vector<Nodo>& vec, string nombre, vector<int>& padre) {
-    ofstream myfile;
+    ofstream myfile, myfile2;
     myfile.open ("../grafos/" + nombre + ".csv");
+    myfile2.open ("grafos/" + nombre + ".csv");
     for (int i = 0; i < vec.size(); ++i) {
         if(vec[i].indice!=-1) myfile<<vec[i].indice<<","<<vec[i].x<<","<<vec[i].y<<","<<padre[i] <<endl;
-        //if(vec[i].indice!=-1) cout <<vec[i].indice<<","<<vec[i].x<<","<<vec[i].y<<","<<padre[i] <<endl;
+        if(vec[i].indice!=-1) myfile2<<vec[i].indice<<","<<vec[i].x<<","<<vec[i].y<<","<<padre[i] <<endl;
     }
     cout <<"GENERADO lista de nodos: "<<nombre<<endl;
     myfile.close();
+    myfile2.close();
 }
 
 void exportarGrafo(ListaIncidencia& l, string nombre) {
@@ -183,31 +208,32 @@ void retirarEjesInconsistentes(ListaIncidencia& l2, int cantidadDeNodos, float c
     float media = 0, std_desv = 0, mediaExt1, mediaExt2;
     vector<Peso> pesosDeVecinos;
     float proporcionEntreEjeYProm = cantDespuesDeComa(cantProm,profundidadVecindario), proporcionExt1, proporcionExt2;
-    int d = profundidadVecindario;for (int e = 0; e < padre.size(); ++e) {
+    int d = profundidadVecindario;
+    for (int e = 0; e < padre.size(); ++e) {
         padre[e]=0;
     }
     int ca=l2.cantidad_aristas();
-    int digDspDeComa = 2;
+    int digDspDeComa = 1;
     float factorDsvExt1, factorDsvExt2;
     for (int j = 0; j < ca; ++j) {//O(M)
         //Recorro las aristas y analizo si hay inconsistentes
         Arista ar= l2.getArista(j);
         if(ar.indice!=-1){
-        //if (l2.getArista(j).indice != -1 && ar.desde.x <= 15700 && ar.hasta.x<=15700 && ar.desde.y <= 65000 && ar.hasta.y <=65000 && ar.desde.x >=6300 && ar.hasta.x>=6300&&ar.desde.y>=55000 && ar.hasta.y>=55000 ){ //Si la arista existe (cuando la eliminamos, en realidad la deshabilitamos)
-            //cout << "-------------------------ARISTA: " << l2.getArista(j).indice <<" de nodos:" << l2.getArista(j).desde.indice <<"("<<l2.getArista(j).desde.x<<","<<l2.getArista(j).desde.y<<")" << "--"
-              //   << l2.getArista(j).hasta.indice <<"("<<l2.getArista(j).hasta.x<<","<<l2.getArista(j).hasta.y<<") peso: " <<l2.getArista(j).peso<<endl;
+        //if (l2.getArista(j).indice != -1 && ar.desde.x <= 15 && ar.hasta.x<=15 && ar.desde.y <= 10 && ar.hasta.y <=10 && ar.desde.x >0 && ar.hasta.x>=0 &&ar.desde.y>=0 && ar.hasta.y>=0 ){ //Si la arista existe (cuando la eliminamos, en realidad la deshabilitamos)
             //Consigo los pesos de los vecinos a 'd' pasos de aristas desde l2.getArista(j).desde y que NO pasen por l2.getArista(j), es decir, consigo el vecindario de uno de los extremos de la arista
-            if(forma == 3){
+            //cout << "arista "<< ar.indice<<" de ("<<ar.desde.x<<","<<ar.desde.y<<")-("<<ar.hasta.x<<","<<ar.hasta.y<<")"<<endl;
+            if(forma== 1) {
                 float media1, media2;
                 pesosDeVecinos = la.pesosVecinosDeKPasosDesdeNodo(l2.getArista(j).desde, l2.getArista(j).hasta, d);//extremo 1
                 media1 = cantDespuesDeComa(calcularMedia(pesosDeVecinos),digDspDeComa);
                 factorDsvExt1 = cantDespuesDeComa((media1+(cantDesv * desviacion_std(pesosDeVecinos, media1))),digDspDeComa);
+                mediaExt1 = cantDespuesDeComa(l2.getArista(j).peso/media1,digDspDeComa);
                 pesosDeVecinos = la.pesosVecinosDeKPasosDesdeNodo(l2.getArista(j).hasta, l2.getArista(j).desde, d); //extremo 2
                 media2 = cantDespuesDeComa(calcularMedia(pesosDeVecinos),digDspDeComa);
+                mediaExt2 = cantDespuesDeComa(l2.getArista(j).peso/media2,digDspDeComa);
                 factorDsvExt2 = cantDespuesDeComa(media2+((cantDesv * desviacion_std(pesosDeVecinos,media2))),digDspDeComa);
 
-
-                if(l2.getArista(j).peso > factorDsvExt1  &&  l2.getArista(j).peso > factorDsvExt2){
+                if(media1!=0 && media2 != 0 && l2.getArista(j).peso > factorDsvExt1  &&  l2.getArista(j).peso > factorDsvExt2 && mediaExt1 > cantProm && mediaExt2 > cantProm){
                     l2.sacarArista(l2.getArista(j));
                     la.sacarArista(l2.getArista(j));
                     //modificar el padre de todos los nodos que son alcanzables desde uno de los extremos de la arista sacada.
@@ -227,45 +253,14 @@ void retirarEjesInconsistentes(ListaIncidencia& l2, int cantidadDeNodos, float c
                         colaNodos.pop();
                     }
                     cantidadClusters++;
-                }
-            }
-            else if(forma== 1) {
-                float media1, media2;
-                pesosDeVecinos = la.pesosVecinosDeKPasosDesdeNodo(l2.getArista(j).desde, l2.getArista(j).hasta, d);//extremo 1
-                media1 = cantDespuesDeComa(calcularMedia(pesosDeVecinos),digDspDeComa);
-                factorDsvExt1 = cantDespuesDeComa((media1+(cantDesv * desviacion_std(pesosDeVecinos, media1))),digDspDeComa);
-                mediaExt1 = cantDespuesDeComa(l2.getArista(j).peso/media1,digDspDeComa);
-
-                /*for (int i = 0; i < pesosDeVecinos.size(); ++i) {
-                    cout <<"peso "<<i<<"  "<<pesosDeVecinos[i]<<endl;
-                }*/
-                pesosDeVecinos = la.pesosVecinosDeKPasosDesdeNodo(l2.getArista(j).hasta, l2.getArista(j).desde, d); //extremo 2
-                media2 = cantDespuesDeComa(calcularMedia(pesosDeVecinos),digDspDeComa);
-                mediaExt2 = cantDespuesDeComa(l2.getArista(j).peso/media2,digDspDeComa);
-                factorDsvExt2 = cantDespuesDeComa(media2+((cantDesv * desviacion_std(pesosDeVecinos,media2))),digDspDeComa);
-
-                //cout <<"peso candidato: "<< l2.getArista(j).peso <<", factordsv1: "<<media<<"*"<<cantDesv<<"*"<< desviacion_std(pesosDeVecinos,media)<<"   PROM1: "<< mediaExt1<<endl;
-                if(media1!=0 && media2 != 0 && l2.getArista(j).peso > factorDsvExt1  &&  l2.getArista(j).peso > factorDsvExt2 && mediaExt1 > cantProm && mediaExt2 > cantProm){
-                    //ARISTA INCONSISTENTE CON DETERMINACION FORMA 1
-                    //cout<<"inconsistente"<<endl;
-                    //cout << "-------------------------ARISTA: " << l2.getArista(j).indice <<" de nodos:" << l2.getArista(j).desde.indice <<"("<<l2.getArista(j).desde.x<<","<<l2.getArista(j).desde.y<<")" << "--"
-                     //    << l2.getArista(j).hasta.indice <<"("<<l2.getArista(j).hasta.x<<","<<l2.getArista(j).hasta.y<<") peso: " <<l2.getArista(j).peso<<endl;
-                    //cout <<"peso candidato: "<< l2.getArista(j).peso <<", factordsv1: "<<media1<<"+"<<cantDesv<<"*"<< desviacion_std(pesosDeVecinos,media)<<"   PROM1: "<< mediaExt1<<endl;
-
-                    l2.sacarArista(l2.getArista(j));
-                    la.sacarArista(l2.getArista(j));
-                    //modificar el padre de todos los nodos que son alcanzables desde uno de los extremos de la arista sacada.
-                    queue<Nodo> colaNodos;
-                    colaNodos.push(l2.getArista(j).desde);
-                    while (colaNodos.size() > 0 ){
-                        //cout <<"colanodos.szE: "<<colaNodos.size()<<endl;
+                    colaNodos.push(l2.getArista(j).hasta);
+                    while (colaNodos.size() > 0) {
                         padre[colaNodos.front().indice] = cantidadClusters;
                         //meto en la cola los vecinos del nodo actual
                         list<AristaAd> vecinos = la[colaNodos.front()];
-                        //cout <<"obtengo vecinos del nodo: "<<colaNodos.front().indice<<endl;
                         list<AristaAd>::iterator it = vecinos.begin();
-                        while(it!=vecinos.end()) {
-                            if(padre[(*it).adyacente.indice] != cantidadClusters) colaNodos.push((*it).adyacente);
+                        while (it != vecinos.end()) {
+                            if (padre[(*it).adyacente.indice] != cantidadClusters) colaNodos.push((*it).adyacente);
                             it++;
                         }
                         colaNodos.pop();
@@ -289,11 +284,11 @@ void retirarEjesInconsistentes(ListaIncidencia& l2, int cantidadDeNodos, float c
                     if ((mediaExt1 != 0 && mediaExt2 != 0) && (proporcionExt1 > proporcionEntreEjeYProm &&
                                                                proporcionExt2 >
                                                                proporcionEntreEjeYProm)) { //si es eje inconsistente
-                        cout << "ENCONTREEJE INCONSISTENTE, saco arista: " << l2.getArista(j).indice << " de nodos:"
+                       /* cout << "ENCONTREEJE INCONSISTENTE, saco arista: " << l2.getArista(j).indice << " de nodos:"
                              << l2.getArista(j).desde.indice << "(" << l2.getArista(j).desde.x << ","
                              << l2.getArista(j).desde.y << ")" << "--"
                              << l2.getArista(j).hasta.indice << "(" << l2.getArista(j).hasta.x << ","
-                             << l2.getArista(j).hasta.y << ")" << endl;
+                             << l2.getArista(j).hasta.y << ")" << endl;*/
 
 
                         //MODIFICO REPRESENTANTES DE LAS COMP CONEXAS
@@ -314,7 +309,19 @@ void retirarEjesInconsistentes(ListaIncidencia& l2, int cantidadDeNodos, float c
                             colaNodos.pop();
                         }
                         cantidadClusters++;
-
+                        colaNodos.push(l2.getArista(j).hasta);
+                        while (colaNodos.size() > 0) {
+                            padre[colaNodos.front().indice] = cantidadClusters;
+                            //meto en la cola los vecinos del nodo actual
+                            list<AristaAd> vecinos = la[colaNodos.front()];
+                            list<AristaAd>::iterator it = vecinos.begin();
+                            while (it != vecinos.end()) {
+                                if (padre[(*it).adyacente.indice] != cantidadClusters) colaNodos.push((*it).adyacente);
+                                it++;
+                            }
+                            colaNodos.pop();
+                        }
+                        cantidadClusters++;
                     }
                 }
             }
@@ -327,27 +334,25 @@ void retirarEjesInconsistentes(ListaIncidencia& l2, int cantidadDeNodos, float c
 void convertirNodosAAristas(ListaIncidencia& l, MatrizAdyacencias& m, vector<Nodo>& v,int k_vecinos) {
     //armo arbol completo
     if(k_vecinos == v.size()-1) {
-        //cout <<"entra aca"<<endl;
         int cantAg = 0;
         for (int i = 0; i < v.size(); ++i) {
             Arista ar;
             //cout <<"nodo desde indice: "<<v[i].indice<<endl;
             ar.desde = v[i];
             for (int j = i+1; j < v.size(); ++j) {
-                //cout <<"a"<<endl;
 
-                    ar.hasta = v[j];
-                    ar.peso = distancia(v[i], v[j]);
-                    ar.indice = cantAg;
-                    //cout <<"agrego arista: "<<ar.desde.indice<<","<<ar.hasta.indice<<endl;
-                    l.agregarArista(ar);
-                    m.agregarArista(ar);
-                    //cout <<"indice nodo desde de la arista agregada: "<<l.getArista(cantAg).desde.indice<<"vs indice nodo desde ag: "<<v[i].indice<<endl;
-                    cantAg++;
+                ar.hasta = v[j];
+                ar.peso = distancia(v[i], v[j]);
+                ar.indice = cantAg;
+                //cout <<"agrego arista: "<<ar.desde.indice<<","<<ar.hasta.indice<<endl;
+                l.agregarArista(ar);
+                m.agregarArista(ar);
+                //cout <<"indice nodo desde de la arista agregada: "<<l.getArista(cantAg).desde.indice<<"vs indice nodo desde ag: "<<v[i].indice<<endl;
+                cantAg++;
 
             }
         }
-    } else{
+    } else{ //no se usa al final
         //armo arbol de k_vecinos c/a nodo
         Arista ar;
         for (int i = 0; i < v.size(); ++i) {
@@ -380,7 +385,7 @@ ListaIncidencia AGM_Kruskal(ListaIncidencia& grafo, vector<int>& padre, vector<i
     ListaIncidencia agm;//O(n)
     init(padre,cantNodos,altura); //O(n)
     grafo.ordenarPorPeso();//O( m * Log(m)) + O(m)
-    for (int i = 0; i < grafo.cantidad_aristas(); ++i) { //O(n)*O(log n)
+    for (int i = 0; i < grafo.cantidad_aristas(); ++i) { //O(m)*O(log n)
         //cout <<"USANDO ARISTA: "<< i <<" de: "<<grafo.cantidad_aristas()<<endl;
         if(not( find(grafo.getArista(i).desde.indice,padre,altura,0) == find(grafo.getArista(i).hasta.indice,padre,altura,0) ) ) {  //si pertenecen a diferentes comp conexas
             //ahora uno las comp conexas
@@ -396,7 +401,7 @@ ListaIncidencia AGM_Kruskal_SinPathComp(ListaIncidencia& grafo, vector<int>& pad
     ListaIncidencia agm;//O(n)
     init_Sin_PathComp(padre); //O(n)
     grafo.ordenarPorPeso();//O( m * Log(m)) + O(m)
-    for (int i = 0; i < grafo.cantidad_aristas(); ++i) { //O(n)*O(log n)
+    for (int i = 0; i < grafo.cantidad_aristas(); ++i) { //O(m)*O(log n)
         if(not(find_Sin_PathCompression(grafo.getArista(i).desde.indice,padre) == find_Sin_PathCompression(grafo.getArista(i).hasta.indice,padre))) {
             agm.agregarArista(grafo.getArista(i));
             unir_componentes_Sin_PathComp(grafo.getArista(i).desde.indice,grafo.getArista(i).hasta.indice,padre);
@@ -407,10 +412,13 @@ ListaIncidencia AGM_Kruskal_SinPathComp(ListaIncidencia& grafo, vector<int>& pad
 
 void cargarInfo(vector<Nodo>& v, int& cn,string nombre){
     ifstream inFile;
-    inFile.open("../in/"+ nombre+".txt");
+    inFile.open("../in/"+ nombre+".txt");//si se usa clion
     if (!inFile) {
-        cerr << "Unable to open file datafile.txt";
-        exit(1);   // call system to stop
+        inFile.open("in/"+ nombre+".txt");//si es de linea de comando
+        if(!inFile) {
+            cerr << "ERROR ABRIENDO EL ARCHIVO DE TEXTO INGRESADO";
+            exit(1);   // call system to stop
+        }
     }
     inFile >> cn;
     cout << "CANTIDAD DE NODOS: "<<cn<<endl;
@@ -418,9 +426,8 @@ void cargarInfo(vector<Nodo>& v, int& cn,string nombre){
     Nodo nodo;
     int cantidadIng = 0;
     v.resize(cn);
-    float ax;
     //ahora leo todos los nodos
-    while (inFile >> x >> y >> ax && cantidadIng<cn) {
+    while (inFile >> x >> y && cantidadIng<cn) {
         nodo.indice = cantidadIng;
         nodo.x = x;
         nodo.y = y;
@@ -458,7 +465,7 @@ void init_Sin_PathComp(vector<int>& padre){
 
 int find(int indiceNodo, vector<int>& padre, vector<int>& altura, int subidos) { //devuelvo  el indice del nodo que es rep
     //padre tiene en la pos iesima el nodo "representante" del iesimo nodo
-     if(padre[indiceNodo] == indiceNodo) { //si el rep del nodo es él mismo
+    if(padre[indiceNodo] == indiceNodo) { //si el rep del nodo es él mismo
         altura[indiceNodo] = subidos;
         return indiceNodo;
     }else if(padre[indiceNodo] != indiceNodo){
@@ -476,7 +483,7 @@ int find_Sin_PathCompression(int indiceNodo, vector<int>& padre) {
     }
 }
 
-void unir_componentes_Sin_PathComp(int indiceNodo1, int indiceNodo2, vector<int>& padre){ //O(1)
+void unir_componentes_Sin_PathComp(int indiceNodo1, int indiceNodo2, vector<int>& padre){
     int indicePadreNodo1 = find_Sin_PathCompression(indiceNodo1,padre);
     int indicePadreNodo2 = find_Sin_PathCompression(indiceNodo2,padre);
     padre[indicePadreNodo1] = indicePadreNodo2;

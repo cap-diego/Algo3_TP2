@@ -1,0 +1,26 @@
+\BOOKMARK [1][-]{section.1}{Introducci\363n al problema}{}% 1
+\BOOKMARK [1][-]{section.2}{Justificaci\363n te\363rica}{}% 2
+\BOOKMARK [1][-]{section.3}{Algoritmos presentados}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{Kruskal}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{Complejidad}{section.3}% 5
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Noci\363n de eje inconsistente}{subsection.3.2}% 6
+\BOOKMARK [3][-]{subsubsection.3.2.2}{Procesamiento de puntos en el espacio}{subsection.3.2}% 7
+\BOOKMARK [1][-]{section.4}{Experimentaci\363n}{}% 8
+\BOOKMARK [2][-]{subsection.4.1}{Variaciones}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.2}{Experimentaci\363n}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.3}{Dataset: Aggregation}{section.4}% 11
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Tiempos}{subsection.4.3}% 12
+\BOOKMARK [2][-]{subsection.4.4}{Grafo r15}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.5}{Dataset: Spiral}{section.4}% 14
+\BOOKMARK [3][-]{subsubsection.4.5.1}{Tiempos}{subsection.4.5}% 15
+\BOOKMARK [3][-]{subsubsection.4.5.2}{Gr\341ficos}{subsection.4.5}% 16
+\BOOKMARK [2][-]{subsection.4.6}{Dataset: Pathbased}{section.4}% 17
+\BOOKMARK [3][-]{subsubsection.4.6.1}{Tiempos}{subsection.4.6}% 18
+\BOOKMARK [3][-]{subsubsection.4.6.2}{Gr\341ficos}{subsection.4.6}% 19
+\BOOKMARK [2][-]{subsection.4.7}{Dataset: A1}{section.4}% 20
+\BOOKMARK [3][-]{subsubsection.4.7.1}{Tiempos}{subsection.4.7}% 21
+\BOOKMARK [3][-]{subsubsection.4.7.2}{Gr\341ficos}{subsection.4.7}% 22
+\BOOKMARK [2][-]{subsection.4.8}{Dataset: Compound de Zahn}{section.4}% 23
+\BOOKMARK [3][-]{subsubsection.4.8.1}{Tiempos}{subsection.4.8}% 24
+\BOOKMARK [3][-]{subsubsection.4.8.2}{Gr\341ficos}{subsection.4.8}% 25
+\BOOKMARK [2][-]{subsection.4.9}{Conclusiones}{section.4}% 26

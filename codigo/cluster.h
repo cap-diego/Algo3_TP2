@@ -185,6 +185,15 @@ public:
     list<AristaAd >& operator[](Nodo x) {
         return rep[x.indice];
     }
+    bool esAdy(int i, int j){
+        list<AristaAd>::iterator it = (rep[i]).begin();
+        while(it != rep[i].end() && (*it).adyacente != getNodo(j)){
+            it++;
+        }
+        if((it != rep[i].end()))
+            return true;
+        else return false;
+    }
 
     //void operator=(ListaAdyacencias& m) { rep(m.rep); }
     void agregarArista(Arista& ar) {
@@ -252,6 +261,7 @@ public:
         //Aca chequeamos que los pesos que agregamos sean desde el "lado" del vecindario que NO pertenece b
         for(auto l : rep[nodo.indice]){
             if (not(l.adyacente==b) ) {
+                //cout <<"meto peso de: "<<nodo.x<<","<<nodo.y<<" "<<l.adyacente.x<<","<<l.adyacente.y<<" sin pertenecer a :" << b.x<<","<<b.y;
                 p.push_back(cantDespuesDeComa(l.peso,3));
             }
         }

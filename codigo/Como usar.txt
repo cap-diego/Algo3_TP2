@@ -1,0 +1,24 @@
+Para usar el clusterizador: 
+
+
+A)Procedimiento desde CLion:
+1-Correr el programa
+2-Ingresar el nombre del txt del que sacar la información (ingresada como se especifica en el enunciado del TP2). Ingresar el nombre del archivo sin el .txt y asegurarse de que el archivo este en la carpeta in. En caso de querer ingresar por teclado, ingresar -1
+3-Si se lee de txt, el próximo paso es ingresar los 3 valores correspondiente a: coeficiente de promedio, coeficiente de desviación, profunidad de vecindario.
+4-Si se ingresa de teclado, hay que ingresar en el orden que se especifica en el TP2. Primero ingresar cantidad de nodos, y después hay que ingresar pares de posiciones, tantas como se haya especificicado en la primer linea. Después de ingresarlos se va a pedir ingresar los valores de los coeficientes de promedio, desviacion y profunidad vecindario.
+
+La salida dirá el cluster de cada nodo por cada método de generación de AGM 
+
+B)Procedimiento de linea de comando:
+1-Compilar con g++: g++ cluster.cpp -o ejecutable
+2-Si se quiere cargar los datos de txt hay dos formas: como argumento del main o como entrada estandar. Si es como argumento del main se ejecuta: ./ejecutable 'archivo_de_texto_sin.txt'. Si se quiere cargar desde la entrada estandar: ./ejecutable, y a partir de acá seguir los pasos de (A) a partir de 3. 
+
+
+
+
+
+
+Para graficar los clusters, ingresar a graficador.py, modificar "nombre_archivo" por el nombre sin el .txt de donde se cargo la información. Si se cargo por teclado, el nombre del archivo será: -1.
+Para generar el grafico, desde linea de comando y situados en la misma ruta: py graficador.py o bien python3 graficador.py.
+
+Algunos datasets venian con 3 columnas, donde la ultima correspondia con el cluster al que debia pertenecer. Para sacarla y poder procesar los datos como permite nuestro programa, hay un script  de python que permite hacerlo.
