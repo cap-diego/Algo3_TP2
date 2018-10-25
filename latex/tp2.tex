@@ -351,7 +351,13 @@ Nota: todosVisitados devuelve en tiempo lineal si todos los elementos del vector
 %Acá espero a lo que me diga Diego
 Ahora vamos a ver las complejidades de los algortimos presentados, los algoritmos de Kruskal y Prim utilizados son los que se explicaron en clase, y de la forma en la que fueron programados las complejidades no fueron afectadas.
 \\
-Entonces KruskalSinPathComp es $O(n^2)$, PrimSinCola también es $O(n^2)$, 
+Entonces para KruskalSinPathComp, getPadre es $O(n)$
+%Lo DEJO ASI TOO MIENTRAS
+
+Para PrimSinCola, el for al principio es $O(n)$ como cada Nodo agregado se marca y hay $n$ nodos, sabemos que el ciclo while a lo sumo se ejecuta $n$ veces, dentro de cada ciclo se calcula el nodo con distancia mínima en $O(n)$, y se acutalizan las distancias de los nodos adyacentes al mínimo en $O$(cantidad de nodos adyacentes al mínimo) que a lo sumo es $n$, entonces su complejidad también es $O(n^2)$.
+
+%Lo dejo por ahora
+En PrimConCola, a partir de un nodo inicial, se van encolando las aristas que vayan a nodos no visitados, a lo sumo la cantidad de aristas es $2m$, obtener el primero de la cola es $O(\log n)$ y en $O()$
 
 \subsubsection{Cálculo de ejes inconsistentes}
 Para buscar ejes inconsistentes vamos a aprovechar las ventajas que nos brindan las implementaciones de listas de adyacencia y incidencia. \\
