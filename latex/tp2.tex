@@ -57,8 +57,14 @@ Se puede reformular el problema de Clustering como un problema de \textbf{optimi
 Como se mencionó anteriormente el análisis de clusters es un problema de \textbf{aprendizaje no supervisado}, para poder entender como esto afecta al problema vamos a explicar de forma resumida los dos tipos principales de aprendizajes que existen en el mundo del machine learning.
 
 \subsubsection*{Aprendizaje Supervisado}
-El Aprendizaje Supervisado es una técnica de machine learning que, a partir de conjuntos de entradas y salidas esperadas intenta inferir una función que genere las salidas adecuadas para cualquier entrada.
+El Aprendizaje Supervisado es una técnica de machine learning que, a partir de conjuntos de entrenamiento de entradas y salidas esperadas, utiliza un algoritmo que intenta inferir una función que pueda predecir las salidas adecuadas para cualquier entrada nueva. Se llama supervisado ya que a medida que el algoritmo hace predicciones sobre los conjuntos de entrenamiento se van corrigiendo los datos de acuerdo a las salidas esperadas. Los problemas de aprendizaje supervisado se pueden agrupar en problemas de \textbf{clasificación}, cuando las salidas son clases o categorías y problemas de \textbf{regresión}, cuando las salidas son valores reales.
+
 \subsubsection*{Aprendizaje No Supervisado}
+A diferencia del aprendizaje supervisado, en el \textbf{aprendizaje no supervisado} no se sabe nada de la información de entrada \textbf{a priori}. A partir de un conjunto de datos de entrada se corren algoritmos que se encargan de descubrir estructuras o características en los datos. Como no hay salidas esperadas, la única forma de saber si los datos resultantes de correr los algoritmos son correctos es realizar evaluaciones sobre los resultados. Pese a esta desventaja, el aprendizaje no supervisado es útil cuando por ejemplo, no se sabe nada sobre los datos a estudiar, por lo que se puede usar un algoritmo de este tipo para obtener información sobre los mismos.
+
+Entonces podemos ver que el problema de análisis de clusters cae en la segunda categoría de aprendizaje, esto lo hace un problema difícil, ya que no existe una solución "correcta" con la que podríamos revisar los resultados obtenidos del los algoritmos de clustering, además por lo mencionado anteriormente, la definición de cluster en si es ambigua y dependiendo de lo que se decida definir como un cluster, los resultados obtenidos sobre un mismo conjunto de datos de entrada pueden ser muy diferentes.
+
+%(Explicación de porque el clustering es hard)
 
 %\subsection{Aprendizaje Supervisado vs No Supervisado}
 
@@ -69,7 +75,7 @@ El Aprendizaje Supervisado es una técnica de machine learning que, a partir de 
 %Hay que confirmar esto de acá abajo, creo que se cumple esto pero habría que ver algun paper o página que diga que esto es así. Agrandar un touch el primer párrafo de acá
 \subsection{Heuristica para resolver el problema}
 
-Para resolver el problema utilizamos una \textbf{heuristica}, la misma esta basada en el método de detección de clustes explicado en el paper "Graph-Theoretical Methods for Detecting and Describing Gestalt Clusters" de Charles T. Zahn, y su forma de calcular los clusters es la siguiente: Consideramos nuestros datos como una serie de puntos en un plano, tomando un grafo completo $G$ usando los puntos como vertices y las distancias entre ellos como pesos en las aristas. Luego calculamos el Árbol Generador Mínimo de $G$ y lo llamamos $T$.
+Para resolver el problema utilizamos un algoritmo basado en el método de detección de clustes explicado en el paper "Graph-Theoretical Methods for Detecting and Describing Gestalt Clusters" de Charles T. Zahn, y su forma de calcular los clusters es la siguiente: Consideramos nuestros datos como una serie de puntos en un plano, tomando un grafo completo $G$ usando los puntos como vertices y las distancias entre ellos como pesos en las aristas. Luego calculamos el Árbol Generador Mínimo de $G$ y lo llamamos $T$.
 Para poder encontrar los clusters hay que eliminar de $T$ a los ejes \textbf{inconsistentes}, según el paper un eje $e$ es inconsistente si su peso supera en cierta cantidad de desviaciones estandard a las medias de los pesos de las aristas que estén a distancia $k$ de los vértices que están en sus puntas. Al remover un eje inconsistente, las componentes conexas formadas son identificadas con un indice, entonces luego de recorrer todas las aristas, todas las componentes conexas van a tener un  indice distinto y podemos interpretarlas como los clusters del grafo.
 Para poder calcular el AGM del grafo $G$ se implementaron dos algoritmos, el algoritmo de Kruskal y el algoritmo de Prim, ambos levemente modificados para utilizar estructuras de Lista de Incidencia y Lista de Adyacencia respectivamente. Además, se implentaron dos versiones de Kruskal, una con path-compression y otra sin, a fin de poder compararlos en la experimentación.
 %Agregar nota en el parrafo de abajo, aunque puede que lo saquemos later
@@ -79,6 +85,7 @@ Para poder calcular el AGM del grafo $G$ se implementaron dos algoritmos, el alg
 %AMPLIAR UN CACHO ESTOOOOOOOOOOO
 El método de detección de clusters esta basado en los \textit{principios de la forma de organización perceptible} que están explicados en el paper anteriormente mencionado, en resumen se intento formular un método matemático que detecte clusters utilizando los principios de tal forma que los clusters formados correspondan con los que una persona podría percibir al ver el grafo.
 Los diversos principios explican como la percepción humana organiza datos sensoriales visuales, reconoce patrones y simplifica imágenes complejas. El principio fundamental para la detección de clusters es el \textbf{principio de la proximidad} que dice: "Los objetos o formas que se encuentren cerca unos de otros aparentan \textbf{formar grupos}", incluso si los objetos o formas son muy diferentes van a parecer formar parte de un grupo si se encuentran \textbf{cerca}. En este principio, el sentido de que dos objetos estén cerca no necesariamente es el de que su distancia sea corta, varios objetos pueden ser agrupados siguiendo este principio pero aplicado sobre otras características de los mismos, como sus tamaños, sus formas, sus colores, etc.
+%Explica como los algos del paper se basan de esto, o otros algos así se le da un cierre al tema
 
 \section{Justificación teórica}
 
@@ -107,30 +114,32 @@ En el método explicado anteriormente los clusters se calculan sobre un AGM del 
 
 \begin{codebox}
 \Procname{$\proc{getPadre}(entero: indice, padre: vector de enteros)$}
-\li \If $padre[indice] == indice$ \Then
-\li Devolver indice
-\li \Else
-\li getPadre(indice(padre[indice]),padre)
-\li \End
+\li \If $padre[indice] == indice$ 
+	\li \Then
+		\li Devolver indice
+	\li \Else
+		\li getPadre(indice(padre[indice]),padre)
+	\li \End
 \end{codebox}
 
 
 \begin{codebox}
 \Procname{$\proc{getPadreConPathComp}(entero: indice, padre: vector de enteros, altura:vector de enteros, nivelesSubidos: entero$}
-\li \If $padre[indice] == indice$ \Then
-\li altura[indice] = nivelesSubidos
-\li Devolver indice
-\li \Else
-\li padre[indice] = getPadreConPathComp(indice(padre[indice]),padre,altura,nivelesSubidos+1)
-\li Devolver padre[indice]
-\li \End
+\li \If $padre[indice] == indice$
+	\li \Then
+		\li altura[indice] $\gets$ nivelesSubidos
+		\li Devolver indice
+	\li \Else
+		\li padre[indice] $\gets$ getPadreConPathComp(indice(padre[indice]),padre,altura,nivelesSubidos+1)
+		\li Devolver padre[indice]
+	\li \End
 \end{codebox}
 
 
 \begin{codebox}
 \Procname{$\proc{unirPadres}(indiceNodo1: entero, indiceNodo2:entero, padre: vector de enteros)$}
-\li padreNodo1 $\gets$ getPadre(indiceNodo1, padre)
-\li padre[indiceNodo2]=padreNodo1
+	\li padreNodo1 $\gets$ getPadre(indiceNodo1, padre)
+	\li padre[indiceNodo2] $\gets$ padreNodo1
 \end{codebox}
 
 \begin{codebox}
@@ -139,7 +148,7 @@ En el método explicado anteriormente los clusters se calculan sobre un AGM del 
 \li padreNodo2 $\gets$ getPadreConPathComp(indiceNodo2, padre,altura,0)
 \li padreMenosAltura $\gets$ min(altura[padreNodo1],altura[padreNodo2])
 \li padreMasAltura $\gets$ max(altura[padreNodo1],altura[padreNodo2])
-\li padre[padreMenosAltura]=padreMasAltura
+\li padre[padreMenosAltura] $\gets$ padreMasAltura
 \end{codebox}
 
 
@@ -148,11 +157,13 @@ En el método explicado anteriormente los clusters se calculan sobre un AGM del 
 \li listaAristas $\gets$ inicializar lista de incidencia
 \li matrizAristas $\gets$ inicializar matriz de adyacencia
 \li \For $i \gets 0$ \To $tam(nodos)$
-\li 	\For  $j \gets i+1$ \To $tam(nodos)$
-			\li armar arista con datos de v[i] y v[j]
-			\li agregar arista a listaAristas
+\li 	\Do
+\li 		\For  $j \gets i+1$ \To $tam(nodos)$
+\li				\Do
+					\li armar arista con datos de v[i] y v[j]
+					\li agregar arista a listaAristas
+				\End
 		\End
-	\End
 \li armar matriz de adyacencia con la lista de incidencia
 \li Devolver Matriz de adyacencia y Lista de incidencia
 \end{codebox}
@@ -160,13 +171,18 @@ En el método explicado anteriormente los clusters se calculan sobre un AGM del 
 \begin{codebox}
 \Procname{$\proc{retirarEjesInconsistentes}(listaAristas:lista incidencia, \sigma_{T}, profVecindario, f_{T}, forma, cantidadDeClusters, padre: vector de enteros )$}
 \li \For $e:listaAristas$
-\li calcular media y desviacion respecto del vecindario de profVecindario de profundidad de cada extremo de e. (usando una modificación de BFS)
-\li si es inconsistente
-\li sacar e de las listas
-\li recorrer en la lista de ady todos los nodos alcanzables de uno de los extremos y modificar su representante en padre con cantidadDeClusters (usando una modificación de BFS)
-\li aumentar en 1 el valor de cantidadDeClusters
-
-\li \End
+\li 	\Do
+			\li calcular media y desviacion respecto del vecindario de profVecindario 
+			\zi de profundidad de cada extremo de e. (usando una modificación de BFS)
+			\li \If $e$ es inconsistente
+				\li \Then
+					\li sacar e de las listas
+					\li recorrer en la lista de ady todos los nodos alcanzables 
+					\zi de uno de los extremos y modificar su representante 
+					\zi en padre con cantidadDeClusters (usando una modificación de BFS)
+					\li aumentar en 1 el valor de cantidadDeClusters
+					\End
+		\End
 \end{codebox}
 
 \subsection{Prim}
@@ -211,6 +227,9 @@ Dados los siguientes: $f_{T}$ multiplicador del promedio, $\sigma_{T}$ multiplic
 \begin{itemize}
 	\item \url{https://en.wikipedia.org/wiki/Cluster_analysis}
 	\item \url{https://en.wikipedia.org/wiki/Principles_of_grouping}
+	\item \url{https://towardsdatascience.com/unsupervised-learning-and-data-clustering-eeecb78b422a}
+	\item \url{https://towardsdatascience.com/supervised-vs-unsupervised-learning-14f68e32ea8d}
+	\item \url{https://machinelearningmastery.com/supervised-and-unsupervised-machine-learning-algorithms/}
 \end{itemize}
 
 \end{document}
