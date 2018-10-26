@@ -969,8 +969,8 @@ Y lo que podemos notar hasta ahora es que la cota propuesta es muy grosera. Ento
     \caption{El segundo corresponde a las comparaciones en escala logar\'itmica.}
     %\includegraphics[height = 6cm,width = 9cm]{B-F4unos.png}
     %\includegraphics[height = 6cm,width = 9cm]{BFlog-unos.png}
-    	\includegraphics[scale=0.6]{B-F4unos.png}
-    	\includegraphics[scale=0.6]{BFlog-unos.png}
+    	\includegraphics[scale=0.5]{B-F4unos.png}
+    	\includegraphics[scale=0.5]{BFlog-unos.png}
 \end{figure}
 
 Podremos llegar a dos an\'alisis: como mencionamos antes, la cota ser\'a muy grosera y esto se puede notar en los dos gr\'aficos pero m\'as que nada en el primero, ya que de dividir nuestro tiempo de ejecuci\'on actual por la complejidad propuesta resulta una funci\'on que tiende a cero asint\'oticamente, lo cual nos indica que efectivamente $\mathcal{O}$($n^{4}$) ser\'a una cota superior.
@@ -979,13 +979,14 @@ Y lo segundo que podemos mencionar es que a diferencia de lo afirmado previament
 
 En cuanto a lo primero, si vemos los siguientes gr\'aficos en los cuales dividimos el tiempo de ejecuci\'on del caso Todos unos por $n^{3}$ y $n^{2}$ respectivamente:
 
+\centering
 \begin{figure}[h]
 %	\begin{center}
 %		\includegraphics[height = 6cm,width = 9cm]{BF3-unos.png}
 %    	\includegraphics[height = 6cm,width = 9cm]{BF2-unos.png}
 %	\end{center}
-		\includegraphics[height = 6cm,width = 9cm]{BF3-unos.png}
-    	\includegraphics[height = 6cm,width = 9cm]{BF2-unos.png}
+		\includegraphics[scale=0.5]{BF3-unos.png}
+    	\includegraphics[scale=0.5]{BF2-unos.png}
 \end{figure}
 
 Podremos ver que reci\'en cuando dividimos por $n^{2}$ tendr\'emos una funci\'on lineal que inclusive tendr\'a una pendiente muy chica lo cual confirmar\'ia que $\mathcal{O}$($n^{4}$) es una cota muy grosera pero que sigue sirviendo como cota superior.
@@ -1008,9 +1009,12 @@ Entonces, empezando con los gr\'aficos con escala logar\'itmica:
 
 
 \begin{figure}[h]
-    \includegraphics[width=0.55\textwidth]{FWlog-unos.png}
-    \includegraphics[width=0.55\textwidth]{FWlog-cn.png}
-    \includegraphics[width=0.55\textwidth]{FWlog-nnl1n.png}
+    %\includegraphics[width=0.55\textwidth]{FWlog-unos.png}
+    %\includegraphics[width=0.55\textwidth]{FWlog-cn.png}
+    %\includegraphics[width=0.55\textwidth]{FWlog-nnl1n.png}
+    \includegraphics[scale=0.5]{FWlog-unos.png}
+    \includegraphics[scale=0.5]{FWlog-cn.png}
+    \includegraphics[scale=0.5]{FWlog-nnl1n.png}
 \end{figure}
 
 Si observamos todos estos gr\'aficos podemos observar que distintos casos de ejecuci\'on del mismo algoritmo las cuales, algunas tienen soluci\'on (Ciclo $d_{n}-d_{n-1}-d_{n}$ y Ciclo $C_{n}$) y otras no (Todos unos) tendr\'an curvas muy similares, lo cual validar\'ia la segunda parte de nuestra hip\'otesis. 
@@ -1018,9 +1022,12 @@ Si observamos todos estos gr\'aficos podemos observar que distintos casos de eje
 Adem\'as podemos notar que aqu\'i tambi\'en la complejidad te\'orica ser\'a una cota. Para poder ver esto mejor veremos los siguientes gr\'aficos:
 
  \begin{figure}[h]
-     \includegraphics[height = 5cm,width = 9cm]{F-W3cn.png}
-     \includegraphics[height = 5cm,width = 9cm]{F-W3unos.png}
-     \includegraphics[height = 5cm,width = 9cm]{FW3-nnl1n.png}
+%     \includegraphics[height = 5cm,width = 9cm]{F-W3cn.png}
+%     \includegraphics[height = 5cm,width = 9cm]{F-W3unos.png}
+%     \includegraphics[height = 5cm,width = 9cm]{FW3-nnl1n.png}
+     \includegraphics[scale=0.5]{F-W3cn.png}
+     \includegraphics[scale=0.5]{F-W3unos.png}
+     \includegraphics[scale=0.5]{FW3-nnl1n.png}
  \end{figure}
  \pagebreak
  
@@ -1031,13 +1038,13 @@ Adem\'as podemos notar que aqu\'i tambi\'en la complejidad te\'orica ser\'a una 
 
 \pagebreak
 %AGREGAR PAPER DE C.T. ZAHN !!!!!!!!!!!!!!!
-\section{Bibliografía}
-\begin{itemize}
-	\item \url{https://en.wikipedia.org/wiki/Cluster_analysis}
-	\item \url{https://en.wikipedia.org/wiki/Principles_of_grouping}
-	\item \url{https://towardsdatascience.com/unsupervised-learning-and-data-clustering-eeecb78b422a}
-	\item \url{https://towardsdatascience.com/supervised-vs-unsupervised-learning-14f68e32ea8d}
-	\item \url{https://machinelearningmastery.com/supervised-and-unsupervised-machine-learning-algorithms/}
-\end{itemize}
+%\section{Bibliografía}
+%\begin{itemize}
+%	\item \url{https://en.wikipedia.org/wiki/Cluster_analysis}
+%	\item \url{https://en.wikipedia.org/wiki/Principles_of_grouping}
+%	\item \url{https://towardsdatascience.com/unsupervised-learning-and-data-clustering-eeecb78b422a}
+%	\item \url{https://towardsdatascience.com/supervised-vs-unsupervised-learning-14f68e32ea8d}
+%	\item \url{https://machinelearningmastery.com/supervised-and-unsupervised-machine-learning-algorithms/}
+%\end{itemize}
 
 \end{document}
