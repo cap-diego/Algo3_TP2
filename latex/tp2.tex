@@ -172,7 +172,7 @@ Los diversos principios explican como la percepción humana organiza datos senso
 En el método explicado anteriormente los clusters se calculan sobre un AGM del grafo completo de los datos, nos interesaría saber como es que el AGM nos garantiza que se van a calcular todos los clusters que pueda haber en el grafo, para eso vamos a ver primero algunos conceptos.
 Si tenemos un grafo $G$ podemos pensar que una particion de $G$ es una división en dos subconjuntos no vacíos $(P, Q)$, luego definimos la distancia $p(P, Q)$ entre particiones como el peso más chico entre los ejes que tienen un nodo en $P$ y otro en $Q$. Luego podemos pensar en dos conjuntos de ejes del grafo $C(P, Q)$ es el conjunto de ejes que tienen un nodo en $P$ y el otro nodo en $Q$, de estos ejes llamamos \textbf{cadena} a los ejes cuyo peso sea igual a $p(P, Q)$ y definimos $\lambda(P, Q)$ como el conjunto de cadenas de $P$ y $Q$.
 En un grafo con pesos en los ejes resulta útil definir el costo de un camino en el grafo como el \textbf{peso máximo} entre los pesos de los ejes que forman parte del camino, de esta forma podemos definir también a un camino entre dos nodos como \textbf{minimax} si es el camino con menor peso entre ellos.
-Ahora con estos conceptos podemos presentar los siguientes teoremas\footnote{Estos teoremas están demostrados en el apéndice (para los teoremas 1-3) y en las referencias (para el teorema 4) del paper de C.T. Zahn, que se encuentra en la bibliografía} :
+Ahora con estos conceptos podemos presentar los siguientes teoremas\footnote{Estos teoremas están demostrados en el apéndice (para los teoremas 1-3) y en las referencias (para el teorema 4) del paper de C.T. Zahn} :
 \begin{itemize}
 	\item Teorema 1: Para cada partición $(P, Q)$ de $G$, cualquier AMG contiene al menos un eje de $\lambda(P, Q)$.
 	\item Teorema 2: Todos los ejes del AGM son ejes cadena de alguna partición de $G$.
@@ -181,6 +181,7 @@ Ahora con estos conceptos podemos presentar los siguientes teoremas\footnote{Est
 \end{itemize}
 
 De estos teoremas el más importante es el tercero, del cual se puede concluir que los clusters van a ser subarboles del AGM , de los teoremas 1 y 2 vemos que los ejes que conectan a los clusters son los de menor peso y el teorema 4 nos asegura que el camino entre nodos va a ser minimax y entonces los nodos conectados no van a tender a alejarse del cluster donde pertenecen.
+Entonces no sólo vemos que un AGM no rompería la formación de Clusters sino que también nos ayudaría a identificarlos ya que sólo estarían unidos por un eje, que es el que los algoritmos intentaran identificar.
 
 \section{Algoritmos presentados}
 
