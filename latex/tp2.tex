@@ -208,6 +208,21 @@ De estos teoremas el más importante es el tercero, del cual se puede concluir q
 	\li Devolver AGM
 \end{codebox}
 
+%HAY QUE PONER ESTO BIEN
+\begin{codebox}
+  	\Procname{$\proc{KruskalConPathComp}(ListaIncidencia: grafoCompleto, altura:entero, cantNodos: entero)$}
+		\li padre $\gets$ vector de enteros de tamaño de cantNodos y cargado con el valor
+		\zi 	 de su posición en cada posición
+		\li AGM $\gets$ lista de incidencia vacia, de tamaño cantNodos-1
+		\li OrdenarPorPeso(grafoCompleto)
+		\li \For{e:Arista $\in$ grafoCompleto} \Do
+			\li \If $getPadre(indice(e.primerNodo), padre) == getPadre(indice(e.segundoNodo),padre)$ \Then
+					\li agregar(e,agm)
+				\End
+			\End
+	\li Devolver AGM
+\end{codebox}
+
 \begin{codebox}
 \Procname{$\proc{getPadre}(entero: indice, padre: vector de enteros)$}
 \li \If $padre[indice] == indice$ \Then
@@ -351,24 +366,28 @@ Nota: todosVisitados devuelve en tiempo lineal si todos los elementos del vector
 %Acá espero a lo que me diga Diego
 Ahora vamos a ver las complejidades de los algortimos presentados, los algoritmos de Kruskal y Prim utilizados son los que se explicaron en clase, y de la forma en la que fueron programados las complejidades no fueron afectadas.
 \\
-Entonces para KruskalSinPathComp, getPadre es $O(n)$
-%Lo DEJO ASI TOO MIENTRAS
+%Entonces para KruskalSinPathComp, getPadre es $O(n)$
+%Lo DEJO ASI MIENTRAS ^^^
+%\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-Para PrimSinCola, el for al principio es $O(n)$ como cada Nodo agregado se marca y hay $n$ nodos, sabemos que el ciclo while a lo sumo se ejecuta $n$ veces, dentro de cada ciclo se calcula el nodo con distancia mínima en $O(n)$, y se acutalizan las distancias de los nodos adyacentes al mínimo en $O$(cantidad de nodos adyacentes al mínimo) que a lo sumo es $n$, entonces su complejidad también es $O(n^2)$.
-
-%Lo dejo por ahora
-En PrimConCola, a partir de un nodo inicial, se van encolando las aristas que vayan a nodos no visitados, a lo sumo la cantidad de aristas es $2m$, obtener el primero de la cola es $O(\log n)$ y en $O()$
-
-\subsubsection{Cálculo de ejes inconsistentes}
-Para buscar ejes inconsistentes vamos a aprovechar las ventajas que nos brindan las implementaciones de listas de adyacencia y incidencia. \\
-La idea es la siguiente: vamos a recorrer todas las aristas, sacándolas de la lista de incidencia y calcular con un método parecido a BFS los promedios de longitud de vecino, desviaciones, etc. Hay m aristas (que por estar trabajando con un AGM son $\approx$ n) y por cada una calcular esas cosas es $O(n+m)$ $\approx$ $O(n)$. En caso de ser considerado consistente vamos a recorrer, también con algo parecido a BFS, los nodos alcanzables desde uno de los extremos de la arista considerada inconsistente y le vamos a modificar su representante, con un vector de n posiciones donde en la posición i-ésima está el representante del nodo i-ésimo. Por temas de implementación, si la arista es inconsistente vamos a eliminarla de la siguiente forma: en la lista de incidencia modificamos su indice a -1, que es un valor que consideramos internamente como arista no disponible, y en la lista de adyacencia sí la eliminamos, accediendo en tiempo constante a la posicion del vector de ese nodo y con un iterador recorriendo sus nodos vecinos hasta encontrar el que corresponde con el otro extremo de la arista. Esto cuesta O(m) $\approx$ O(n), porque para cada nodo se recorre a lo sumo su grado y si se hace para todos los nodos será la suma de los grados de los nodos que es asintóticamente m, que por ser un árbol es O(n).\\
-La complejidad total sería O($n^{2}$). Usar ambas listas nos permite tener los beneficios de recorer y 'deshabilitar' si es necesario las aristas en tiempo constante por la lista de incidencia y utilizar una modificación de BFS para poder calcular lo necesario y reasignar los representantes en caso de ser necesario de forma óptima por la lita de adyacencia.
-
-\subsubsection{Procesamiento de puntos en el espacio}
-Una vez leídos y almacenados en un vector todos los puntos del espacio ingresados, se procesarán uno a uno utilizando el siguiente procesamiento: por cada uno de ellos se recorrerán todos los que vengan después (en orden de ingreso). Esto nos asegura que cada nodo estará conectando con todos los demás (excepto él mismo) y así conseguiremos el grafo completo que tiene como nodos a los puntos ingresados. Esto lo conseguimos con complejidad O($n^{2}$). Construimos con esto la lista de incidencia y matriz y lista de adyacencia.\\
 Para generar el AGM de kruskal, tenemos funciones que permiten facilitar el entendimiento del pseudocódigo correspondiente. Básicamente se procesa cada arista de la lista de incidencia del grafo completo, previamente ordenadas ( ordenada con el sort de C++ en O($\log{m}$ * m), donde m $\approx$ $n^2$), y se comprueba si la arista tomada actual (que es la de mínimo peso) genera un ciclo en las ya agregadas. Esto se hace mediante una implementación de funciones de UDS (Union Disjoint Set) que nos permite la manipulación de conjuntos de cosas disjuntas como las componentes conexas de un grafo. Una de estas funciones permite encontrar el representante de un punto/nodo (inicialmente cada nodo es su propio representante), lo que sería equivalente a preguntar a que componente conexa corresponde y en caso de ser de diferentes se agrega la arista, si no se sigue a la siguiente. Si la arista se elige se deben actualizar los representantes. Vamos a representar a los nodos en árboles y cada padre será el representante de un nodo, excepto la raíz que será su propio padre. Para mejorar la eficiencia, vamos a almacenar además del padre de cada nodo su altura. Imaginemos que cada representante sería la raíz de un árbol y al momento de buscar el representante de una de los hijos, 'subiríamos' hacia arriba preguntando por el padre de ese nodo, que en caso de no ser la raíz no será su propio representante y nos enviará hacia su padre. Este padre si no es la raíz, tampoco tendrá como representante a él mismo y nos enviará a su representante, así hasta llegar a la raíz. Durante toda esta búsqueda vamos a hacer dos cosas: se actualizará al nodo actual el representante y además se actualizará la altura del nodo que busquemos su representante, aumentando en 1 cada vez que subíamos un nivel en el árbol. Almacenar estas cosas nos sirve para: en primer lugar, la próxima vez que preguntemos por el representante de algún nodo de ese árbol no será necesario realizar otra vez todo ese recorrido (Path compression) porque estarán actualizados los representantes, y por otro lado al momento de unir las componentes conexas, tenemos podemos 'colgar' el árbol más chico del otro, realizando menos operaciones. Además la complejidad de buscar un representante será a lo sumo la altura del árbol (de a lo sumo n nodos) al que pertenece.\\
 Así, al momento de unir las componentes conexas, simplemente actualizamos el representante del árbol más chico ( O(encontrar representante(nodo) $\approx$ O(altura árbol(nodo)) con el más grande. Entonces buscar un representante y unir componentes $\in$ O(log n).
 \\Siguiendo con la explicación, el procesamiento de todas las aristas ( donde m $\approx$ $n^{2}$)sería O($n^2$ * $\log$ n + $\log$ $n^{2}$ * $n^{2}$) $\approx$ O($\log$ $n^{2}$ * $n^{2}$) $\approx$ O($\log$ $n$ * $n^{2}$).
+\\
+Para PrimSinCola, el for al principio es $O(n)$ como cada Nodo agregado se marca y hay $n$ nodos, sabemos que el ciclo while a lo sumo se ejecuta $n$ veces, dentro de cada ciclo se calcula el nodo con distancia mínima en $O(n)$, y se acutalizan las distancias de los nodos adyacentes al mínimo en $O$(cantidad de nodos adyacentes al mínimo) que a lo sumo es $n$, entonces su complejidad también es $O(n^2)$.
+\\
+%Lo dejo por ahora, la complejidad no da, quiza lo hicimos mal vvvvvv 
+%En PrimConCola, a partir de un nodo inicial, se van encolando las aristas que vayan a nodos no visitados, a lo sumo la cantidad de aristas es $2m$, obtener el primero de la cola es $O(\log n)$ y en $O(algo)$
+Veamos la complejidad de RetirarEjesInconsistentes, obtener la lista de adyacencia a partir de la de incidencia se puede hacer recorriendo todas las aristas y es $O(m)$, marcar el padre de todos los nodos es $O(n)$.
+Recorrer todas las aristas de la lista de incidencia es a lo sumo $n - 1$, para buscar ejes inconsistentes vamos a aprovechar las ventajas que nos brindan las implementaciones de listas de adyacencia y incidencia. \\
+La idea es la siguiente: vamos a recorrer todas las aristas, sacándolas de la lista de incidencia y calcular con un método parecido a BFS los promedios de longitud de vecino, desviaciones, etc. Hay m aristas (que por estar trabajando con un AGM son $\approx$ n) y por cada una calcular esas cosas es $O(n+m)$ $\approx$ $O(n)$. En caso de ser considerado consistente vamos a recorrer, también con algo parecido a BFS, los nodos alcanzables desde uno de los extremos de la arista considerada inconsistente y le vamos a modificar su representante, con un vector de n posiciones donde en la posición i-ésima está el representante del nodo i-ésimo. Por temas de implementación, si la arista es inconsistente vamos a eliminarla de la siguiente forma: en la lista de incidencia modificamos su indice a -1, que es un valor que consideramos internamente como arista no disponible, y en la lista de adyacencia sí la eliminamos, accediendo en tiempo constante a la posicion del vector de ese nodo y con un iterador recorriendo sus nodos vecinos hasta encontrar el que corresponde con el otro extremo de la arista. Esto cuesta O(m) $\approx$ O(n), porque para cada nodo se recorre a lo sumo su grado y si se hace para todos los nodos será la suma de los grados de los nodos que es asintóticamente m, que por ser un árbol es O(n).
+Análogamente se recorren las aristas vecinas si se decide utilizar el segundo criterio de eje inconsistente\\
+Por lo tanto, la complejidad total sería O($n^{2}$). Usar ambas listas nos permite tener los beneficios de recorer y 'deshabilitar' si es necesario las aristas en tiempo constante por la lista de incidencia y utilizar una modificación de BFS para poder calcular lo necesario y reasignar los representantes en caso de ser necesario de forma óptima por la lita de adyacencia.
+
+Veamos la complejidad de ArmarGrafoCompleto, una vez que se almacenan todos los puntos del espacio ingresados, se procesarán uno a uno de la siguiente forma: por cada uno de ellos se recorrerán todos los que vengan después (en orden de ingreso). Esto nos asegura que cada nodo estará conectando con todos los demás (excepto él mismo) y así conseguiremos el grafo completo que tiene como nodos a los puntos ingresados. Esto lo conseguimos con complejidad O($n^{2}$). 
+%Construimos con esto la lista de incidencia y matriz y lista de adyacencia.
+
+\pagebreak
 
 \section{Experimentación}
 \subsection{Variaciones}

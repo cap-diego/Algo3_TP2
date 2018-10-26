@@ -11,35 +11,33 @@
 \BOOKMARK [2][-]{subsection.4.3}{Prim}{section.4}% 11
 \BOOKMARK [2][-]{subsection.4.4}{Clustering}{section.4}% 12
 \BOOKMARK [2][-]{subsection.4.5}{Complejidad}{section.4}% 13
-\BOOKMARK [3][-]{subsubsection.4.5.1}{C\341lculo de ejes inconsistentes}{subsection.4.5}% 14
-\BOOKMARK [3][-]{subsubsection.4.5.2}{Procesamiento de puntos en el espacio}{subsection.4.5}% 15
-\BOOKMARK [1][-]{section.5}{Experimentaci\363n}{}% 16
-\BOOKMARK [2][-]{subsection.5.1}{Variaciones}{section.5}% 17
-\BOOKMARK [2][-]{subsection.5.2}{Experimentaci\363n}{section.5}% 18
-\BOOKMARK [2][-]{subsection.5.3}{Dataset: Aggregation}{section.5}% 19
-\BOOKMARK [3][-]{subsubsection.5.3.1}{Tiempos}{subsection.5.3}% 20
-\BOOKMARK [2][-]{subsection.5.4}{Grafo r15}{section.5}% 21
-\BOOKMARK [2][-]{subsection.5.5}{Dataset: Spiral}{section.5}% 22
-\BOOKMARK [3][-]{subsubsection.5.5.1}{Tiempos}{subsection.5.5}% 23
-\BOOKMARK [3][-]{subsubsection.5.5.2}{Gr\341ficos}{subsection.5.5}% 24
-\BOOKMARK [2][-]{subsection.5.6}{Dataset: Pathbased}{section.5}% 25
-\BOOKMARK [3][-]{subsubsection.5.6.1}{Tiempos}{subsection.5.6}% 26
-\BOOKMARK [3][-]{subsubsection.5.6.2}{Gr\341ficos}{subsection.5.6}% 27
-\BOOKMARK [2][-]{subsection.5.7}{Dataset: A1}{section.5}% 28
-\BOOKMARK [3][-]{subsubsection.5.7.1}{Tiempos}{subsection.5.7}% 29
-\BOOKMARK [3][-]{subsubsection.5.7.2}{Gr\341ficos}{subsection.5.7}% 30
-\BOOKMARK [2][-]{subsection.5.8}{Dataset: Compound de Zahn}{section.5}% 31
-\BOOKMARK [3][-]{subsubsection.5.8.1}{Tiempos}{subsection.5.8}% 32
-\BOOKMARK [3][-]{subsubsection.5.8.2}{Gr\341ficos}{subsection.5.8}% 33
-\BOOKMARK [2][-]{subsection.5.9}{Conclusiones}{section.5}% 34
-\BOOKMARK [1][-]{section.6}{Arbitraje}{}% 35
-\BOOKMARK [1][-]{section.7}{Algoritmos y soluciones}{}% 36
-\BOOKMARK [2][-]{subsection.7.1}{Primer Aproximaci\363n \(Bellman-Ford\)}{section.7}% 37
-\BOOKMARK [3][-]{subsubsection.7.1.1}{El Algoritmo}{subsection.7.1}% 38
-\BOOKMARK [3][-]{subsubsection.7.1.2}{An\341lisis de Complejidad}{subsection.7.1}% 39
-\BOOKMARK [2][-]{subsection.7.2}{Segunda Aproximaci\363n \(Floyd-Warshall\)}{section.7}% 40
-\BOOKMARK [3][-]{subsubsection.7.2.1}{El Algoritmo}{subsection.7.2}% 41
-\BOOKMARK [3][-]{subsubsection.7.2.2}{An\341lisis de Complejidad}{subsection.7.2}% 42
-\BOOKMARK [1][-]{section.8}{Experimentaci\363n, An\341lisis y Conclusiones}{}% 43
-\BOOKMARK [2][-]{subsection.8.1}{Experimento de Complejidad}{section.8}% 44
-\BOOKMARK [1][-]{section.9}{Bibliograf\355a}{}% 45
+\BOOKMARK [1][-]{section.5}{Experimentaci\363n}{}% 14
+\BOOKMARK [2][-]{subsection.5.1}{Variaciones}{section.5}% 15
+\BOOKMARK [2][-]{subsection.5.2}{Experimentaci\363n}{section.5}% 16
+\BOOKMARK [2][-]{subsection.5.3}{Dataset: Aggregation}{section.5}% 17
+\BOOKMARK [3][-]{subsubsection.5.3.1}{Tiempos}{subsection.5.3}% 18
+\BOOKMARK [2][-]{subsection.5.4}{Grafo r15}{section.5}% 19
+\BOOKMARK [2][-]{subsection.5.5}{Dataset: Spiral}{section.5}% 20
+\BOOKMARK [3][-]{subsubsection.5.5.1}{Tiempos}{subsection.5.5}% 21
+\BOOKMARK [3][-]{subsubsection.5.5.2}{Gr\341ficos}{subsection.5.5}% 22
+\BOOKMARK [2][-]{subsection.5.6}{Dataset: Pathbased}{section.5}% 23
+\BOOKMARK [3][-]{subsubsection.5.6.1}{Tiempos}{subsection.5.6}% 24
+\BOOKMARK [3][-]{subsubsection.5.6.2}{Gr\341ficos}{subsection.5.6}% 25
+\BOOKMARK [2][-]{subsection.5.7}{Dataset: A1}{section.5}% 26
+\BOOKMARK [3][-]{subsubsection.5.7.1}{Tiempos}{subsection.5.7}% 27
+\BOOKMARK [3][-]{subsubsection.5.7.2}{Gr\341ficos}{subsection.5.7}% 28
+\BOOKMARK [2][-]{subsection.5.8}{Dataset: Compound de Zahn}{section.5}% 29
+\BOOKMARK [3][-]{subsubsection.5.8.1}{Tiempos}{subsection.5.8}% 30
+\BOOKMARK [3][-]{subsubsection.5.8.2}{Gr\341ficos}{subsection.5.8}% 31
+\BOOKMARK [2][-]{subsection.5.9}{Conclusiones}{section.5}% 32
+\BOOKMARK [1][-]{section.6}{Arbitraje}{}% 33
+\BOOKMARK [1][-]{section.7}{Algoritmos y soluciones}{}% 34
+\BOOKMARK [2][-]{subsection.7.1}{Primer Aproximaci\363n \(Bellman-Ford\)}{section.7}% 35
+\BOOKMARK [3][-]{subsubsection.7.1.1}{El Algoritmo}{subsection.7.1}% 36
+\BOOKMARK [3][-]{subsubsection.7.1.2}{An\341lisis de Complejidad}{subsection.7.1}% 37
+\BOOKMARK [2][-]{subsection.7.2}{Segunda Aproximaci\363n \(Floyd-Warshall\)}{section.7}% 38
+\BOOKMARK [3][-]{subsubsection.7.2.1}{El Algoritmo}{subsection.7.2}% 39
+\BOOKMARK [3][-]{subsubsection.7.2.2}{An\341lisis de Complejidad}{subsection.7.2}% 40
+\BOOKMARK [1][-]{section.8}{Experimentaci\363n, An\341lisis y Conclusiones}{}% 41
+\BOOKMARK [2][-]{subsection.8.1}{Experimento de Complejidad}{section.8}% 42
+\BOOKMARK [1][-]{section.9}{Bibliograf\355a}{}% 43
