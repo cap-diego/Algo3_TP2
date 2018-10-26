@@ -263,30 +263,30 @@ Entonces no sólo vemos que un AGM no rompería la formación de Clusters sino q
 
 \subsection{Prim}
 
-\begin{codebox}
-\Procname{$\proc{PrimConCola}(G: ListaAdyacencias)$}
-\li $res \gets$ Crear vector de pesos del tamaño de la lista G con valor $\infty$ en cada pos
-\li $padres \gets$ Crear vector de Nodos del tamaño de la lista G
-\li $visitados \gets$ Crear vector de booleanos del tamaño de la lista G con valor $False$ en cada pos
-\li $cola \gets$ Crear cola de prioridad vacia que tome AristaAd 
-\zi y los ordene en orden ascendiente según su peso
-\li Encolar el una AristaAd que tenga como adyacente al primer nodo de $G$ y como peso $0$ en $cola$
-\li \While{not $cola.vacia()$} \Do
-\li 	$u \gets$ $cola.siguiente()$
-\li 	$cola.pop()$
-\li 	$visitados[u.adyacente.indice] = True$
-\li 	\For{$AristaAd$ ad : $G[u.adyacente]$} \Do
-\li 		\If{not $visitados[ad.adyacente.indice]$} \Then
-			\li $cola.encolar(ad)$
-\li 			\If{$res[ad.adyacente.indice] > ad.peso$} \Then
-					\li $res[ad.adyacente.indice] \gets ad.peso$
-					\li $padres[ad.adyacente.indice] \gets u.adyacente$
-				\End
-			 \End
-		\End
-	\End
-\li Devolver $padres$
-\end{codebox}
+%\begin{codebox}
+%\Procname{$\proc{PrimConCola}(G: ListaAdyacencias)$}
+%\li $res \gets$ Crear vector de pesos del tamaño de la lista G con valor $\infty$ en cada pos
+%\li $padres \gets$ Crear vector de Nodos del tamaño de la lista G
+%\li $visitados \gets$ Crear vector de booleanos del tamaño de la lista G con valor $False$ en cada pos
+%\li $cola \gets$ Crear cola de prioridad vacia que tome AristaAd 
+%\zi y los ordene en orden ascendiente según su peso
+%\li Encolar el una AristaAd que tenga como adyacente al primer nodo de $G$ y como peso $0$ en $cola$
+%\li \While{not $cola.vacia()$} \Do
+%\li 	$u \gets$ $cola.siguiente()$
+%\li 	$cola.pop()$
+%\li 	$visitados[u.adyacente.indice] = True$
+%\li 	\For{$AristaAd$ ad : $G[u.adyacente]$} \Do
+%\li 		\If{not $visitados[ad.adyacente.indice]$} \Then
+%			\li $cola.encolar(ad)$
+%\li 			\If{$res[ad.adyacente.indice] > ad.peso$} \Then
+%					\li $res[ad.adyacente.indice] \gets ad.peso$
+%					\li $padres[ad.adyacente.indice] \gets u.adyacente$
+%				\End
+%			 \End
+%		\End
+%	\End
+%\li Devolver $padres$
+%\end{codebox}
 
 \begin{codebox}
 \Procname{$\proc{PrimSinCola}(G: ListaAdyacencias)$}
